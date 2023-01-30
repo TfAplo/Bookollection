@@ -6,7 +6,15 @@ body{
 }
 
 h1, h2, label{
+  display: flex;
+  justify-content: center;
   color: rgb(229, 226, 226);
+}
+
+#login{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 footer{

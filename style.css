@@ -17,6 +17,11 @@ h1, h2, label{
   justify-content: center;
 }
 
+#bouton-connecter{
+  display: flexbox;
+  justify-content: center;
+}
+
 footer{
   position: absolute;
   bottom: 0;
@@ -28,14 +33,13 @@ footer{
 hr {
   height: 5%;
   border: none;
-  background: linear-gradient(90deg, rgba(48,52,67,1) 0%, rgba(117,112,112,1) 50%, rgba(48,52,67,1) 100%);
+  background: linear-gradient(90deg, rgba(48,52,67,1) 5%, rgba(117,112,112,1) 50%, rgba(48,52,67,1) 95%);
 }
 
 #contact-banner {
     background-color: rgb(48, 52, 67); 
     background-size: 150%;
     color: rgb(229, 226, 226); 
-    padding: 10px; 
     display: flex;
     justify-content: space-between;
   }
@@ -43,10 +47,11 @@ hr {
   #social-links a {
     color: rgb(229, 226, 226); 
     text-decoration: none; 
-    margin-left: 10px; 
+    margin: 10px;
   }
   
   #copyright {
-    text-align: right;
-    scroll-padding-top: 50px;
+    display: absolute;
+    bottom: 0;
+
   }

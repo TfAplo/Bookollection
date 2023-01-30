@@ -8,6 +8,12 @@
 </head>
 <body>
     <h1> deuxième page</h1>
-    
+    <?php
+        // recupere les informations entrées dans le formulaire
+        $name = $_POST["username"];
+        $password = $_POST["password"];
+        
+        echo "welcome $name let's get started"
+    ?>
 </body>
 </html>

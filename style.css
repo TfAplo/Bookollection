@@ -1,17 +1,23 @@
 body{
-  
+  background: linear-gradient(309deg, rgba(51,47,65,1) 0%, rgba(74,24,154,1) 100%);
+  background-repeat: no-repeat;
+  background-size: 200%;
 }
 
 h1{
-  
+
 }
+
+footer{
+  padding-top: 23.5%;
+}
+
 #contact-banner {
     background-color: #333; 
-    color: #fff; 
+    color: rgb(0, 0, 0); 
     padding: 10px; 
     display: flex;
     justify-content: space-between;
-    flex-direction: column-reverse;
   }
   
   #social-links a {

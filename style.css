@@ -1,0 +1,25 @@
+#body{
+  
+}
+
+#h1{
+  
+}
+#contact-banner {
+    background-color: #333; 
+    color: #fff; 
+    padding: 10px; 
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+  }
+  
+  #social-links a {
+    color: #fff; 
+    text-decoration: none; 
+    margin-left: 10px; 
+  }
+  
+  #copyright {
+    text-align: right;
+  }

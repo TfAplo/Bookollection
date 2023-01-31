@@ -3,6 +3,7 @@
 }
 
 body{
+  font-family: Poppins, sans-serif;
   display: flex;
   flex-direction: row;
   /* background: linear-gradient(0deg, rgb(48, 52, 67) 50%, rgb(88, 92, 107) 100%); */
@@ -11,24 +12,28 @@ body{
   background-size: cover;
 }
 
-h1, h2, label{
+h1, h2{
   color: rgb(229, 226, 226);
+  font-weight:600;
 }
 
 /* ############################################ LOGIN  ############################################*/
 
 #right{
-  width: 60%;
+  width: 55%;
   display: flex;
   justify-content: center;
   background-color: rgb(48, 52, 67); 
+  box-shadow: -30px 0px 50px;
 }
 
 #left{
-  width: 40%;
+  width: 45%;
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  padding-top: 50px;
+  background-image: url(images/dream_TradingCard\ \(4\).jpg);
+  background-size: cover;
 }
 
 form{
@@ -37,6 +42,10 @@ form{
   width: 100%;
   justify-content: center;
   align-items: center;
+}
+
+form h1{
+  margin-bottom: 50px;
 }
 
 input{

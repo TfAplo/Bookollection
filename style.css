@@ -18,8 +18,8 @@ h1, h2, label{
 }
 
 #bouton-connecter{
-  display: flexbox;
-  justify-content: center;
+  display: block;
+  margin: 0 auto;
 }
 
 footer{

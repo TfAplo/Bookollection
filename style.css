@@ -42,16 +42,23 @@ hr {
     color: rgb(229, 226, 226); 
     display: flex;
     justify-content: space-between;
+    margin: 10px;
   }
   
+  #contact-info{
+    display: block;
+    margin-left: 0 auto;
+  }
+
   #social-links a {
     color: rgb(229, 226, 226); 
     text-decoration: none; 
     margin: 10px;
+    display: block;
+    margin-bottom: 0;
   }
   
   #copyright {
-    display: absolute;
-    bottom: 0;
-
+    display: block;
+    margin-right: 0 auto;
   }

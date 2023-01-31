@@ -6,21 +6,43 @@ body{
 }
 
 h1, h2, label{
-  display: flex;
-  justify-content: center;
   color: rgb(229, 226, 226);
 }
+
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(40, 43, 56);
+  margin: 0;
+}
+
+/* ############################################ LOGIN  ############################################*/
 
 #login{
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 100px;
+}
+
+#card{
+  width: 600px;
+  height: 300px;
+  background-color: rgb(40, 43, 56);
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 #bouton-connecter{
   display: block;
   margin: 0 auto;
 }
+
+/* ############################################ FOOTER  ############################################*/
 
 footer{
   position: absolute;

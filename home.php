@@ -11,9 +11,9 @@
     <header>
         <h1>Bookollection</h1>
         <div id="bouton_header">
-            <button>Ma collection</button>
-            <button>Actualités</button>
-            <button>Recherche</button>
+            <button type="button" id="bouton">Ma collection</button>
+            <button type="button" id="bouton">Actualités</button>
+            <button type="button" id="bouton">Recherche</button>
         </div>
     </header>
 

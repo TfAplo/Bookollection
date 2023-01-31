@@ -57,14 +57,18 @@ input{
   border-radius: 1rem;
 }
 
-input[type=text]{
-}
-
 #bouton-connecter{
+  cursor: pointer;
   display: block;
-  margin: 0 auto;
+  margin: auto;
+  margin-left: 20px;
+  transition: 0.5s;
+  border: none;
 }
 
+#bouton-connecter:hover{
+  background-color: rgb(191, 191, 191);
+}
 /* ############################################ FOOTER  ############################################*/
 
 footer{

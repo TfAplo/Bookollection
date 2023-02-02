@@ -13,7 +13,7 @@
         $name = $_POST["username"];
         $password = $_POST["password"];
         
-        echo "welcome $name let's get started"
+        echo "<p>welcome $name let's get started</p>"
     ?>
 </body>
 </html>

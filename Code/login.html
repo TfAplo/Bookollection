@@ -8,22 +8,21 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>MyBookollection</h1>
+    <div id="left">
+        <h1>MyBookollection</h1>
+    </div> 
 
-    <div id="login" class="login-modal">
+    
+    <div id="right">
         <form action="home.php" method="post">
-          <h2>Connexion</h2>
-          <label for="username">Nom d'utilisateur :</label>
-          <input type="text" id="username" name="username">
-          <br>
-          <label for="password">Mot de passe :</label>
-          <input type="password" id="password" name="password">
-          <br>
-          <input id="bouton-connecter" type="submit" value="Se connecter">
+            <h1>Connexion</h1>
+            <input type="text" id="username" name="username" placeholder="Nom d'utilisateur">
+            <input type="password" id="password" name="password" placeholder="Mot de passe">
+            <input id="bouton-connecter" type="submit" value="Se connecter">
         </form>
     </div>
-    
-    <footer>
+
+    <!-- <footer>
         <hr>
         <div id="contact-banner">
             <div id="contact-info">
@@ -40,7 +39,7 @@
             <p>Copyright © 2023 MyBookollection Inc.</p>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
 </body>
 </html>

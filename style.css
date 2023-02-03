@@ -1,5 +1,5 @@
 :root{
-  --primary: rgb(0, 84, 245);
+  --primary: rgb(0, 122, 204);
   --secondary: rgb(48, 52, 67);
   --third: rgb(62, 67, 87);
   --fontcolor: rgb(229, 226, 226);
@@ -49,7 +49,7 @@ h1, h2{
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 84, 245, 0.7);
+  background-color: rgba(0, 122, 204, 0.7);
 }
 
 .hautg{

@@ -29,6 +29,7 @@ h1, h2{
 /* ############################################ LOGIN  ############################################*/
 
 #right{
+  position: relative;
   width: 50%;
   display: flex;
   justify-content: center;
@@ -40,6 +41,31 @@ h1, h2{
   width: 50%;
   background-image: url(images/dream_TradingCard\ \(2\).jpg);
   background-size: cover;
+}
+
+.theme{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  margin: 30px;
+}
+
+.theme a{
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+}
+
+.clair{
+  background-color: var(--fontcolor);
+}
+.sombre{
+  background-color: var(--secondary);
 }
 
 .filter{

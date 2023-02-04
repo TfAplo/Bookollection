@@ -9,37 +9,39 @@
 </head>
 <body>
     <div id="left">
-        <h1>MyBookollection</h1>
-    </div> 
-
-    
-    <div id="right">
-        <form action="home.php" method="post">
-            <h1>Connexion</h1>
-            <input type="text" id="username" name="username" placeholder="Nom d'utilisateur">
-            <input type="password" id="password" name="password" placeholder="Mot de passe">
-            <input id="bouton-connecter" type="submit" value="Se connecter">
-        </form>
-    </div>
-
-    <!-- <footer>
-        <hr>
-        <div id="contact-banner">
-            <div id="contact-info">
-            <p>Contact : MyBookollection@gmail.com</p>
-            <p>Téléphone : +69 696 696 696</p>
-            <p>Adresse : 69 rue du Moulin rouge, 69000 Paris</p>
+        <div class="filter">
+            <div class="hautg">
+                <h1 id="titre">Bookollection</h1>
+                <h3>La manière la plus simple de se souvenir de vos lectures.</h3>
             </div>
-            <div id="social-links">
-            <a href="https://facebook.com/69">Facebook</a>
-            <a href="https://twitter.com/69">Twitter</a>
-            <a href="https://instagram.com/69">Instagram</a>
-            </div>
-            <div id="copyright">
-            <p>Copyright © 2023 MyBookollection Inc.</p>
+            <div class="basg">
+                <div class="card">
+                    <h1 class="bienvenue">Bienvenue</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero natus deserunt minima voluptates beatae, possimus laboriosam? Corrupti, amet? Sed perferendis id consequuntur cupiditate ratione recusandae, voluptas quia fugiat repellat commodi!</p>
+                </div>
             </div>
         </div>
-    </footer> -->
+    </div> 
 
+    <div id="right">
+        <div class="theme">
+            <a class="clair" href="javascript:void(0)"><img src="images/wb_sunny.png" alt="" width="20px"></a>
+            <a class="sombre" href="javascript:void(0)"><img src="images/brightness_2.png" alt="" width="20px"></a>
+        </div>
+        <form action="home.php" method="post">
+            <h1 id="titrelog">Se connecter</h1>
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe">
+            
+            <div id="basform">
+                <input id="bouton-connecter" type="submit" value="Se connecter">
+                <a id="changeLog" href="javascript:void(0)">S'inscrire</a>
+            </div>
+        </form>
+    </div>
+    <script src="JSscripts/theme.js"></script>
+    <script src="JSscripts/logChange.js"></script>
 </body>
 </html>

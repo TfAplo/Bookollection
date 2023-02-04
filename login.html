@@ -25,11 +25,11 @@
 
     <div id="right">
         <div class="theme">
-            <a class="clair changeT" href="javascript:void(0)"><img src="images/wb_sunny.png" alt="" width="20px"></a>
-            <a class="sombre changeT" href="javascript:void(0)"><img src="images/brightness_2.png" alt="" width="20px"></a>
+            <a class="clair" href="javascript:void(0)"><img src="images/wb_sunny.png" alt="" width="20px"></a>
+            <a class="sombre" href="javascript:void(0)"><img src="images/brightness_2.png" alt="" width="20px"></a>
         </div>
         <form action="home.php" method="post">
-            <h1>Se connecter</h1>
+            <h1 id="titrelog">Se connecter</h1>
             <label for="username">Nom d'utilisateur</label>
             <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur">
             <label for="password">Mot de passe</label>
@@ -37,10 +37,11 @@
             
             <div id="basform">
                 <input id="bouton-connecter" type="submit" value="Se connecter">
-                <a href="javascript:void(0)">S'inscrire</a>
+                <a id="changeLog" href="javascript:void(0)">S'inscrire</a>
             </div>
         </form>
     </div>
     <script src="JSscripts/theme.js"></script>
+    <script src="JSscripts/logChange.js"></script>
 </body>
 </html>

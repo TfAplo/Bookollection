@@ -1,4 +1,4 @@
-//recupere la collection de tous les a
+//recupere la collection de tous les "a"
 let a = document.querySelectorAll("a");
 
 //si l'utilisateur n'est jamais venu: cookie mis en sombre
@@ -24,7 +24,7 @@ function setToBright() {
     des.setProperty('--fontcolor', 'rgb(0, 0, 0)');
 }
 
-//initialise les ouleurs en fonction du theme de l'utilisateur de sa derniere visite
+//initialise les couleurs en fonction du theme de l'utilisateur de sa derniere visite
 if (document.cookie.split(",")[0] == "themeCookie=Dark") {
     setToDark();
 } else {
@@ -52,7 +52,7 @@ function colorChange(element) {
 
 for (let element of a) {
     element.addEventListener("click", () => {
-        //evnenListeners ajoutés pour changer le theme si les a sont cliqués
+        //eventListeners ajoutés pour changer le theme si les "a" sont cliqués
         themeCookieChange(element);
         colorChange(element);
     })

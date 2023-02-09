@@ -3,7 +3,7 @@
   }
 
 body{
-    background: linear-gradient(0deg, rgb(48, 52, 67) 50%, rgb(88, 92, 107) 100%);
+    background: linear-gradient(45deg, rgb(48, 52, 67) 50%, rgb(88, 92, 107) 100%);
     background-repeat: no-repeat;
     height: 100vh;
     background-size: cover;

@@ -11,6 +11,7 @@
 <body>
     <header>
         <nav>
+            <img alt="Logo de MyBookollection" src="images/ico.png"> 
             <input class="nav_button" type="button" value="Ma collection">
             <input class="nav_button" type="button" value="Actualités">
             <input class="nav_button" type="button" value="Recherche">
@@ -23,27 +24,40 @@
         
         <div id="gauche">
             <form name="form" id="filtre">
-                    <label for="" id="genre">
-                        Genre :
-                        <select>
-                            <option value="roman">Roman</option>
-                            <option value="bd">Bande Dessinée</option>
-                            <option value="poésie">Poésie</option>
-                            <option value="autobiographie">Autobiographie</option>
-                        </select>
-                    </label>
-                    <br>
-                    <br>
-                    <label for="" id="registre">
-                        Registre :
-                        <select>
-                            <option value="fantastique">Fantastique</option>
-                            <option value="policier">Policier</option>
-                            <option value="comique">Comique</option>
-                            <option value="pique">Epique</option>
-                            <option value="tragique">Tragique</option>
-                        </select>
-                    </label>
+                <h2>Filtres</h2>
+                <label for="" id="genre">
+                    Genre :
+                    <select id="select_genre">
+                        <option value="roman">Roman</option>
+                        <option value="bd">Bande Dessinée</option>
+                        <option value="poésie">Poésie</option>
+                        <option value="autobiographie">Autobiographie</option>
+                    </select>
+                </label>
+                <br>
+                <br>
+                <label for="" id="registre">
+                    Registre :
+                    <select id="select_registre">
+                        <option value="fantastique">Fantastique</option>
+                        <option value="policier">Policier</option>
+                        <option value="comique">Comique</option>
+                        <option value="pique">Epique</option>
+                        <option value="tragique">Tragique</option>
+                    </select>
+                </label>
+                <br>
+                <br>
+                <label for="" id="lu">
+                    <input type="checkbox" name="lu" id="checkbox_lu">
+                    Lu
+                </label>
+                <br>
+                <br>
+                <label for="" id="possession">
+                    <input type="checkbox" name="possession" id="checkbox_possession">
+                    Possession
+                </label>
             </form>
         </div>
         

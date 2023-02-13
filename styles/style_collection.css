@@ -20,11 +20,12 @@
   /* ############################################ HEADER ############################################ */
   
 header {
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 10%;
+    height: 10vh;
 }
 
 nav {
@@ -32,9 +33,9 @@ nav {
     height: 100%;
 }
 
-/*nav img {
-    scale: 65%;
-}*/
+nav img {
+    scale: 100%;
+}
 
 .nav_button {
     background-color: white;
@@ -49,7 +50,8 @@ nav {
 }
 
 .nav_button:focus {
-    background-color: rgb(128, 128, 127);
+    background-color: #FFF;
+    border-bottom: solid blue 5px;
 }
 
 h1 {
@@ -70,22 +72,25 @@ h1 {
     height: 90%;
     display: flex;
     justify-content: flex-start;
-    background-color: rgb(155, 124, 124);
+    background-color: rgb(255, 255, 255);
 }
 
 #gauche {
+    position: fixed;
     width: 22%;
+    height: 80vh;
     background-image: url(../images/fond_librairie.png);
+    margin-top: 10vh;
 }
 
 #filtre {
-    height: 100%;
+    height: 90%;
 }
 
 #filtre h2 {
     font-size: 2em;
     margin: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
@@ -94,17 +99,13 @@ h1 {
     font-size: 1.5em;
 }
 
-#select_genre {
-    margin-left: 30px;
-}
-
-#select_registre {
-    margin-top: 100px;
-    margin-left: 15px;
+.label_genre, .label_registre {
+    margin-left: 20%;
+    font-size: 0.8em;
 }
 
 #checkbox_lu {
-    margin-top: 120px;
+    margin-top: 30px;
 }
 
 #lu, #possession {
@@ -113,16 +114,28 @@ h1 {
 
 
 #droite {
-    width: 78%; 
+    width: 78%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10vh;
+    margin-left: 48vh;
 }
 
 #input_recherche {
-    width: 100%;
+    width: calc(100% - 4px);
+    padding-left: 0;
+    padding-right: 0;
     height: 30px;
     font-size: 1em;
 }
 
 #input_recherche:focus {
     outline: none;
-    box-shadow: 10px 5px 5px;
+    border: solid #4f4f4f 1px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
+.livre{
+    margin: 40px;
+}
+

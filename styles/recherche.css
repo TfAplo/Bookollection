@@ -44,6 +44,10 @@ form{
     justify-content: center;
 }
 
+select{
+    width: 15%;
+}
+
 #recherche{
     width: 70%;
 }
@@ -86,6 +90,36 @@ a{
     color: var(--fontcolor);
 }
 
+/* #################################### boutons theme #####################################" */
+
+.theme{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    margin: 30px;
+  }
+  
+  .theme a{
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+  }
+  
+  .clair{
+    background-color: rgb(229, 226, 226);
+  }
+  .sombre{
+    background-color: rgb(48, 52, 67);
+  }
+
+/* #################################### responsive #####################################" */
+
 @media only screen and (max-width: 1100px){
     .livres{
         width: 80%;
@@ -97,6 +131,10 @@ a{
 
     form{
         flex-wrap: wrap;
+    }
+
+    select{
+        width: 40%;
     }
 
     #recherche{

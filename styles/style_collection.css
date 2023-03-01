@@ -9,6 +9,8 @@
   body{
     font-family: Poppins, sans-serif;
     height: 100vh;
+    color: var(--fontcolor);
+    background-color: var(--secondary);
   }
   
   h1, h2{
@@ -26,6 +28,7 @@ header {
     align-items: center;
     width: 100%;
     height: 10vh;
+    background-color: var(--third);
 }
 
 nav {
@@ -38,7 +41,8 @@ nav img {
 }
 
 .nav_button {
-    background-color: white;
+    background-color: var(--third);
+    color: var(--fontcolor);
     height: 100%;
     padding: 10px;
     border: 0px;
@@ -46,7 +50,7 @@ nav img {
 }
 
 .nav_button:hover {
-    background-color: rgb(180, 178, 176);
+    background-color: var(--secondary);
 }
 
 .nav_button:focus {
@@ -69,17 +73,16 @@ h1 {
   /* ############################################ CONTENU ############################################ */
 
 #contenu {
-    height: 90%;
+    height: 100vh;
     display: flex;
     justify-content: flex-start;
-    background-color: rgb(255, 255, 255);
 }
 
 #gauche {
     position: fixed;
-    width: 22%;
-    height: 80vh;
-    background-image: url(../images/fond_librairie.png);
+    width: 22vw;
+    height: 90vh;
+    background-color: var(--third);
     margin-top: 10vh;
 }
 
@@ -114,11 +117,11 @@ h1 {
 
 
 #droite {
-    width: 78%;
+    width: 78vw;
     display: flex;
     flex-direction: column;
     margin-top: 10vh;
-    margin-left: 48vh;
+    margin-left: 22vw;
 }
 
 #input_recherche {
@@ -131,11 +134,12 @@ h1 {
 
 #input_recherche:focus {
     outline: none;
-    border: solid #4f4f4f 1px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /*box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;*/
 }
 
 .livre{
+    background-color: var(--third);
+    padding: 20px 10px;
     margin: 40px;
 }
 

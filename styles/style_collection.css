@@ -125,8 +125,10 @@ h1 {
 }
 
 #input_recherche {
-    width: calc(100% - 4px);
     background-color: var(--third);
+    border: 2px solid var(--secondary);
+    color: var(--fontcolor);
+    width: calc(100% - 4px);
     padding-left: 0;
     padding-right: 0;
     height: 30px;
@@ -135,6 +137,7 @@ h1 {
 
 #input_recherche:focus {
     outline: none;
+    border: 2px solid var(--primary);
     /*box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;*/
 }
 

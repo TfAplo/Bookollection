@@ -21,18 +21,34 @@
 
         <button id="myBtn"><img alt="compte" src="images/compte.png" id="img_compte"></button>
 
-        <!-- The Modal -->
+        <!-- Pop up -->
         <div id="myModal" class="modal">
 
-            <!-- Modal content -->
+            <!-- Contenue pop up -->
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <p>Nom d'utilisateur: </p>
+                <p>Nom d'utilisateur: </p> <!--Récuperer le nom dut et mdp et faire un oeil pour l'afficher -->
                 <p>Mdp: **********</p>
             </div>
 
+            <!-- Bouton en bas de pop up-->
+            <div class="categories">
+                <button class="category-button" data-category="profil">Profil</button>
+                <button class="category-button" data-category="abonnement">Abonnement</button>
+                <button class="category-button" data-category="securite">Sécurité</button>
+                <button class="category-button" data-category="assistance">Assistance</button>
+                <button class="category-button" data-category="a_propos">A Propos</button>
+            </div>
         </div>
 
+        <!-- categories: Profil/Abonnement/Sécurité/Assistance/A propos -->
+        <!-- Profil:   nom dut, mdp, photo de profil, thème (blanc/noir),  -->
+        <!-- Abonnement: plusieurs abonnement vite fait-->
+        <!-- Sécurité:  changer mdp, mail, -->
+        <!-- Assistance: numero de tel, chatbot (pas fonctionel flemme) -->
+        <!-- A propos: credit des createur et puis jsp  -->
+
+        <!-- Afficher/enlever la pop up -->
         <script>
             var modal = document.getElementById("myModal");
             var btn = document.getElementById("myBtn");
@@ -48,6 +64,28 @@
                 modal.style.display = "none";
                 }
             }
+        </script>
+
+        <!-- Changer de page pop up -->
+        <script>
+            const categoryButtons = document.querySelectorAll('.category-button');
+            const popupContent = document.querySelector('#popup');
+
+            categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.dataset.category;
+                // Mettez à jour le contenu de la pop-up en fonction de la catégorie sélectionnée
+            if (category === 'profil') {
+                popupContent.innerHTML = '<h2>profil</h2><p>Contenu pour la catégorie 1</p>';
+
+            } else if (category === 'abonnement') {
+                popupContent.innerHTML = '<h2>abonnement</h2><p>Contenu pour laie 2</p>';
+
+            } else if (category === 'securite') {
+                popupContent.innerHTML = '<h2>securite</h2><p>Contenu pour la orie 3</p>';
+            }
+            });
+            });
         </script>
 
     </header>

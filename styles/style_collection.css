@@ -54,7 +54,6 @@ nav img {
 }
 
 .nav_button:focus {
-    background-color: #FFF;
     border-bottom: solid blue 5px;
 }
 

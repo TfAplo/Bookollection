@@ -17,7 +17,7 @@
             <input class="nav_button" type="button" value="Recherche">
         </nav>
         <h1>Bookollection</h1>
-        <a href="" class="compte"><img alt="compte" src="images/compte.png" class="compte" id="img_compte"></a>
+        <a href="" class="compte"><img alt="compte" src="images/account_circle_clair-removebg-preview.png" class="compte" id="img_compte"></a>
     </header>
 
     <div id="contenu">

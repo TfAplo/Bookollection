@@ -57,14 +57,6 @@ nav img {
     border-bottom: solid blue 5px;
 }
 
-h1 {
-
-}
-
-.compte {
-
-}
-
 #img_compte {
     scale: 70%;
 }
@@ -114,7 +106,6 @@ h1 {
     margin-left: 20px;   
 }
 
-
 #droite {
     width: 78vw;
     display: flex;
@@ -145,10 +136,6 @@ h1 {
     padding: 20px 10px;
     margin: 40px;
 }
-
-
-  /* ############################################ CONTENU TOM ############################################ */
-
 
 .contenu_droite{
     width: 100%;
@@ -188,6 +175,8 @@ a{
     text-decoration: none;
     color: var(--fontcolor);
 }
+
+/* ############################################ RESPONSIVE  ############################################*/
 
 @media only screen and (max-width: 1100px) {
     .livres {

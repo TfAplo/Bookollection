@@ -153,12 +153,16 @@ input{
   color: var(--fontcolor);
 }
 
-#username, #password{
+#username, #password, #email{
   width: 100%;
   margin-bottom: 40px;
   background-color: var(--secondary);
   border-bottom: 4px solid var(--third);
   transition: 0.5s;
+}
+
+.hidden{
+  display: none;
 }
 
 #basform{
@@ -186,7 +190,7 @@ input:focus{
   outline: none;
 }
 
-#username:focus, #password:focus{
+#username:focus, #password:focus, #email:focus{
   border-bottom: 4px solid var(--primary);
   background-color: var(--third);
 }

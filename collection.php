@@ -28,15 +28,18 @@
             <!-- contenue popup -->
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <p>Nom d'utilisateur: </p>
-                <p>Mdp: **********</p>
+                <img alt="compte" id="img_popup" src="images/compte.png">
+                <p>Nom d'utilisateur: Evan Beaufreton--Paillard </p>
+                <p>Mot de passe: *****************</p>
+                <p>Email: evan.beaufreton@gmail.com</p>
+                <p>Date de naissance: 09/05/2004</p>
             </div>
 
             <!-- categorie de bouton -->
             <div class="categories">
                 <button class="category-button" data-category="profil">Profil</button>
-                <button class="category-button" data-category="abonnement">Abonnement</button>
                 <button class="category-button" data-category="securite">Sécurité</button>
+                <button class="category-button" data-category="soutenir">Soutenir</button>
                 <button class="category-button" data-category="assistance">Assistance</button>
                 <button class="category-button" data-category="a_propos">A Propos</button>
             </div>
@@ -70,15 +73,15 @@
                     const category = button.dataset.category;
 
                     if (category === 'profil') {
-                        popup.innerHTML = '<img alt="compte" id="img_popup" src="images/compte.png"><p>Nom d\'utilisateur: </p><p>Mdp: **********</p>';
-                    } else if (category === 'abonnement') {
-                        popup.innerHTML = '<p>Contenu pour la catégorie Abonnement</p>';
+                        popup.innerHTML = '<span class="close">&times;</span><img alt="compte" id="img_popup" src="images/compte.png"><p>Nom d\'utilisateur: Evan Beaufreton--Paillard </p><p>Mot de passe: *****************</p><p>Email: evan.beaufreton@gmail.com</p><p>Date de naissance: 09/05/2004</p>';
                     } else if (category === 'securite') {
-                        popup.innerHTML = '<p>Contenu pour la catégorie Sécurité</p>';
+                        popup.innerHTML = '<span class="close">&times;</span><h2>Sécurité</h2>';
+                    } else if (category === 'soutenir') {
+                        popup.innerHTML = '<span class="close">&times;</span><h2>Soutenir</h2>';
                     } else if (category === 'assistance') {
-                        popup.innerHTML = '<p>Contenu pour la catégorie Assistance</p>';
+                        popup.innerHTML = '<span class="close">&times;</span><h2>Assistance</h2>';
                     } else if (category === 'a_propos') {
-                        popup.innerHTML = '<p>Contenu pour la catégorie A propos</p>';
+                        popup.innerHTML = '<span class="close">&times;</span><h2>A propos</h2>';
                     }
                 });
             });

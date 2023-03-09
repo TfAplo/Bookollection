@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow:800&display=swap');
+
+/*scrollbar*/
+
+  
+  *::-webkit-scrollbar {
+    width: .5rem;                  
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #292929;            
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: linear-gradient(transparent, #9896ce);
+    -webkit-border-radius: 2rem;
+    border-radius: 2rem;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(transparent, #96ceb4)
+  }
+  
+/*-------------------------*/
+  
+*{
+    font-family: "Open Sans", sans-serif;
+    scrollbar-width: thin;          
+    scrollbar-color: #9896ce #292929;   
+    margin: 0;
+    padding: 0;
+}
+
+.list_header{
+    list-style-type:none;
+    display:inline-block;
+    margin-left:20px;
+    font-size: 1.2em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.lien_header{
+    text-decoration:none;
+    color: black;
+}
+
+.lien_header:hover{
+    color: #52bdee;  
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.bouton{
+    color: #3d4852;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+a.bouton {
+    align-items: center;
+    background-color: #3d4852;
+    border: 1px solid #3d4852;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    display: inline-flex;
+    padding: 0.25rem 0.75rem;
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
+
+}
+
+a.bouton:hover,
+a.bouton:focus {
+    background-color: #58636F;
+    box-shadow: 0 0 2px 2px #bac6d3;
+}
+
+a.bouton:focus {
+    outline: 1px solid #3d4852;
+}
+
+a.bouton:visited {
+    color: #fff;
+}
+
+.top{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+.book{
+    width: 200px;
+    height: 200px;
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+.liv{
+    border : white 1px solid;
+    border-radius: 4px;
+    margin-left:10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.affiche_fest{
+    width:65%;
+    height: 100%;
+    display: block;
+    margin-left: 10%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.box_fest{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    margin-left: 7px;
+    margin-top: 50px;
+    background-color: #087ccc;
+    border:solid 1px #087ccc;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 4px;
+    background: linear-gradient(-45deg, #52bdee, #2577ea, #438a9e, #233ed5);
+	background-size: 400% 400%;
+	animation: gradient 25s ease infinite;
+	
+ 
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+.text_fest{
+    margin-left: 50px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: white;
+    padding-right: 10%;
+}
+
+.bouton_fest{
+    margin-top:30px;
+}
+
+footer{
+    margin-top: 150px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/*newsletter*/
+
+.newsletter{
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+#email{
+    border: none;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding: 4px;
+    width: 15em;
+    height: 1.4em;
+    font-size: 1.1em;
+
+}
+input[type="submit"]{
+    background-color: #58636F;
+    border: none;
+    padding:10px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+   }
+
+input[type="submit"]:hover,
+input[type="submit"]:focus
+{
+    background-color: #58636F;
+    box-shadow: 0 0 2px 2px #bac6d3;
+}
+
+input[type="submit"]:focus{
+    outline: 1px solid #3d4852;
+}
+
+
+::placeholder{
+    color: rgb(59, 59, 59);
+
+}
+
+
+.topo_newsletter{
+    color : rgb(255, 255, 255);
+    width: 600px;
+    height: 250px;
+    background-image: url("images/topography2.png");
+    border-radius: 15px;
+    background-size: 100%;
+    text-align: center;
+
+    
+}
+
+.text-news{
+    font-size: 1.35em;
+    padding-top: 3em;
+}
+
+
+/*Page évènement*/
+
+.grid_event{
+    display: grid;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.box_event{
+    margin-left: auto;
+    margin-right: auto;
+    width: 70em;
+    display: grid;
+    grid-template-columns: 35% 65%;
+    margin-top: 50px;
+    background-color: #087ccc;
+    border:solid 1px #087ccc;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 4px;
+    background: linear-gradient(-45deg, #52bdee, #2577ea, #438a9e, #233ed5);
+    background-size: 400% 400%;
+    animation: gradient 25s ease infinite;  
+}
+
+.img_event{
+    width: 20em;
+    height:25em;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.text_event{
+    text-align: center;
+    margin-left: 50px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: white;
+    padding-right: 10%;
+    font-size: 1.5em;
+}

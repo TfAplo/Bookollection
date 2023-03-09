@@ -15,13 +15,12 @@ function setToDark() {
     des.setProperty('--secondary', 'rgb(48, 52, 67)');
     des.setProperty('--third', 'rgb(62, 67, 87)');
     des.setProperty('--fontcolor', 'rgb(229, 226, 226)');
-    if (window.location.href.includes("collection.html")) {
-        document.getElementById("img_compte").src = "images/account_circle_clair-removebg-preview.png";
-    }
+    document.getElementById("img_compte").src = "images/account_circle_clair-removebg-preview.png";
 }
 
 function setToBright() {
     // change les variables de couleur pour le theme clair
+    document.getElementById("img_compte").src = "images/account_circle_fonce-removebg-preview.png";
     if (window.location.href.includes("collection.html")) {
         des.setProperty('--secondary', 'rgb(177, 177, 177)');
         des.setProperty('--third', 'rgb(229, 226, 226)');

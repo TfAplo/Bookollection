@@ -61,7 +61,7 @@ nav img {
 
 /* ################################# Contenu ####################################################*/
 
-input, select{
+#recherche, select{
     border: none;
     background-color: var(--third);
     border-radius: 5px;
@@ -130,34 +130,6 @@ a{
     text-decoration: none;
     color: var(--fontcolor);
 }
-
-/* #################################### boutons theme #####################################" */
-
-.theme{
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 0;
-    right: 30px;
-    margin: 30px;
-  }
-  
-  .theme a{
-    padding: 5px;
-    margin: 10px;
-    border-radius: 5px;
-    align-items: center;
-    justify-content: center;
-    height: 20px;
-  }
-  
-  .clair{
-    background-color: rgb(229, 226, 226);
-  }
-  .sombre{
-    background-color: rgb(48, 52, 67);
-  }
 
 /* #################################### responsive #####################################" */
 

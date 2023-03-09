@@ -223,7 +223,7 @@ input[type="submit"]:focus{
     color : rgb(255, 255, 255);
     width: 600px;
     height: 250px;
-    background-image: url("images/topography2.png");
+    background-image: url("../images/topography2.png");
     border-radius: 15px;
     background-size: 100%;
     text-align: center;

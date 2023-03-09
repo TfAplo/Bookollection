@@ -121,21 +121,17 @@ nav {
     width: 78%;
 }
 
-a{
-    color: #0be20b;
-}
-
 .rating {
   direction: rtl;
   grid-row-start: 2;
   grid-column-start: 3;
-  margin-top: 240px;
+  margin-top: 470px;
   margin-right: 10px;
 }
 .rating a {
   color: #aaa;
   text-decoration: none;
-  font-size: 3em;
+  font-size: 4em;
   transition: color .4s;
 }
 .rating a:hover,
@@ -161,49 +157,60 @@ body{
   grid-row-start: 1;
   grid-column-start: 1;
   color: #000;
-  margin-top: 10px;
+  margin-top: 30px;
+  margin-left: 20px;
+  font-size: 300%;
 }
 
 #imageLivre{
 grid-row-start: 2;
-margin-left: -100px;
+margin-left: -150px;
 margin-top: -50px;
-width: 75%;
+width: 125%;
 }
 
 #Tdescription{
-  margin-top: 11px;
-  margin-left: -340px;
+  margin-top: 50px;
+  margin-left: -180px;
   grid-row-start: 2;
   grid-column-start: 2;
   color: #000;
+  font-size: 250%;
 }
 
 #description{
-  margin-top: 40px;
-  margin-left: -340px;
+  margin-top: 105px;
+  margin-left: -180px;
   grid-row-start: 2;
   grid-column-start: 2;
+  font-size: 150%;
 }
 
 #buyLink{
-  margin-top: 120px;
-  margin-left: -340px;
+  margin-top: 340px;
+  margin-left: -180px;
   grid-row-start: 2;
   grid-column-start: 2;
-  font-size: 115%;
+  font-size: 150%;
 }
 
 #BookRead{
-  margin-top: 170px;
-  margin-left: -340px;
+  margin-top: 420px;
+  margin-left: -180px;
   grid-row-start: 2;
   grid-column-start: 2;
+  font-size: 150%;
 }
 
 #BookHave{
-  margin-top: 150px;
-  margin-left: -340px;
+  margin-top: 380px;
+  margin-left: -180px;
   grid-row-start: 2;
   grid-column-start: 2;
+  font-size: 150%;
+}
+
+.box{
+  margin-right: 5px;
+  transform : scale(2);
 }

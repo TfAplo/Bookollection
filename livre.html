@@ -5,10 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/livre.css">
+        <script src="JSscripts/theme.js" defer></script>
         <link rel="icon" href="images\ico-removebg-preview.png" type="image/png">
         <title>MaCollection - Bookollection</title>
     </head>
     <body>
+
+
         <header>
             <nav>
                 <img alt="Logo de MyBookollection" src="images/ico-removebg-preview.png"> 
@@ -19,13 +22,32 @@
             <h1>Bookollection</h1>
             <a href="" class="compte"><img alt="compte" src="images/compte.png" class="compte" id="img_compte"></a>
         </header>
-        <h2>Titre du livre</h2>
-        <img src="images/livresite.png">
-        <p>site où on peut acheter le livre. note du livre.
-        si le livre a ete lu ou non.
-        si le livre est possédé. auteur du livre.
-        titre du livre.
-        </p>
-        <a href="lien.com">lien de livre super</a>
+
+        <div class="grid">
+        <h1 id="titre">Titre du livre</h1>
+        </div>
+        <img id="imageLivre" src="images/livresite.png">
+        <h2 id="Tdescription">Description du livre</h2>
+        <p id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum earum quae amet nisi accusantium assumenda accusamus blanditiis ex nulla eius! Reprehenderit, aliquam inventore? Quam dolore quisquam eum sit quidem ducimus.</p>
+        <a id="buyLink" href="lien.com">Acheter ce livre</a>
+
+        <div class="rating">
+            <a href="#5" title="Donner 5 étoiles">☆</a>
+            <a href="#4" title="Donner 4 étoiles">☆</a>
+            <a href="#3" title="Donner 3 étoiles">☆</a>
+            <a href="#2" title="Donner 2 étoiles">☆</a>
+            <a href="#1" title="Donner 1 étoile">☆</a>
+        </div>
+
+        <label id="BookRead">
+            <input type="checkbox" >
+            Livre lu
+        </label>
+        <br>
+        <label id="BookHave">
+            <input type="checkbox">
+            Livre possédé
+        </label>
+        
     </body>
 </html>

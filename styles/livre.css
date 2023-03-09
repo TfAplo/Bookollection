@@ -124,3 +124,60 @@ nav {
 a{
     color: #0be20b;
 }
+
+.rating {
+  direction: rtl;
+}
+.rating a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 3em;
+  transition: color .4s;
+}
+.rating a:hover,
+.rating a:focus,
+.rating a:hover ~ a,
+.rating a:focus ~ a {
+  color: orange;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+}
+
+body{
+  color: rgb(0,0,0);
+  background-color: rgb(229,226,226)/*var(--third)*/;
+}
+
+#titre{
+  border: none;
+  padding: 3px;
+  background-color: rgb(177, 177, 177);
+}
+
+#imageLivre{
+
+}
+
+#Tdescription{
+
+}
+
+#description{
+
+}
+
+#byuLink{
+
+}
+
+#BookRead{
+
+}
+
+#BookHave{
+
+}

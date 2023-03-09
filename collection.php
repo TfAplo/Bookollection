@@ -51,6 +51,7 @@
         <!-- Afficher/enlever la pop up -->
         <script>
             var modal = document.getElementById("myModal");
+            var categorie = document.getElementById("categories");
             var btn = document.getElementById("myBtn");
             var span = document.getElementsByClassName("close")[0]; 
             btn.onclick = function() {
@@ -68,24 +69,27 @@
 
         <!-- Changer de page pop up -->
         <script>
-            const categoryButtons = document.querySelectorAll('.category-button');
-            const popupContent = document.querySelector('#popup');
+            const initialModalContent = modalContent.innerHTML;
 
             categoryButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const category = button.dataset.category;
-                // Mettez à jour le contenu de la pop-up en fonction de la catégorie sélectionnée
-            if (category === 'profil') {
-                popupContent.innerHTML = '<h2>profil</h2><p>Contenu pour la catégorie 1</p>';
+                button.addEventListener('click', () => {
+                    const category = button.dataset.category;
+                    const modalContent = document.querySelector('.modal-content'); // déplacer la variable modalContent ici
 
-            } else if (category === 'abonnement') {
-                popupContent.innerHTML = '<h2>abonnement</h2><p>Contenu pour laie 2</p>';
+                    if (category === 'profil') {
+                        modalContent.innerHTML = modalContent;
+                    } else if (category === 'abonnement') {
+                        modalContent.innerHTML = '<h2>Abonnement</h2><p>Contenu pour la catégorie Abonnement</p>';
+                    } else if (category === 'securite') {
+                        modalContent.innerHTML = '<h2>Sécurité</h2><p>Contenu pour la catégorie Sécurité</p>';
+                    } else if (category === 'assistance') {
+                        modalContent.innerHTML = '<h2>Assistance</h2><p>Contenu pour la catégorie Assistance</p>';
+                    } else if (category === 'a_propos') {
+                        modalContent.innerHTML = '<h2>A propos</h2><p>Contenu pour la catégorie A propos</p>';
+                    }
+                });
+            });
 
-            } else if (category === 'securite') {
-                popupContent.innerHTML = '<h2>securite</h2><p>Contenu pour la orie 3</p>';
-            }
-            });
-            });
         </script>
 
     </header>

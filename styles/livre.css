@@ -1,0 +1,216 @@
+:root{
+    --primary: rgb(0, 122, 204);
+  }
+  
+  *{
+    margin: 0;
+  }
+  
+  body{
+    font-family: Poppins, sans-serif;
+    height: 100vh;
+  }
+  
+  h1, h2{
+    color: var(--fontcolor);
+    font-weight:600;
+  }
+
+
+  /* ############################################ HEADER ############################################ */
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+    background-color: var(--third);
+}
+
+nav {
+    display: flex;
+    height: 100%;
+}
+
+.nav_button {
+    background-color: aquamarine;
+    height: 100%;
+    padding: 10px;
+    border: 0px;
+    border-radius: 0px;
+}
+
+.nav_button:hover {
+    background-color: rgb(157, 223, 201);
+}
+
+.nav_button:focus {
+    background-color: rgb(255, 255, 255);
+}
+
+#img_compte {
+    scale: 70%;
+}
+
+
+  /* pop-up*/
+
+  /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* ############################################ CONTENU ############################################ */
+
+#contenu {
+    height: 90%;
+    display: flex;
+    justify-content: flex-start;
+    background-color: rgb(155, 124, 124);
+}
+
+#gauche {
+    width: 22%;
+}
+
+#filtre {
+    height: 100%;
+    background-color: white;
+}
+
+#genre {
+    margin-left: 10px;
+}
+
+#droite {
+    width: 78%;
+}
+
+.rating {
+  direction: rtl;
+  grid-row-start: 2;
+  grid-column-start: 3;
+  margin-top: 470px;
+  margin-right: 10px;
+}
+.rating a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 4em;
+  transition: color .4s;
+}
+.rating a:hover,
+.rating a:focus,
+.rating a:hover ~ a,
+.rating a:focus ~ a {
+  color: orange;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 50px 1fr;
+}
+
+body{
+  color: rgb(0,0,0);
+  background-color: rgb(229,226,226)/*var(--third)*/;
+}
+
+#titre{
+  grid-row-start: 1;
+  grid-column-start: 1;
+  color: #000;
+  margin-top: 30px;
+  margin-left: 20px;
+  font-size: 300%;
+}
+
+#imageLivre{
+grid-row-start: 2;
+margin-left: -150px;
+margin-top: -50px;
+width: 125%;
+}
+
+#Tdescription{
+  margin-top: 50px;
+  margin-left: -180px;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  color: #000;
+  font-size: 250%;
+}
+
+#description{
+  margin-top: 105px;
+  margin-left: -180px;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  font-size: 150%;
+}
+
+#buyLink{
+  margin-top: 340px;
+  margin-left: -180px;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  font-size: 150%;
+}
+
+#BookRead{
+  margin-top: 420px;
+  margin-left: -180px;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  font-size: 150%;
+}
+
+#BookHave{
+  margin-top: 380px;
+  margin-left: -180px;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  font-size: 150%;
+}
+
+.box{
+  margin-right: 5px;
+  transform : scale(2);
+}

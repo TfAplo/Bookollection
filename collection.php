@@ -19,19 +19,20 @@
         <h1>Bookollection</h1>
 
 
+        <!-- Bouton popup -->
         <button id="myBtn"><img alt="compte" src="images/compte.png" id="img_compte"></button>
 
-        <!-- Pop up -->
+        <!-- popup -->
         <div id="myModal" class="modal">
 
-            <!-- Contenue pop up -->
+            <!-- contenue popup -->
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <p>Nom d'utilisateur: </p> <!--Récuperer le nom dut et mdp et faire un oeil pour l'afficher -->
+                <p>Nom d'utilisateur: </p>
                 <p>Mdp: **********</p>
             </div>
 
-            <!-- Bouton en bas de pop up-->
+            <!-- categorie de bouton -->
             <div class="categories">
                 <button class="category-button" data-category="profil">Profil</button>
                 <button class="category-button" data-category="abonnement">Abonnement</button>
@@ -41,56 +42,49 @@
             </div>
         </div>
 
-        <!-- categories: Profil/Abonnement/Sécurité/Assistance/A propos -->
-        <!-- Profil:   nom dut, mdp, photo de profil, thème (blanc/noir),  -->
-        <!-- Abonnement: plusieurs abonnement vite fait-->
-        <!-- Sécurité:  changer mdp, mail, -->
-        <!-- Assistance: numero de tel, chatbot (pas fonctionel flemme) -->
-        <!-- A propos: credit des createur et puis jsp  -->
-
-        <!-- Afficher/enlever la pop up -->
+        <!-- visible/non-visible popup -->
         <script>
             var modal = document.getElementById("myModal");
-            var categorie = document.getElementById("categories");
             var btn = document.getElementById("myBtn");
             var span = document.getElementsByClassName("close")[0]; 
             btn.onclick = function() {
-            modal.style.display = "block";
+                modal.style.display = "block";
             }
             span.onclick = function() {
-            modal.style.display = "none";
+                modal.style.display = "none";
             }
             window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+                if (event.target == modal) {
+                    modal.style.display = "none";
                 }
             }
         </script>
 
-        <!-- Changer de page pop up -->
+        <!-- change de contenue de popup en fonction de la catégories choisie -->
         <script>
-            const initialModalContent = modalContent.innerHTML;
+            const categoryButtons = document.querySelectorAll('button[data-category]');
+            const popup = document.querySelector('#myModal .modal-content');
 
             categoryButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const category = button.dataset.category;
-                    const modalContent = document.querySelector('.modal-content'); // déplacer la variable modalContent ici
 
                     if (category === 'profil') {
-                        modalContent.innerHTML = modalContent;
+                        popup.innerHTML = '<img alt="compte" id="img_popup" src="images/compte.png"><p>Nom d\'utilisateur: </p><p>Mdp: **********</p>';
                     } else if (category === 'abonnement') {
-                        modalContent.innerHTML = '<h2>Abonnement</h2><p>Contenu pour la catégorie Abonnement</p>';
+                        popup.innerHTML = '<p>Contenu pour la catégorie Abonnement</p>';
                     } else if (category === 'securite') {
-                        modalContent.innerHTML = '<h2>Sécurité</h2><p>Contenu pour la catégorie Sécurité</p>';
+                        popup.innerHTML = '<p>Contenu pour la catégorie Sécurité</p>';
                     } else if (category === 'assistance') {
-                        modalContent.innerHTML = '<h2>Assistance</h2><p>Contenu pour la catégorie Assistance</p>';
+                        popup.innerHTML = '<p>Contenu pour la catégorie Assistance</p>';
                     } else if (category === 'a_propos') {
-                        modalContent.innerHTML = '<h2>A propos</h2><p>Contenu pour la catégorie A propos</p>';
+                        popup.innerHTML = '<p>Contenu pour la catégorie A propos</p>';
                     }
                 });
             });
 
         </script>
+
 
     </header>
 

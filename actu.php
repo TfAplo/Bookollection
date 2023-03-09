@@ -6,50 +6,54 @@
     <title>Actualités</title>
 </head>
 <body>
-    <header>
+<header>
+<nav>
+            <img alt="Logo de MyBookollection" src="images/ico-removebg-preview.png"> 
+            <input class="nav_button" type="button" onclick="window.location.href = 'collection.html';" value="Ma collection">
+            <input class="nav_button" type="button" onclick="window.location.href = 'actu.php';" value="Actualités">
+            <input class="nav_button" type="button" onclick="window.location.href = 'recherche.html';" value="Recherche">
+        </nav>
         <h1>Bookollection</h1>
-        <h2>Actualités</h2>
-        <ul>
-            <li class="list_header"><a class="lien_header" href="index.php">Accueil</a></li>
-            <li class="list_header"><a class="lien_header" href="actua.php">Profil</a></li>
-            <li class="list_header"><a class="lien_header" href="contact.php">Contact</a></li>
-        </ul>
+        <a href="" class="compte"><img alt="compte" src="images/compte.png" class="compte" id="img_compte"></a>
     </header>
-
+    <div class="theme">
+        <a class="clair" href="javascript:void(0)"><img src="images/wb_sunny.png" alt="" width="20px"></a>
+        <a class="sombre" href="javascript:void(0)"><img src="images/brightness_2.png" alt="" width="20px"></a>
+    </div>
     <h2>Top des livres *</h2>
         <p>*Calculé en fonction des notes recensées</p>
     <div class="top">
         
         <div class="liv">
-            <img class="book" src="images/Angelique.jpg" alt="Angelique de Guillaume Mussot">
+            <img class="book" src="images/book-cover-picture.png" alt="couverture du livre">
             <h3>Angelique</h3>
             <p>par Guillaume Mussot - paru en Septembre 2022</p>
             <p>Avec une note global de : -- / --</p>
             <a href="#" class="bouton">Voir plus</a>
         </div>
         <div class="liv">
-            <img class="book" src="images/Vivre-vite.jpg" alt="Vivre vite de Brigitte Giraud">
+            <img class="book" src="images/book-cover-picture.png" alt="couverture du livre">
             <h3>Vivre vite</h3>
             <p>par Brigitte Giraud - paru en août 2022</p>
             <p>Avec une note global de : -- / --</p>
             <a href="#" class="bouton">Voir plus</a>
         </div>
         <div class="liv">
-            <img class="book" src="images/monde_sans_fin.jpg" alt="Le monde sans fin de Jancovici et Blain">
+            <img class="book" src="images/book-cover-picture.png" alt="couverture du livre">
             <h3>Le Monde Sans Fin</h3>
             <p>par Jancovici et Blain - paru en Octobre 2021</p>
             <p>Avec une note global de : -- / --</p>
             <a href="#" class="bouton">Voir plus</a>
         </div>
         <div class="liv">
-            <img class="book" src="images/Antigone.jpg" alt="Antigone de Jean Anouilh">
+            <img class="book" src="images/book-cover-picture.png" alt="couverture du livre">
             <h3>Antigone</h3>
             <p>par Jean Anouilh - paru en Juin 2016</p>
             <p>Avec une note global de : -- / --</p>
             <a href="#" class="bouton">Voir plus</a>
         </div>
         <div class="liv">
-            <img class="book" src="images/Solo-Leveling.jpg" alt="Solo leveling tome 9">
+            <img class="book" src="images/book-cover-picture.png" alt="couverture du livre">
             <h3>Solo Leveling</h3>
             <p>par H-goon Chugong - paru en mars 2023</p>
             <p>Avec une note global de : -- / --</p>
@@ -59,35 +63,35 @@
     <h2>Les nouvelles sorties</h2>
     <div class="top">
          <div class="liv">
-            <img class="book" src="images/Solo-Leveling.jpg" alt="Solo leveling tome 9">
+            <img class="book" src="images/book-cover-picture.png" alt="couverture du livre">  
             <h3>Solo Leveling</h3>
             <p>par H-goon Chugong - paru en mars 2023</p>
             <p>Avec une note global de : -- / --</p>
             <a href="#" class="bouton">Voir plus</a>
         </div>
         <div class="liv">
-            <img class="book" src="images/Angelique.jpg" alt="Angelique de Guillaume Mussot">
+            <img class="book" src="images/book-cover-picture.png" alt="couverture du livre">
             <h3>Angelique</h3>
             <p>par Guillaume Mussot - paru en Septembre 2022</p>
             <p>Avec une note global de : -- / --</p>
             <a href="#" class="bouton">Voir plus</a>
         </div>
         <div class="liv">
-            <img class="book" src="images/Vivre-vite.jpg" alt="Vivre vite de Brigitte Giraud">
+            <img class="book" src="images/book-cover-picture.png" alt="couverture du livre">
             <h3>Vivre vite</h3>
             <p>par Brigitte Giraud - paru en août 2022</p>
             <p>Avec une note global de : -- / --</p>
             <a href="#" class="bouton">Voir plus</a>
         </div>
         <div class="liv">
-            <img class="book" src="images/monde_sans_fin.jpg" alt="Le monde sans fin de Jancovici et Blain">
+            <img class="book" src="images/book-cover-picture.png" alt="couverture du livre">
             <h3>Le Monde Sans Fin</h3>
             <p>par Jancovici et Blain - paru en Octobre 2021</p>
             <p>Avec une note global de : -- / --</p>
             <a href="#" class="bouton">Voir plus</a>
         </div>
         <div class="liv">
-            <img class="book" src="images/Antigone.jpg" alt="Antigone de Jean Anouilh">
+            <img class="book" src="images/book-cover-picture.png" alt="couverture du livre">
             <h3>Antigone</h3>
             <p>par Jean Anouilh - paru en Juin 2016</p>
             <p>Avec une note global de : -- / --</p>
@@ -120,5 +124,6 @@
         </div>
         <p>Bookollection - 2023</p>
     </footer>
+    <script src="JSscripts/theme.js"></script>
 </body>
 </html>

@@ -295,7 +295,7 @@ input[type="submit"]:focus{
 .grid_event{
     display: grid;
     grid-template-rows: 25% 25% 25% 25%;
-    margin-top: 20px;
+    margin-top: 10vh;
     margin-bottom: 20px;
 }
 

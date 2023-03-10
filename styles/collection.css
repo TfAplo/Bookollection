@@ -61,6 +61,10 @@ nav img {
     scale: 70%;
 }
 
+#myBtn {
+    background-color: var(--secondary);
+}
+
   /* pop-up*/
 
 .modal {
@@ -80,7 +84,7 @@ nav img {
 .modal-content {
     margin: auto;
     padding: 30px;
-    border: 1px solid #888;
+    border: 1px solid #000000;
     width: 50%;
     height: 70%;
     color: var(--fontcolor);
@@ -90,7 +94,15 @@ nav img {
 
 .modal-content p {
     padding: 10px;
+    padding-left: 10px;
   }
+
+#img_popup {
+    scale: 150%;
+    padding-left: 38%;
+    padding-bottom: 75px;
+    padding-top: 50px;
+}
 
 /* Close Button */
 .close {

@@ -154,15 +154,15 @@ width: 125%;
 }
 
 #buyLink{
-  margin-top: 340px;
-  margin-left: -150x;
+  margin-top: 460px;
+  margin-left: 320px;
   grid-row-start: 2;
   grid-column-start: 2;
   font-size: 150%;
 }
 
 #BookRead{
-  margin-top: 420px;
+  margin-top: 460px;
   margin-left: -130px;
   grid-row-start: 2;
   grid-column-start: 2;
@@ -170,7 +170,7 @@ width: 125%;
 }
 
 #BookHave{
-  margin-top: 380px;
+  margin-top: 420px;
   margin-left: -130px;
   grid-row-start: 2;
   grid-column-start: 2;

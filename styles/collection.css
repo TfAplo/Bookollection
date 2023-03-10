@@ -127,9 +127,8 @@ nav img {
     background-color: var(--third);
     border: 2px solid var(--secondary);
     color: var(--fontcolor);
-    width: calc(100% - 4px);
-    padding-left: 0;
-    padding-right: 0;
+    width: calc(100% - 9px);
+    padding: 12px 0px 12px 5px;
     height: 30px;
     font-size: 1em;
 }

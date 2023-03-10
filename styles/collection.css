@@ -67,6 +67,10 @@ nav img {
     height: 50px;
 } 
 
+#myBtn {
+    background-color: var(--secondary);
+}
+
   /* pop-up*/
 
 .modal {
@@ -82,11 +86,11 @@ nav img {
     background-color: rgba(0,0,0,0.8);
   }
   
-  /* Pop up Content */
+  /* Contenue pop up */
 .modal-content {
     margin: auto;
     padding: 30px;
-    border: 1px solid #888;
+    border: 1px solid #000000;
     width: 50%;
     height: 70%;
     color: var(--fontcolor);
@@ -96,9 +100,17 @@ nav img {
 
 .modal-content p {
     padding: 10px;
+    padding-left: 10px;
   }
 
-/* Close Button */
+#img_popup {
+    scale: 150%;
+    padding-left: 38%;
+    padding-bottom: 75px;
+    padding-top: 50px;
+}
+
+/* bouton fermer */
 .close {
     color: #606060;
     float: right;
@@ -115,10 +127,7 @@ nav img {
 
 .modal-content {
   font-size: 25px;
-  margin: ;
 }
-
-
 
 .category-button {
     padding: 0.5% 1.53% 0.5% 1.53%;

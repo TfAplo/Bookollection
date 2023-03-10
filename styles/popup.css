@@ -37,6 +37,10 @@
     padding-top: 50px;
 }
 
+#bouton_compte {
+  margin-right: 10px;
+}
+
 /* bouton fermer */
 .close {
     color: #606060;

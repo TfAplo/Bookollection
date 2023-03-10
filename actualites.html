@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/actualites.css">
+    <link rel="stylesheet" href="styles/popup.css">
     <title>Actualités</title>
 </head>
 <body>
@@ -14,7 +15,31 @@
             <input class="nav_button" type="button" onclick="window.location.href = 'recherche.html';" value="Recherche">
         </nav>
         <h1>Bookollection</h1>
-        <a href="" class="compte"><img alt="compte" src="images/account_circle_clair-removebg-preview.png" class="compte" id="img_compte"></a>
+        <!-- Bouton popup -->
+        <button id="bouton_compte"><img alt="compte" src="images/account_circle_clair-removebg-preview.png" id="img_compte"></button>
+
+        <!-- popup -->
+        <div id="myModal" class="modal">
+
+            <!-- contenue popup -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img alt="compte" id="img_popup" src="images/account_circle_clair-removebg-preview.png">
+                <p>Nom d'utilisateur: Roger bernard </p>
+                <p>Mot de passe: *****************</p>
+                <p>Email: roget_bernard@gmail.com</p>
+                <p>Date de naissance: 19/06/1987</p>
+            </div>
+
+            <!-- categorie de bouton -->
+            <div class="categories">
+                <button class="category-button" data-category="profil">Profil</button>
+                <button class="category-button" data-category="securite">Sécurité</button>
+                <button class="category-button" data-category="soutenir">Soutenir</button>
+                <button class="category-button" data-category="assistance">Assistance</button>
+                <button class="category-button" data-category="a_propos">A Propos</button>
+            </div>
+        </div>
     </header>
     <!--
     <div class="theme">
@@ -127,5 +152,6 @@
         <p>Bookollection - 2023</p>
     </footer>
     <script src="JSscripts/theme.js"></script>
+    <script src="JSscripts/popup.js"></script>
 </body>
 </html>

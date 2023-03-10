@@ -139,7 +139,7 @@ width: 125%;
 
 #Tdescription{
   margin-top: 50px;
-  margin-left: -180px;
+  margin-left: -130px;
   grid-row-start: 2;
   grid-column-start: 2;
   font-size: 250%;
@@ -147,7 +147,7 @@ width: 125%;
 
 #description{
   margin-top: 105px;
-  margin-left: -180px;
+  margin-left: -130px;
   grid-row-start: 2;
   grid-column-start: 2;
   font-size: 150%;
@@ -155,7 +155,7 @@ width: 125%;
 
 #buyLink{
   margin-top: 340px;
-  margin-left: -180px;
+  margin-left: -150x;
   grid-row-start: 2;
   grid-column-start: 2;
   font-size: 150%;
@@ -163,7 +163,7 @@ width: 125%;
 
 #BookRead{
   margin-top: 420px;
-  margin-left: -180px;
+  margin-left: -130px;
   grid-row-start: 2;
   grid-column-start: 2;
   font-size: 150%;
@@ -171,7 +171,7 @@ width: 125%;
 
 #BookHave{
   margin-top: 380px;
-  margin-left: -180px;
+  margin-left: -130px;
   grid-row-start: 2;
   grid-column-start: 2;
   font-size: 150%;

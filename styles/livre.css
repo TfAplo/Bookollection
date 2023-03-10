@@ -34,19 +34,20 @@ nav {
 }
 
 .nav_button {
-    background-color: aquamarine;
-    height: 100%;
-    padding: 10px;
-    border: 0px;
-    border-radius: 0px;
+  background-color: var(--third);
+  color: var(--fontcolor);
+  height: 100%;
+  padding: 10px;
+  border: 0px;
+  border-radius: 0px;
 }
 
 .nav_button:hover {
-    background-color: rgb(157, 223, 201);
+  background-color: var(--secondary);
 }
 
 .nav_button:focus {
-    background-color: rgb(255, 255, 255);
+  border-bottom: solid blue 5px;
 }
 
 #img_compte {
@@ -144,6 +145,7 @@ nav {
 
 .grid {
   display: grid;
+  background-color: var(--secondary);
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 50px 1fr;
 }

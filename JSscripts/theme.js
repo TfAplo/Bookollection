@@ -60,9 +60,11 @@ function colorChange(element) {
 }
 
 for (let element of a) {
-    element.addEventListener("click", () => {
-        //eventListeners ajoutés pour changer le theme si les "a" sont cliqués
-        themeCookieChange(element);
-        colorChange(element);
-    })
+    if (element.classList.contains("sombre") || element.classList.contains("clair")) {
+        element.addEventListener("click", () => {
+            //eventListeners ajoutés pour changer le theme si les "a" sont cliqués
+            themeCookieChange(element);
+            colorChange(element);
+        })
+}
 }

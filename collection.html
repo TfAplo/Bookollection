@@ -17,26 +17,31 @@
             <input class="nav_button" type="button" value="Recherche">
         </nav>
         <h1>Bookollection</h1>
+
+
        <!-- Bouton popup -->
-       <button id="bouton_compte"><img alt="compte" src="images/compte.png" id="img_compte"></button>
+       <button id="bouton_compte"><img alt="compte" src="images/account_circle_clair-removebg-preview.png" id="img_compte"></button>
 
        <!-- popup -->
        <div id="myModal" class="modal">
 
            <!-- contenue popup -->
            <div class="modal-content">
-               <span class="close">&times;</span>
-               <p>Nom d'utilisateur: </p>
-               <p>Mdp: **********</p>
+                <span class="close">&times;</span>
+                <img alt="compte" id="img_popup" src="images/compte.png">
+                <p>Nom d'utilisateur: Roger bernard </p>
+                <p>Mot de passe: *****************</p>
+                <p>Email: roget_bernard@gmail.com</p>
+                <p>Date de naissance: 19/06/1987</p>
            </div>
 
            <!-- categorie de bouton -->
            <div class="categories">
-               <button class="category-button" data-category="profil">Profil</button>
-               <button class="category-button" data-category="abonnement">Abonnement</button>
-               <button class="category-button" data-category="securite">Sécurité</button>
-               <button class="category-button" data-category="assistance">Assistance</button>
-               <button class="category-button" data-category="a_propos">A Propos</button>
+                <button class="category-button" data-category="profil">Profil</button>
+                <button class="category-button" data-category="securite">Sécurité</button>
+                <button class="category-button" data-category="soutenir">Soutenir</button>
+                <button class="category-button" data-category="assistance">Assistance</button>
+                <button class="category-button" data-category="a_propos">A Propos</button>
            </div>
        </div>
 
@@ -58,30 +63,42 @@
            }
        </script>
 
-       <!-- change de contenue de popup en fonction de la catégories choisie -->
-       <script>
-           const categoryButtons = document.querySelectorAll('button[data-category]');
-           const popup = document.querySelector('#myModal .modal-content');
+            const categoryButtons = document.querySelectorAll('button[data-category]');
+            const popup = document.querySelector('#myModal .modal-content');
+        
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.dataset.category;
+        
+                    if (category === 'profil') {
+                        popup.innerHTML = '<span class="close" id="closeButton">&times;</span><img alt="img_compte" id="img_popup" src="images/compte.png"><p>Nom d\'utilisateur: Sebastien Bernard </p><p>Mot de passe: *****************</p><p>Email: sebastien.bernard@gmail.com</p><p>Date de naissance: 19/06/1975</p>';
+                    } else if (category === 'securite') {
+                        popup.innerHTML = '<span class="close" id="closeButton">&times;</span><h2>Sécurité</h2>';
+                    } else if (category === 'soutenir') {
+                        popup.innerHTML = '<span class="close" id="closeButton">&times;</span><h2>Soutenir</h2>';
+                    } else if (category === 'assistance') {
+                        popup.innerHTML = '<span class="close" id="closeButton">&times;</span><h2>Assistance</h2>';
+                    } else if (category === 'a_propos') {
+                        popup.innerHTML = '<span class="close" id="closeButton">&times;</span><h2>A propos</h2>';
+                    }
 
-           categoryButtons.forEach(button => {
-               button.addEventListener('click', () => {
-                   const category = button.dataset.category;
+                    const popupCloseButton = popup.querySelector('#closeButton');
+                    popupCloseButton.onclick = function() {
+                        modal.style.display = "none";
+                    };
 
-                   if (category === 'profil') {
-                       popup.innerHTML = '<img alt="compte" id="img_popup" src="images/compte.png"><p>Nom d\'utilisateur: </p><p>Mdp: **********</p>';
-                   } else if (category === 'abonnement') {
-                       popup.innerHTML = '<p>Contenu pour la catégorie Abonnement</p>';
-                   } else if (category === 'securite') {
-                       popup.innerHTML = '<p>Contenu pour la catégorie Sécurité</p>';
-                   } else if (category === 'assistance') {
-                       popup.innerHTML = '<p>Contenu pour la catégorie Assistance</p>';
-                   } else if (category === 'a_propos') {
-                       popup.innerHTML = '<p>Contenu pour la catégorie A propos</p>';
-                   }
-               });
-           });
+                    modal.style.display = "block";
+                });
+            });
 
-       </script>
+            window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+     </script>
+     
+
     </header>
 
     <div id="contenu">

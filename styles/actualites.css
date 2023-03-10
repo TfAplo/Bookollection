@@ -283,7 +283,7 @@ input[type="submit"]:focus{
 
 .grid_event{
     display: grid;
-    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-template-rows: 25% 25% 25% 25%;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -293,9 +293,11 @@ input[type="submit"]:focus{
     margin-left: auto;
     margin-right: auto;
     width: 70em;
+    height: fit-content;
     display: grid;
     grid-template-columns: 35% 65%;
-    margin-top: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     background-color: #087ccc;
     border:solid 0px #087ccc;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

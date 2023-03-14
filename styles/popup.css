@@ -74,3 +74,7 @@
     text-align: center;
     padding-bottom: 10px;
 }
+
+.focus{
+  border-bottom: 4px solid var(--primary);
+}

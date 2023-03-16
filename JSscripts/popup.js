@@ -20,7 +20,7 @@ const categoryButtons = document.querySelectorAll('button[data-category]');
                     const category = button.dataset.category;
         
                     if (category === 'profil') {
-                        popup.innerHTML = '<span class="close" id="closeButton">&times;</span><img alt="img_compte" id="img_popup" src="images/account_circle_clair-removebg-preview.png"><p>Nom d\'utilisateur: Sebastien Bernard </p><p>Mot de passe: *****************</p><p>Email: sebastien.bernard@gmail.com</p><p>Date de naissance: 19/06/1975</p><button id="deconnecter" onclick="location.replace("connexion.html")">Se déconnecter</button>';
+                        popup.innerHTML = '<span class="close" id="closeButton">&times;</span><img alt="img_compte" id="img_popup" src="images/account_circle_clair-removebg-preview.png"><p>Nom d\'utilisateur: Sebastien Bernard </p><p>Mot de passe: *****************</p><p>Email: sebastien.bernard@gmail.com</p><p>Date de naissance: 19/06/1975</p><button id="deconnecter">Se déconnecter</button>';
                     } else if (category === 'securite') {
                         popup.innerHTML = '<span class="close" id="closeButton">&times;</span><h2>Sécurité</h2>';
                     } else if (category === 'soutenir') {
@@ -34,8 +34,13 @@ const categoryButtons = document.querySelectorAll('button[data-category]');
                     const popupCloseButton = popup.querySelector('#closeButton');
                     popupCloseButton.onclick = function() {
                         modal.style.display = "none";
-                    };
-
+                    }
+                    
+                    const deconnecterButton = popup.querySelector('#deconnecter');
+                    deconnecterButton.onclick = function() {
+                        location.replace('connexion.html');
+                    }
+                    
                     modal.style.display = "block";
                 });
             });

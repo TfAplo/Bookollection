@@ -1,5 +1,4 @@
-  /* pop-up*/
-
+  /* pop-up */
   .modal {
     display: none;
     position: fixed;
@@ -13,7 +12,7 @@
     background-color: rgba(0,0,0,0.8);
   }
   
-  /* Contenue pop up */
+/* Contenue pop up */
 .modal-content {
     margin: auto;
     padding: 30px;
@@ -25,9 +24,18 @@
     font-size: 25px;
   }
 
+/* Pop up Profil */
 .modal-content p {
-    padding: 10px;
-    padding-left: 10px;
+    margin: 20px;
+    margin-left: 30px;
+  }
+
+#deconnecter {
+    margin: 20px;
+    margin-left: 30px;
+    font-size: 25px;
+    color: var(--fontcolor);
+    background-color: var(--secondary);
   }
 
 #img_popup {
@@ -35,10 +43,39 @@
     padding-left: 38%;
     padding-bottom: 75px;
     padding-top: 50px;
-}
+  }
 
 #bouton_compte {
-  margin-right: 10px;
+    margin-right: 10px;
+  }
+
+
+/* Pop up Sécurité */
+
+
+/* Pop up Soutenir */
+
+
+/* Pop up Assistance */
+
+
+/* Pop up A Propos */
+
+
+/* Pop up Catégories */
+.category-button {
+  padding: 0.5% 1.53% 0.5% 1.53%;
+  font-size: 30px;
+  color: var(--fontcolor);
+  background-color: var(--secondary);
+}
+
+.categories {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 10px;
 }
 
 /* bouton fermer */
@@ -55,26 +92,7 @@
     text-decoration: none;
     cursor: pointer;
   }
-
-.modal-content {
-  font-size: 25px;
-}
-
-.category-button {
-    padding: 0.5% 1.53% 0.5% 1.53%;
-    font-size: 30px;
-    color: var(--fontcolor);
-    background-color: var(--secondary);
-}
   
-.categories {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    padding-bottom: 10px;
-}
-
 .focus{
   border-bottom: 4px solid var(--primary);
 }

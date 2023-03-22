@@ -28,6 +28,7 @@ const categoryButtons = document.querySelectorAll('button[data-category]');
                     } else if (category === 'assistance') {
                         popup.innerHTML = '<span class="close" id="closeButton">&times;</span><h2>Assistance</h2>';
                     } else if (category === 'a_propos') {
+                        /* Rajouter les reseaux sociaux dans a propos ainsi que les createurs du site */
                         popup.innerHTML = '<span class="close" id="closeButton">&times;</span><h2>A propos</h2>';
                     }
 

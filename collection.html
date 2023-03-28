@@ -50,7 +50,7 @@
     <div id="contenu">
         
         <div id="gauche">
-            <form name="form" id="filtre">
+            <form name="form" id="filtre" method="post">
                 <h2>Filtres</h2>
                 <label for="" id="genre">
                     Genre :<br>
@@ -83,7 +83,7 @@
         </div>
         
         <div id="droite">
-            <input type="text" id="input_recherche" placeholder="Rechercher un livre, un auteur, ...">
+            <input type="text" id="input_recherche" form="form" placeholder="Rechercher un livre, un auteur, ...">
             <div class="contenu_droite">
                 <a class="livres" href="livre.html">
                     <img src="images/book-cover-picture.png" width="60px" alt="couverture du livre">

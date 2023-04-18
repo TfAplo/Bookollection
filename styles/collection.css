@@ -82,7 +82,7 @@ nav img {
     position: fixed;
     width: 22vw;
     height: 90vh;
-    background-color: var(--third);
+    background-color: var(--secondary);
     margin-top: 10vh;
 }
 
@@ -113,6 +113,10 @@ nav img {
 
 #lu, #possession {
     margin-left: 20px;   
+}
+
+#submit_form {
+    /* BOUTON DU FORM */
 }
 
 #droite {

@@ -44,7 +44,18 @@
             </div>
         </div>    
     </header>
-
+   <div class="box_tri">
+        <h2>Tri des Evènements </h2>
+        <div><form action="evenement.php" method="post">
+            <select name="tri" id="tri">
+                <optgroup label="Méthodes de Tri">
+                <option value="dateC">Date croissante</option>
+                <option value="dateD">Date décroissante</option>
+                </optgroup>
+            </select>
+            <input class="boutonTri" type="submit" value="Valider">
+        </form>
+    </div>
 
 
         <script src="JSscripts/popup.js"></script>
@@ -56,8 +67,10 @@
 <?php
 
 require('demo.inc.php');
-echo "connexion à la base de données";
+require('date.php');
 debutHtml('Evènement');
+
+
 
 $link = mysqli_connect('localhost','root','','bookollection',3306);
 
@@ -67,7 +80,33 @@ if (!$link) {
 }
 
 echo "<br>";
-
+$tab_tri=array();
+if (isset($_POST['tri'])){
+    $tri = $_POST['tri'];
+    if ($tri == "dateC"){
+        $req_triC = "SELECT idEvenement FROM evenement ORDER BY dateDebut ASC";
+        if ($result_triC=mysqli_query($link,$req_triC)){
+            while ($row_triC=mysqli_fetch_row($result_triC)){
+                $tab_tri[] = $row_triC[0];
+            }echo "<p>tri croissant</p>";
+            }mysqli_free_result($result_triC);
+            
+    }else{
+        $req_triD = "SELECT idEvenement FROM evenement ORDER BY dateDebut DESC";
+        if ($result_triD=mysqli_query($link,$req_triD)){
+            while ($row_triD=mysqli_fetch_row($result_triD)){
+                $tab_tri[] = $row_triD[0];
+            }
+            }mysqli_free_result($result_triD);
+    }
+}else{
+    $req_triDefault = "SELECT idEvenement FROM evenement ORDER BY dateDebut DESC";
+        if ($result_triDefault=mysqli_query($link,$req_triDefault)){
+            while ($row_triDefault=mysqli_fetch_row($result_triDefault)){
+                $tab_tri[] = $row_triDefault[0];
+            }
+            }mysqli_free_result($result_triDefault);
+}
 
 //nb evenement
 $sql="SELECT COUNT(idEvenement) FROM evenement";
@@ -129,22 +168,23 @@ while ($row_lien=mysqli_fetch_row($result_lien)){
 }mysqli_free_result($result_lien);
 
 
-$compteur=0;
 
+
+$compteur=0;
 
 echo "<div class='grid_event'>";
 
 while ($compteur<$nb_event[0]){
     echo "<div class='box_event'>";
-    echo '<img class="img_event" src="'.$tabImage[$compteur].'">';        
+    echo '<img class="img_event" src="'.$tabImage[$tab_tri[$compteur]-1].'">';        
     echo "<div class='text_event'>";
-    echo "<h3>".$tabTitre[$compteur]."</h3>";
+    echo "<h3>".$tabTitre[$tab_tri[$compteur]-1]."</h3>";
     echo "<br>";
-    echo "<p>Date début : ".$tabDateD[$compteur]." - Date fin : ".$tabDateF[$compteur]."</p>";
+    echo "<p>Date début : ".dateFormat($tabDateD[$tab_tri[$compteur]-1])." - Date fin : ".dateFormat($tabDateF[$tab_tri[$compteur]-1])."</p>";
     echo "<br>";
-    echo "<p>".$tabDesc[$compteur]."</p>";
+    echo "<p>".$tabDesc[$tab_tri[$compteur]-1]."</p>";
     echo "<br>";
-    echo '<a href="'.$tabLien[$compteur].'" class="bouton" target="__BLANK">Voir plus</a>';
+    echo '<a href="'.$tabLien[$tab_tri[$compteur]-1].'" class="bouton" target="__BLANK">Voir plus</a>';
     echo "</div>";
     echo "</div>";
 
@@ -158,3 +198,4 @@ if($link) mysqli_close($link);
 finHtml();
 
 ?>
+

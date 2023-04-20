@@ -50,6 +50,7 @@ header {
     width: 100%;
     height: 10vh;
     background-color: var(--third);
+    z-index: 1;
 }
 
 nav {
@@ -108,8 +109,9 @@ h2{
     font-size: 1rem;
     line-height: 1.6;
     margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
+    margin-bottom: 15px;
+    margin-left: 30px;
+    
 }
 a.bouton {
     align-items: center;
@@ -122,7 +124,14 @@ a.bouton {
     padding: 0.25rem 0.75rem;
     text-decoration: none;
     transition: all 0.25s ease-in-out;
+    margin-right: 5em;
 
+
+}
+
+a.boutonL{
+    margin-right: 6em;
+    align-self: flex-end;
 }
 
 a.bouton:hover,
@@ -159,6 +168,9 @@ a.bouton:visited {
     margin-left:10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     color: var(--fontcolor);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .liv>h3,p{
@@ -242,7 +254,7 @@ footer{
     font-size: 1.1em;
 
 }
-input[type="submit"]{
+.bouton_nl{
     background-color: #58636F;
     border: none;
     padding:10px;
@@ -254,14 +266,14 @@ input[type="submit"]{
     transition: all 0.25s ease-in-out;
    }
 
-input[type="submit"]:hover,
-input[type="submit"]:focus
+.bouton_nl:hover,
+.bouton_nl:focus
 {
     background-color: #58636F;
     box-shadow: 0 0 2px 2px #bac6d3;
 }
 
-input[type="submit"]:focus{
+.bouton_nl:focus{
     outline: 1px solid #3d4852;
 }
 
@@ -335,4 +347,54 @@ input[type="submit"]:focus{
     color: white;
     padding-right: 10%;
     font-size: 1.5em;
+}
+
+.box_tri{
+  
+    text-align: center;
+    margin-top: 15vh;
+    margin-bottom: 10px;
+
+}
+
+#tri{
+    width: 10em;
+    height: 1.5em;
+    border-radius: 4px;
+    border: none;
+    background-color: #3f3f3f;
+    color: white;
+    font-size: 1.2em;
+    font-weight: lighter;
+    margin-left: 10px;
+    padding-left: 5px;
+}
+
+.boutonTri{
+    padding: 7px 15px;
+    color:#333;
+    font-weight: lighter;
+    background-color: #ffd17b;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px #efa424;
+    font-size: 20px;
+    margin-left: 10px;
+    position: relative;
+}
+
+.boutonTri:hover{
+    box-shadow:0 3px #efa424;
+    top: 2px;
+}
+
+.boutonTri:active{
+    box-shadow: 0 0 #efa424;
+    top: 6px;
+}
+
+.box_tri>h2{
+    margin-bottom: 20px;
 }

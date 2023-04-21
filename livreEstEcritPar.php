@@ -7,7 +7,7 @@ function livreEstEcritPar($idLivre){
         exit;
     }
     $result = "";
-    $req_auteur = "SELECT nomAuteur, prenomAuteur FROM auteur, ecritpar WHERE auteur.idAuteur = ecritpar.idAuteur AND ecritpar.idLivre = $idLivre";
+    $req_auteur = "SELECT prenomAuteur,nomAuteur FROM auteur, ecritpar WHERE auteur.idAuteur = ecritpar.idAuteur AND ecritpar.idLivre = $idLivre";
     if ($result_auteur = mysqli_query($link,$req_auteur)){
         $i = 0;
         while ($row_auteur = mysqli_fetch_row($result_auteur)){

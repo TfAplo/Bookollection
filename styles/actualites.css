@@ -177,6 +177,7 @@ a.bouton:visited {
     margin-left: 10px;
 }
 
+
 /*-----------festivals-----------*/
 .affiche_fest{
     width:65%;
@@ -241,7 +242,7 @@ footer{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2em;
+    margin-top: 1.5em;
 }
 
 #email{
@@ -258,8 +259,8 @@ footer{
     background-color: #58636F;
     border: none;
     padding:10px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-radius: 7px;
+   font-size: 1.1em;
     color: white;
     text-decoration: none;
     cursor: pointer;
@@ -298,7 +299,7 @@ footer{
 
 .text-news{
     font-size: 1.35em;
-    padding-top: 3em;
+    padding-top: 2.6em;
 }
 
 

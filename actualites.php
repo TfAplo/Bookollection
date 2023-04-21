@@ -43,59 +43,53 @@
             </div>
         </div>
     </header>
-    
-    <h2 id="haut">Top des livres *</h2>
-        <p id="gauche">*Calculé en fonction des notes recensées</p>
-    <div class="top">
-        
-        <div class="liv">
-            <img class="book" src="images/book-cover-picture.png" alt="couverture du livre">
-            <h3>Angelique</h3>
-            <p>par Guillaume Mussot - paru en Septembre 2022</p>
-            <p>Avec une note global de : -- / --</p>
-            <a href="#" class="bouton boutonL">Voir plus</a>
-        </div>
-        <div class="liv">
-            <img class="book" src="images/book-cover-picture.png" alt="couverture du livre">
-            <h3>Vivre vite</h3>
-            <p>par Brigitte Giraud - paru en août 2022</p>
-            <p>Avec une note global de : -- / --</p>
-            <a href="#" class="bouton boutonL">Voir plus</a>
-        </div>
-        <div class="liv">
-            <img class="book" src="images/book-cover-picture.png" alt="couverture du livre">
-            <h3>Le Monde Sans Fin</h3>
-            <p>par Jancovici et Blain - paru en Octobre 2021</p>
-            <p>Avec une note global de : -- / --</p>
-            <a href="#" class="bouton boutonL">Voir plus</a>
-        </div>
-        <div class="liv">
-            <img class="book" src="images/book-cover-picture.png" alt="couverture du livre">
-            <h3>Antigone</h3>
-            <p>par Jean Anouilh - paru en Juin 2016</p>
-            <p>Avec une note global de : -- / --</p>
-            <a href="#" class="bouton boutonL">Voir plus</a>
-        </div>
-        <div class="liv">
-            <img class="book" src="images/book-cover-picture.png" alt="couverture du livre">
-            <h3>Solo Leveling</h3>
-            <p>par H-goon Chugong - paru en mars 2023</p>
-            <p>Avec une note global de : -- / --</p>
-            <a href="#" class="bouton boutonL">Voir plus</a>
-        </div>
-    </div>
 
-    <h2>Les nouvelles sorties</h2>
+    
     <?php
     require("livreEstEcritPar.php");
     require("date.php");
+    require("moyNotes.php");
     $link = mysqli_connect('localhost','root','','bookollection',3306);
     if (!$link) {
         echo "Erreur: Impossible de se connecter à la base de données";
         exit;
     }
+    echo " <h2 id='haut'>Top des livres *</h2>
+    <p id='gauche'>*Calculé en fonction des notes recensées</p>";
+    echo "<div class='top'>";
+    $req_top = "SELECT idLivre,AVG(note) AS moyenne FROM ajoutcollection  GROUP BY idLivre ORDER BY moyenne DESC LIMIT 5";
+    if($res_top = mysqli_query($link, $req_top)){
+        if(mysqli_num_rows($res_top) > 0){
+            while($row = mysqli_fetch_array($res_top)){
+                $idL = $row['idLivre'];
+                $req = "SELECT couverture,titre,prenomAuteur,nomAuteur,dateParution,idLivre FROM livre INNER JOIN ecritpar USING(idLivre) INNER JOIN auteur USING(idAuteur) WHERE idLivre = $idL";
+                if($res = mysqli_query($link, $req)){
+                    if(mysqli_num_rows($res) > 0){
+                        while($row = mysqli_fetch_array($res)){
+                            $titre = $row['titre'];
+                            $prenomA = $row['prenomAuteur'];
+                            $nomA = $row['nomAuteur'];
+                            $dateP = $row['dateParution'];
+                            $idL = $row['idLivre'];
+                            $couverture = $row['couverture'];
+                            echo "<div class='liv'>";
+                            echo "<img class='book' src='images/livres/".$row['couverture']."' alt='couverture du livre'>";
+                            echo "<h3>".$row['titre']."</h3>";
+                            echo "<p>par ".livreEstEcritPar($row['idLivre'])." - paru le ".dateFormat($row['dateParution'])."</p>";
+                            echo "<p>Avec une note global de : ".moyNotes($row['idLivre'])."/5</p>";
+                            echo "<a href='livre.php?id=".$row['idLivre']."' class='bouton boutonL'>Voir plus</a>";
+                            echo "</div>";
+                        }
+                    }
+                }
+            }
+        }
+    }
+    echo "</div>";
 
-    
+
+
+    echo "<h2>Les nouvelles sorties</h2>";
     echo "<div class='top'>";
     
     $req_new = "SELECT DISTINCT(ecritpar.idLivre),ecritpar.idAuteur FROM livre INNER JOIN ecritpar USING(idLivre) INNER JOIN auteur USING(idAuteur) GROUP BY idLivre ORDER BY dateParution DESC LIMIT 5";
@@ -112,7 +106,7 @@
                             echo '<img class="book" src="images/livres/'.$row["couverture"].'" alt="couverture du livre">';
                             echo "<h3>".$row['titre']."</h3>";
                             echo "<p>par ".livreEstEcritPar($row['idLivre'])." - paru le ".dateFormat($row['dateParution'])."</p>";
-                            echo "<p>Avec une note global de : -- / --</p>";
+                            echo "<p>Avec une note global de : ".moyNotes($row['idLivre'])."/5</p>";
                             echo "<a href='#' class='bouton boutonL'>Voir plus</a>";
                             echo "</div>";
                         }
@@ -121,8 +115,20 @@
             }
         }
     }echo "</div>";
-    
 
+// ajout newsletter
+
+    if(isset($_POST['newsletter'])){
+        
+        $req = "INSERT INTO utilisateur (newsletter) VALUES (1)";
+        if(mysqli_query($link, $req)){
+            echo "<script>alert('Vous êtes bien inscrit à la newsletter !')</script>";
+        }else{
+            echo "<script>alert('Erreur lors de l\'inscription à la newsletter !')</script>";
+        }
+    }
+
+    if($link) mysqli_close($link);
 
     ?>
 
@@ -142,7 +148,7 @@
     </div>
 
 
-    <footer>
+    <!--<footer>
         <form action="actualistes.php" method="post">
         <div class="topo_newsletter">
             <h3 class="text-news">S'inscrire à la newsletter</h3>
@@ -152,7 +158,19 @@
             </div>
         </div>
         <p>Bookollection - 2023</p>
+    </footer>-->
+
+    <footer>
+        <form action="actualites.php" method="post">
+        <div class="topo_newsletter">
+            <h3 class="text-news">S'inscrire à la newsletter</h3>
+            <div class="newsletter">
+                <input class="bouton_nl" name="newsletter" type="submit" value="S'inscrire">
+            </div>
+        </div>
+        <p>Bookollection - 2023</p>
     </footer>
+
     <script src="JSscripts/theme.js"></script>
     <script src="JSscripts/popup.js"></script>
 </body>

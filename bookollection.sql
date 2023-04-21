@@ -710,6 +710,7 @@ ALTER TABLE `sitecommercial`
 --
 ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`idUtilisateur`),
+  CHANGE `idUtilisateur` `idUtilisateur` INT(11) NOT NULL AUTO_INCREMENT,
   ADD UNIQUE KEY `nomUtilisateur` (`nomUtilisateur`),
   ADD UNIQUE KEY `email` (`email`);
 

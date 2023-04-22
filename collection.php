@@ -3,87 +3,65 @@
 // fonction
 
 function recupererLivre ($link) {
-    if (empty($_POST)) {
-        $sql = "SELECT l.titre, a.nomAuteur, g.nomGenre, l.description, l.couverture FROM livre l
-                INNER JOIN ajoutCollection ac ON l.isbn = ac.isbn
-                INNER JOIN utilisateur u ON ac.idUtilisateur = u.idUtilisateur
-                INNER JOIN ecritPar ep ON l.isbn = ep.isbn
-                INNER JOIN auteur a ON ep.idAuteur = a.idAuteur
-                INNER JOIN genre g ON l.idGenre = g.idGenre
-                INNER JOIN estRegistre er ON l.isbn = er.isbn
-                INNER JOIN registre r ON er.idRegistre = r.idRegistre";
-        if ($result = mysqli_query($link, $sql) ){
-            afficherLivre($result);
+    //session_start();         QUAND TOM AURA FINI LES SESSIONS
+    //$id = $_SESSION["id"];   QUAND TOM AURA FINI LES SESSIONS
+    $sql = "SELECT DISTINCT l.titre, a.nomAuteur, g.nomGenre, l.description, l.couverture FROM livre l
+            INNER JOIN ajoutcollection ac ON l.idLivre = ac.idLivre
+            INNER JOIN ecritpar ep ON l.idLivre = ep.idLivre
+            INNER JOIN auteur a ON ep.idAuteur = a.idAuteur
+            INNER JOIN genre g ON l.idGenre = g.idGenre
+            INNER JOIN livreestregistre er ON l.idLivre = er.idLivre
+            INNER JOIN registre r ON er.idRegistre = r.idRegistre
+            WHERE ac.idUtilisateur = 2"; // REMPLACER CHIFFRE PAR $idUtilisateur // PROBLEME CAR SI 2 AUTEUR ALORS 2 FOIS LA MEME LIGNE
+    if (!empty($_POST)) {
+        if (isset($_POST["titre"])) {
+            $titre = $_POST["titre"];
+            $sql .= " AND l.titre LIKE '%$titre%'";
         }
-    } else {
-
         if (isset($_POST["lu"])) {
-            $lu = "TRUE";
-        } else {
-            $lu = "FALSE";
+            $sql .= " AND ac.lu = TRUE";
         }
         if (isset($_POST["possession"])) {
-            $possession = "TRUE";
-        } else {
-            $possession = "FALSE";
+            $sql .= " AND ac.possede = TRUE";
         }
-        if ( isset($_POST["genre"]) && isset($_POST["registre"]) && isset($_POST["titre"])) {
-            $titre = $_POST["titre"];
+        if (isset($_POST["genre"])) {
             $genre = $_POST["genre"];
-            $registre = $_POST["registre"];
-            $sql = "SELECT l.titre, a.nomAuteur, g.nomGenre, l.description, l.couverture FROM livre l
-                    INNER JOIN ajoutCollection ac ON l.isbn = ac.isbn
-                    INNER JOIN utilisateur u ON ac.idUtilisateur = u.idUtilisateur
-                    INNER JOIN ecritPar ep ON l.isbn = ep.isbn
-                    INNER JOIN auteur a ON ep.idAuteur = a.idAuteur
-                    INNER JOIN genre g ON l.idGenre = g.idGenre
-                    INNER JOIN estRegistre er ON l.isbn = er.isbn
-                    INNER JOIN registre r ON er.idRegistre = r.idRegistre
-                    WHERE l.titre LIKE '%$titre%'"; // RAJOUTER CONDITION AND u.idUtilisateur = '$idUtilisateur'
-            if ($genre) {
-                $sqlGenre = " AND (";
-                foreach ($genre as $nomGenre) {
-                    $sqlGenre .= "g.nomGenre = '$nomGenre' OR ";
-                }
-                $sqlGenre = substr($sqlGenre,0,-4);
-                $sqlGenre .= ")";
-                $sql .= $sqlGenre;
+            $sqlGenre = " AND (";
+            foreach ($genre as $nomGenre) {
+                $sqlGenre .= "g.nomGenre = '$nomGenre' OR ";
             }
-            if ($registre) {
-                $sqlRegistre = " AND (";
-                foreach ($registre as $nomRegistre) {
-                    $sqlRegistre .= "r.nomRegistre = '$nomRegistre' OR ";
-                }
-                $sqlRegistre = substr($sqlRegistre,0,-4);
-                $sqlRegistre .= ")";
-                $sql .= $sqlRegistre;
-            }
-            if ($lu) {
-                $sql .= " AND ac.lu = TRUE";
-            }
-            if ($possession) {
-                $sql .= " AND ac.possede = TRUE";
-            }
-
-            if ($result = mysqli_query($link, $sql) ){
-                afficherLivre($result);
-            }
+            $sqlGenre = substr($sqlGenre,0,-4);
+            $sqlGenre .= ")";
+            $sql .= $sqlGenre;
         }
+        if (isset($_POST["registre"])) {
+            $registre = $_POST["registre"];
+            $sqlRegistre = " AND (";
+            foreach ($registre as $nomRegistre) {
+                $sqlRegistre .= "r.nomRegistre = '$nomRegistre' OR ";
+            }
+            $sqlRegistre = substr($sqlRegistre,0,-4);
+            $sqlRegistre .= ")";
+            $sql .= $sqlRegistre;
+        }
+    }
+    if ($result = mysqli_query($link, $sql) ){
+        afficherLivre($result);
     }
 }
 
 function afficherLivre ($result) {
     $result->data_seek(0);
     while ( $row = $result->fetch_assoc() ) {
-        echo "<a class='livres' href='livre.html'>";
-        echo "<img src='images/".$row['couverture']."' width='60px' alt='couverture du livre'>";
-        echo "<div>";
-        echo "<h3>".$row['titre']."</h3>";
-        echo "<p>".$row['description']."</p>";
-        echo "</div>";
-        echo "</a>";
+        echo "<a class='livres' href='livre.html'>\n";                                              // TAILLE LIVRE TOUS DIFFERENT -> METTRE TOUS LA MEME TAILLE
+        echo "<img src='images/".$row['couverture']."' width='60px' alt='couverture du livre'>\n";  // IMAGE ECRASE A GAUCHE
+        echo "<div>\n";
+        echo "<h3>".$row['titre']."</h3>\n";
+        echo "<p id='description'>".$row['description']."</p>\n";
+        echo "</div>\n";
+        echo "</a>\n";
     }
-    //echo "</free_result($result)"; PK CA FONCTIONNE PAS     mysql_free_result()
+    //echo "</mysql_free_result($result)";
 }   
 
 //script principal

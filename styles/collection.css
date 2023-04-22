@@ -166,7 +166,6 @@ nav img {
     border-radius: 5px;
     background-color: var(--third);
     transition: border 0.2s;
-
 }
 
 .livres:hover{
@@ -180,6 +179,11 @@ nav img {
 
 .livres h3{
     margin-bottom: 10px;
+}
+
+.livres #description {
+    height: 100px;
+    overflow: hidden;
 }
 
 a{

@@ -118,7 +118,7 @@
 
 // ajout newsletter
 
-    if(isset($_POST['newsletter'])){
+    /*if(isset($_POST['newsletter'])){
         
         $req = "INSERT INTO utilisateur (newsletter) VALUES (1)";
         if(mysqli_query($link, $req)){
@@ -126,7 +126,7 @@
         }else{
             echo "<script>alert('Erreur lors de l\'inscription à la newsletter !')</script>";
         }
-    }
+    }*/
 
     if($link) mysqli_close($link);
 
@@ -148,17 +148,7 @@
     </div>
 
 
-    <!--<footer>
-        <form action="actualistes.php" method="post">
-        <div class="topo_newsletter">
-            <h3 class="text-news">S'inscrire à la newsletter</h3>
-            <div class="newsletter">
-                <input type="email" id="email" name="email" placeholder="Votre email">
-                <input class="bouton_nl" type="submit" value="S'inscrire">
-            </div>
-        </div>
-        <p>Bookollection - 2023</p>
-    </footer>-->
+   
 
     <footer>
         <form action="actualites.php" method="post">

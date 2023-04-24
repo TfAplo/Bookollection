@@ -1,3 +1,21 @@
+<?php
+//  if (isset($_POST['email']) && !empty($_POST['email'])
+//     && isset($_POST['username']) && !empty($_POST['username'])
+//     && isset($_POST['password']) && !empty($_POST['password'])) {
+//     # code...
+// }
+
+
+
+
+
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -18,7 +36,7 @@
             <div class="basg">
                 <div class="card">
                     <h1 class="bienvenue">Bienvenue</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero natus deserunt minima voluptates beatae, possimus laboriosam? Corrupti, amet? Sed perferendis id consequuntur cupiditate ratione recusandae, voluptas quia fugiat repellat commodi!</p>
+                    <p class="para">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero natus deserunt minima voluptates beatae, possimus laboriosam? Corrupti, amet? Sed perferendis id consequuntur cupiditate ratione recusandae, voluptas quia fugiat repellat commodi!</p>
                 </div>
             </div>
         </div>
@@ -29,11 +47,8 @@
             <a class="clair" href="javascript:void(0)"><img src="images/wb_sunny.png" alt="" width="20px"></a>
             <a class="sombre" href="javascript:void(0)"><img src="images/brightness_2.png" alt="" width="20px"></a>
         </div>
-        <form action="collection.html" method="post">
+        <form action="connexion.php" method="post">
             <h1 id="titrelog">Se connecter</h1>
-            <label class="hidden">Email
-            <input type="email" id="email" name="email" placeholder="Entrez votre email">
-            </label>
             <label>Nom d'utilisateur
             <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur">
             </label>
@@ -43,11 +58,10 @@
             
             <div id="basform">
                 <input id="bouton-connecter" type="submit" value="Se connecter">
-                <a id="changeLog" href="javascript:void(0)">S'inscrire</a>
+                <a id="changeLog" href="creation.php">S'inscrire</a>
             </div>
         </form>
     </div>
     <script src="JSscripts/theme.js"></script>
-    <script src="JSscripts/logChange.js"></script>
 </body>
 </html>

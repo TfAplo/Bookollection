@@ -612,7 +612,7 @@ INSERT INTO `sitecommercial` (`idSite`, `nomSite`, `urlSite`, `logo`) VALUES
 CREATE TABLE `utilisateur` (
   `idUtilisateur` int(11) NOT NULL,
   `nomUtilisateur` varchar(20) NOT NULL,
-  `MotDePasse` varchar(20) NOT NULL,
+  `MotDePasse` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
   `newsletter` binary(1) NOT NULL,
   `dateNaissance` date DEFAULT NULL

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 19 avr. 2023 à 10:52
+-- Généré le : mar. 25 avr. 2023 à 00:01
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
@@ -35,6 +35,18 @@ CREATE TABLE `ajoutcollection` (
   `lu` binary(1) NOT NULL,
   `possede` binary(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `ajoutcollection`
+--
+
+INSERT INTO `ajoutcollection` (`idUtilisateur`, `idLivre`, `note`, `avis`, `lu`, `possede`) VALUES
+(1, 1, 4, 'ggg', 0x01, 0x01),
+(1, 30, 2, 'g', 0x01, 0x01),
+(1, 57, 3, 'v', 0x01, 0x01),
+(2, 1, 5, 'b', 0x01, 0x01),
+(2, 53, 4, '1', 0x01, 0x01),
+(2, 54, 5, '23', 0x01, 0x01);
 
 -- --------------------------------------------------------
 
@@ -319,7 +331,7 @@ CREATE TABLE `evenement` (
 INSERT INTO `evenement` (`idEvenement`, `nomEvenement`, `dateDebut`, `dateFin`, `description`, `lien`, `photo`) VALUES
 (1, 'BD Boom', '2022-11-18', '2022-11-20', 'Premier festival gratuit de bande dessinée en France, il est l\'un des plus importants sur le plan de la fréquention avec près de 23000 visiteurs.\r\nIl se déroule chaque année fin novembre pendant trois jours à Blois (41000).', 'https://www.blois.fr/attractive/festive/bd-boum', 'images/evenement/blois_bdboum_2022.jpg'),
 (2, 'Festival d\'Angouleme', '2023-01-26', '2023-01-29', 'Principal festival de bande dessinée francophone et le plus réputé et fréquenté dans le monde. Il se déroule chaque année en janvier à Angoulême (16000).', 'https://www.bdangouleme.com/', 'images/evenement/festival_angouleme_2023.jpg'),
-(3, 'Les nuits de la lecture', '2023-01-19', '2023-01-22', 'Créées en 2017 par le ministère de la Culture, \"La nuit de la lecture\" est un évènement culturel qui met en lumière la lecture sous toutes ses formes.\r\nLes bibliothèques, médiathèques et librairies ouvrent leurs portes sur des horaires étendus en proposant des animations attractives autour de la lecture.', 'https://www.nuitsdelalecture.fr/', 'images/evenement/nuit_de_la_lecture.jpg'),
+(3, 'Les nuits de la lecture', '2023-01-19', '2023-01-22', 'Créées en 2017 par le ministère de la Culture, \"La nuit de la lecture\" est un évènement culturel qui met en lumière la lecture sous toutes ses formes.\r\nLes bibliothèques, médiathèques et librairies ouvrent leurs portes sur des horaires étendus en proposant des animations attractives autour de la lecture.', 'https://www.nuitsdelalecture.fr/', 'images/evenement/nuits_de_la_lecture.jpg'),
 (4, 'Festival du livre de Paris', '2023-04-21', '2023-04-23', 'Principal festival de bande dessinée francophone et le plus réputé et fréquenté dans le monde. Il se déroule chaque année en janvier à Angoulême (16000).', 'https://www.festivaldulivredeparis.fr/', 'images/evenement/festival_livre_paris.jpg');
 
 -- --------------------------------------------------------
@@ -612,11 +624,19 @@ INSERT INTO `sitecommercial` (`idSite`, `nomSite`, `urlSite`, `logo`) VALUES
 CREATE TABLE `utilisateur` (
   `idUtilisateur` int(11) NOT NULL,
   `nomUtilisateur` varchar(20) NOT NULL,
-  `MotDePasse` varchar(20) NOT NULL,
+  `MotDePasse` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
   `newsletter` binary(1) NOT NULL,
   `dateNaissance` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`idUtilisateur`, `nomUtilisateur`, `MotDePasse`, `email`, `newsletter`, `dateNaissance`) VALUES
+(1, 'TESTNote', 'test', 'test@gmail.com', 0x00, '2023-04-04'),
+(2, 'zfepjge', 'erpjgepepjgep', 'zf@egeg.com', 0x01, '2023-04-02');
 
 --
 -- Index pour les tables déchargées
@@ -710,9 +730,18 @@ ALTER TABLE `sitecommercial`
 --
 ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`idUtilisateur`),
-  CHANGE `idUtilisateur` `idUtilisateur` INT(11) NOT NULL AUTO_INCREMENT,
   ADD UNIQUE KEY `nomUtilisateur` (`nomUtilisateur`),
   ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées

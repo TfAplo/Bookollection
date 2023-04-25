@@ -1,50 +1,3 @@
-<?php
-function createAccount($email, $username, $password){
-    $link = connexion();
-    if (checkDB($link, $username, 'nomUtilisateur')) {
-
-        if (checkDB($link, $email, 'email') && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $hashPassword = password_hash($password, PASSWORD_DEFAULT);
-            mysqli_query($link, "INSERT INTO utilisateur (nomUtilisateur, MotDePasse, email) VALUES ('$username', '$hashPassword', '$email')");
-            createSession($link, $username);
-            header('Location: collection.php');
-
-        }
-        else{
-            echo 'Cette email est déja utilisé ou invalide';
-        }
-    }
-    else{
-        echo'nom d\'utilisateur déja utilisé';
-    }
-    if ($link) {mysqli_close($link);}
-}
-
-function connexion(){
-		$link = mysqli_connect('localhost', 'root', '', 'Bookollection');
-	
-		if (!$link) {
-			die("Erreur d'acces a la base");
-		}
-		return $link;
-}
-
-function checkDB($link, $value, $row){
-    $result = mysqli_query($link, "SELECT $row FROM utilisateur WHERE $row='$value'");
-	$bol = mysqli_num_rows($result) == 0;
-	mysqli_free_result($result);
-    return $bol;
-}
-
-function createSession($link, $username){
-    $id = mysqli_query($link, "SELECT idUtilisateur FROM utilisateur WHERE nomUtilisateur='$username'");
-    session_start();
-    $_SESSION['id'] = $id;
-    $_SESSION['username'] = $username;
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -78,12 +31,15 @@ function createSession($link, $username){
         </div>
         <form class="anime" action="creation.php" method="post">
             <h1 id="titrelog">Créer un compte</h1>
+            
             <label>Email
             <input type="email" id="email" name="email" placeholder="Entrez votre email">
             </label>
+
             <label>Nom d'utilisateur
             <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur">
             </label>
+            
             <label>Mot de passe
             <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe">
             </label>   
@@ -94,6 +50,8 @@ function createSession($link, $username){
             </div>
             <p>
                     <?php 
+                        require_once 'fun.php';
+
                          if (isset($_POST['email']) && !empty($_POST['email'])
                          && isset($_POST['username']) && !empty($_POST['username'])
                          && isset($_POST['password']) && !empty($_POST['password'])) {

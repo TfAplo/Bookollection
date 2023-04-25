@@ -1,18 +1,17 @@
-<?php
- if (isset($_POST['username']) && !empty($_POST['username'])
-    && isset($_POST['password']) && !empty($_POST['password'])) {
-    
-}
+<?php 
+require_once 'fun.php';
 
+$username= '';
+$password= '';
+$post = false;
 
-
-
-
-
-
-
-
-
+    if (isset($_POST['username']) && !empty($_POST['username'])
+        && isset($_POST['password']) && !empty($_POST['password'])) {
+                            
+        $username= $_POST['username'];
+        $password= $_POST['password'];
+        $post = true;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -48,17 +47,24 @@
         </div>
         <form action="connexion.php" method="post">
             <h1 id="titrelog">Se connecter</h1>
+
             <label>Nom d'utilisateur
-            <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur">
+            <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" value="<?php echo $username ?>">
             </label>
+
             <label>Mot de passe
-            <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe">
+            <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" value="<?php echo $password ?>">
             </label>   
             
             <div id="basform">
                 <input id="bouton-connecter" type="submit" value="Se connecter">
                 <a id="changeLog" href="creation.php">S'inscrire</a>
             </div>
+            <p>
+                <?php 
+                    if ($post) {checkAccount($username, $password);}
+                ?>
+            </p>
         </form>
     </div>
     <script src="JSscripts/theme.js"></script>

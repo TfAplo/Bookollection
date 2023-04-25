@@ -1,3 +1,24 @@
+<?php 
+require_once 'fun.php';
+
+$email= '';
+$username= '';
+$password= '';
+$post = false;
+
+    if (isset($_POST['email']) && !empty($_POST['email'])
+    && isset($_POST['username']) && !empty($_POST['username'])
+    && isset($_POST['password']) && !empty($_POST['password'])) {
+                            
+        $email= $_POST['email'];
+        $username= $_POST['username'];
+        $password= $_POST['password'];
+        $post = true;
+    }
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -33,15 +54,15 @@
             <h1 id="titrelog">Créer un compte</h1>
             
             <label>Email
-            <input type="email" id="email" name="email" placeholder="Entrez votre email">
+            <input type="email" id="email" name="email" placeholder="Entrez votre email" value="<?php echo $email ?>">
             </label>
 
             <label>Nom d'utilisateur
-            <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur">
+            <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" value="<?php echo $username ?>">
             </label>
             
             <label>Mot de passe
-            <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe">
+            <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" value="<?php echo $password ?>">
             </label>   
             
             <div id="basform">
@@ -49,16 +70,9 @@
                 <a id="changeLog" href="connexion.php">Se connecter</a>
             </div>
             <p>
-                    <?php 
-                        require_once 'fun.php';
-
-                         if (isset($_POST['email']) && !empty($_POST['email'])
-                         && isset($_POST['username']) && !empty($_POST['username'])
-                         && isset($_POST['password']) && !empty($_POST['password'])) {
-                         
-                             createAccount($_POST['email'], $_POST['username'], $_POST['password']);
-                        }
-                    ?>
+                <?php 
+                    if ($post) {createAccount($email, $username, $password);}
+                ?>
             </p>
         </form>
     </div>

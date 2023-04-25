@@ -34,7 +34,7 @@ function setToBright() {
 }
 
 //initialise les couleurs en fonction du theme de l'utilisateur de sa derniere visite
-if (document.cookie.split(",")[0] == "themeCookie=Dark") {
+if (document.cookie.includes("themeCookie=Dark")) {
     setToDark();
 } else {
     setToBright();
@@ -43,7 +43,7 @@ if (document.cookie.split(",")[0] == "themeCookie=Dark") {
 function themeCookieChange(element) {
     //change le cookie de theme et lui ajoute une durée de 30 jours pour s'en souvenir
     let expires = (new Date(Date.now()+ 86400*30)).toUTCString();
-    if (document.cookie == "themeCookie=Bright" && element.classList.contains("sombre")) {
+    if (document.cookie.includes("themeCookie=Bright") && element.classList.contains("sombre")) {
         document.cookie = "themeCookie=Dark; expires=" + expires + ";path=/;"
     } else {
         document.cookie = "themeCookie=Bright; expires=" + expires + ";path=/;"
@@ -52,9 +52,9 @@ function themeCookieChange(element) {
 
 function colorChange(element) {
     //change le theme du document
-    if (document.cookie == "themeCookie=Bright" && element.classList.contains("clair") ) {
+    if (document.cookie.includes("themeCookie=Bright") && element.classList.contains("clair") ) {
         setToBright();
-    } else if (document.cookie == "themeCookie=Dark" && element.classList.contains("sombre")) {
+    } else if (document.cookie.includes("themeCookie=Dark") && element.classList.contains("sombre")) {
         setToDark();
     }
 }

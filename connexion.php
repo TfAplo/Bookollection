@@ -1,5 +1,5 @@
 <?php 
-require_once 'fun.php';
+require_once 'account.inc.php';
 
 $username= '';
 $password= '';
@@ -49,11 +49,11 @@ $post = false;
             <h1 id="titrelog">Se connecter</h1>
 
             <label>Nom d'utilisateur
-            <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" value="<?php echo $username ?>">
+            <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" value="<?php echo $username ?>" maxlength="20">
             </label>
 
             <label>Mot de passe
-            <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" value="<?php echo $password ?>">
+            <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" value="<?php echo $password ?>" minlength="3" maxlength="255">
             </label>   
             
             <div id="basform">

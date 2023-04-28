@@ -72,7 +72,7 @@ function afficherLivre ($result) {
 //script principal
 
     error_reporting(E_ALL);
-    require_once ('dbConnect.php');
+    require_once ('account.inc.php');
     //mysqli_report(MYSQLI_REPORT_OFF);
 
 ?>
@@ -188,7 +188,7 @@ function afficherLivre ($result) {
             <input type="text" id="input_recherche" name="titre" form="filtre" placeholder="Rechercher un livre, un auteur, ...">
             <div class="contenu_droite">
             <?php
-                $link = dbConnect();
+                $link = connexion();
 
                 recupererLivre($link);
 

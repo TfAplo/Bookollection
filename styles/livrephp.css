@@ -113,9 +113,7 @@ nav {
 
 }
 
-.puceSite{
-    
-}
+
 
 
 #Tachat{
@@ -132,10 +130,33 @@ nav {
     margin-left: -72px;
 }
 
+.box{
+  width:1.2em;
+  height:1.2em;
+}
+
 .info{
     margin-left:20px;
     margin-top: -20px;
 }
+
+.testRating{
+    color:#aaa;
+    background-color: var(--secondary);
+    text-decoration: none;
+    font-size: 3.8em;
+    transition: color .4s;
+    border:0px;
+}
+
+.testRating:hover,
+.testRating:focus,
+.testRating:hover ~ .testRating,
+.testRating:focus ~ .testRating {
+    color: orange;
+    cursor: pointer;
+}
+
 
 .rating{
     direction: rtl;
@@ -157,3 +178,48 @@ nav {
     color: orange;
     cursor: pointer;
   }
+
+.grid_comment{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    
+}
+
+.box_comment{
+  border: 0px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
+.box_comment h2{
+  margin-bottom: 10px;
+}
+
+.box_comment p{
+  margin-left:20px;
+}
+
+.avisUser{
+  padding-top: 5px;
+  padding-left: 20px;
+
+}
+
+.comment{
+  padding-top: 10px;
+  padding-bottom: 15px;
+  border-bottom: 0.3px solid var(--fontcolor);
+  margin-bottom: 10px;
+
+}
+
+.noteStar{
+  color:orange;
+  font-size: 1.2em;
+}

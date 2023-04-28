@@ -46,17 +46,22 @@ function recupererLivre ($link) {
         }
     }
     if ($result = mysqli_query($link, $sql) ){
-        afficherLivre($result);
+        if (mysqli_num_rows($result) == 0) {
+            echo "Aucun livre trouvé...";
+        } else {
+            afficherLivre($result);
+        }
     }
 }
 
 function afficherLivre ($result) {
     $result->data_seek(0);
     while ( $row = $result->fetch_assoc() ) {
-        echo "<a class='livres' href='livre.html'>\n";                                              // TAILLE LIVRE TOUS DIFFERENT -> METTRE TOUS LA MEME TAILLE
-        echo "<img src='images/".$row['couverture']."' width='60px' alt='couverture du livre'>\n";  // IMAGE ECRASE A GAUCHE
+        echo "<a class='livres' href='livre.html'>\n";
+        echo "<img src='images/book-cover-picture.png' width='60px' alt='couverture du livre'>\n";
         echo "<div>\n";
         echo "<h3>".$row['titre']."</h3>\n";
+        echo "<h4>De ".$row['nomAuteur']."</h4>";
         echo "<p id='description'>".$row['description']."</p>\n";
         echo "</div>\n";
         echo "</a>\n";
@@ -129,33 +134,53 @@ function afficherLivre ($result) {
                 <h2>Filtres</h2>
                 <label for="" id="genre">
                     Genre :<br>
-                    <label class="label_genre"><input type="checkbox" class="input_genre" name="genre[]" value="roman"> Roman</label><br>
-                    <label class="label_genre"><input type="checkbox" class="input_genre" name="genre[]" value="bd"> Bande Dessinée</label><br>
-                    <label class="label_genre"><input type="checkbox" class="input_genre" name="genre[]" value="poésie"> Poésie</label><br>
-                    <label class="label_genre"><input type="checkbox" class="input_genre" name="genre[]"  value="autobiographie"> Autobiographie</label>
+                    <div id="div_input_genre1">
+                        <label class="label_genre"><input type="checkbox" class="input_genre1" name="genre[]" value="roman"> Roman</label><br>
+                        <label class="label_genre"><input type="checkbox" class="input_genre1" name="genre[]"  value="manga"> Manga</label><br>
+                        <label class="label_genre"><input type="checkbox" class="input_genre1" name="genre[]" value="bd"> Bande Dessinée</label><br>
+                    </div>
+                    <div id="div_input_genre2">
+                        <label class="label_genre"><input type="checkbox" class="input_genre2" name="genre[]"  value="théâtre"> Théâtre</label><br>
+                        <label class="label_genre"><input type="checkbox" class="input_genre2" name="genre[]" value="poésie"> Poésie</label><br>
+                    </div>
                 </label>
+                <br>
+                <br>
                 <br>
                 <br>
                 <label for="" id="registre">
                     Registre :<br>
-                    <label class="label_registre"><input type="checkbox" class="input_registre" name="registre[]" value="fantastique"> Fantastique</label><br>
-                    <label class="label_registre"><input type="checkbox" class="input_registre" name="registre[]" value="policier"> Policier</label><br>
-                    <label class="label_registre"><input type="checkbox" class="input_registre" name="registre[]" value="comique"> Comique</label><br>
-                    <label class="label_registre"><input type="checkbox" class="input_registre" name="registre[]"  value="epique"> Epique</label><br>
-                    <label class="label_registre"><input type="checkbox" class="input_registre" name="registre[]"  value="tragique"> Tragique</label><br>
+                    <div id="div_input_registre1"> 
+                        <label class="label_registre"><input type="checkbox" class="input_registre1" name="registre[]" value="policier / thriller"> Policier</label><br>
+                        <label class="label_registre"><input type="checkbox" class="input_registre1" name="registre[]" value="action / aventure"> Action</label><br>
+                        <label class="label_registre"><input type="checkbox" class="input_registre1" name="registre[]" value="romance"> Romance</label><br>
+                        <label class="label_registre"><input type="checkbox" class="input_registre1" name="registre[]" value="fantasy"> Fantastique</label><br>
+                        <label class="label_registre"><input type="checkbox" class="input_registre1" name="registre[]" value="science-fiction"> Sci-Fi</label><br>
+                        <label class="label_registre"><input type="checkbox" class="input_registre1" name="registre[]" value="lyrique"> Lyrique</label><br>
+                        <label class="label_registre"><input type="checkbox" class="input_registre1" name="registre[]" value="satyrique"> Satyrique</label><br>
+                    </div>
+                    <div id="div_input_registre2"> 
+                        <label class="label_registre"><input type="checkbox" class="input_registre2" name="registre[]" value="tragique"> Tragique</label><br>
+                        <label class="label_registre"><input type="checkbox" class="input_registre2" name="registre[]" value="comique"> Comique</label><br>
+                        <label class="label_registre"><input type="checkbox" class="input_registre2" name="registre[]"  value="dystopique"> Dystopique</label><br>
+                        <label class="label_registre"><input type="checkbox" class="input_registre2" name="registre[]"  value="shonen"> Shonen</label><br>
+                        <label class="label_registre"><input type="checkbox" class="input_registre2" name="registre[]" value="seinen"> Seinen</label><br>
+                        <label class="label_registre"><input type="checkbox" class="input_registre2" name="registre[]" value="shojo"> Shojo</label><br>
+                    </div>
                 </label>
+                <br>
+                <br>
+                <br>
                 <label for="" id="lu">
                     <input type="checkbox" name="lu" id="checkbox_lu" value="lu">
                     Lu
                 </label>
-                <br>
-                <br>
                 <label for="" id="possession">
                     <input type="checkbox" name="possession" id="checkbox_possession" value="possession">
-                    Possession
+                    Possedé
                 </label>
                 <br>
-                <input type="submit" id="submit_form">
+                <input type="submit" id="submit_form">  <!-- GARDER LES CHAMPS REMPLIS APRES LE SUBMIT -->
             </form>
         </div>
         

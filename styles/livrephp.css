@@ -179,6 +179,42 @@ nav {
     cursor: pointer;
   }
 
+.box_comment h3{
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+
+}
+
+.box_comment textarea{
+    font-size: 1.2em;
+    width: 80%;
+    height: 100px;
+    border-radius: 5px;
+    border: 0px;
+    padding: 10px;
+    padding-left: 15px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;    margin-bottom: 10px;
+    margin-left: 20px;
+    resize: none;
+}
+
+.box_comment input{
+    border-radius: 4px;
+    border: 0px;
+    padding: 8px;
+    font-size: 0.9em;
+    margin-left: 20px;
+    color : var(--fontcolor);
+    background-color: var(--secondary);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  }
+.box_comment input:hover{
+    background-color: var(--third);
+    cursor: pointer;
+}
+
+
 .grid_comment{
     display: grid;
     grid-template-columns: 50% 50%;

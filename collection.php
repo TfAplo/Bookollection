@@ -3,8 +3,8 @@
 // fonction
 
 function recupererLivre ($link) {
-    //session_start();         QUAND TOM AURA FINI LES SESSIONS
-    //$id = $_SESSION["id"];   QUAND TOM AURA FINI LES SESSIONS
+    //session_start();
+    //$id = $_SESSION["id"];
     $sql = "SELECT DISTINCT l.titre, a.nomAuteur, g.nomGenre, l.description, l.couverture FROM livre l
             INNER JOIN ajoutcollection ac ON l.idLivre = ac.idLivre
             INNER JOIN ecritpar ep ON l.idLivre = ep.idLivre

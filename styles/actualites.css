@@ -113,7 +113,7 @@ h2{
     margin-left: 30px;
     
 }
-a.bouton {
+.bouton {
     align-items: center;
     background-color: #3d4852;
     border: 1px solid #3d4852;
@@ -129,22 +129,22 @@ a.bouton {
 
 }
 
-a.boutonL{
-    margin-right: 5em;
+.boutonL{
+    margin-left: 4em;
     align-self: flex-end;
 }
 
-a.bouton:hover,
-a.bouton:focus {
+.bouton:hover,
+.bouton:focus {
     background-color: #58636F;
     box-shadow: 0 0 2px 2px #bac6d3;
 }
 
-a.bouton:focus {
+.bouton:focus {
     outline: 1px solid #3d4852;
 }
 
-a.bouton:visited {
+.bouton:visited {
     color: #fff;
 }
 

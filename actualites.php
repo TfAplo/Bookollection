@@ -54,6 +54,8 @@
         echo "Erreur: Impossible de se connecter à la base de données";
         exit;
     }
+
+    //top 5 des livres
     echo " <h2 id='haut'>Top des livres *</h2>
     <p id='gauche'>*Calculé en fonction des notes recensées</p>";
     echo "<div class='top'>";
@@ -62,22 +64,16 @@
         if(mysqli_num_rows($res_top) > 0){
             while($row = mysqli_fetch_array($res_top)){
                 $idL = $row['idLivre'];
-                $req = "SELECT couverture,titre,prenomAuteur,nomAuteur,dateParution,idLivre FROM livre INNER JOIN ecritpar USING(idLivre) INNER JOIN auteur USING(idAuteur) WHERE idLivre = $idL";
+                $req = "SELECT couverture,titre,prenomAuteur,nomAuteur,dateParution,idLivre FROM livre INNER JOIN ecritpar USING(idLivre) INNER JOIN auteur USING(idAuteur) WHERE idLivre = {$idL} group by idLivre";
                 if($res = mysqli_query($link, $req)){
                     if(mysqli_num_rows($res) > 0){
-                        while($row = mysqli_fetch_array($res)){
-                            $titre = $row['titre'];
-                            $prenomA = $row['prenomAuteur'];
-                            $nomA = $row['nomAuteur'];
-                            $dateP = $row['dateParution'];
-                            $idL = $row['idLivre'];
-                            $couverture = $row['couverture'];
+                        while($rowL = mysqli_fetch_array($res)){
                             echo "<div class='liv'>";
-                            echo "<img class='book' src='images/livres/".$row['couverture']."' alt='couverture du livre'>";
-                            echo "<h3>".$row['titre']."</h3>";
-                            echo "<p>par ".livreEstEcritPar($row['idLivre'])." - paru le ".dateFormat($row['dateParution'])."</p>";
-                            echo "<p>Avec une note global de : ".moyNotes($row['idLivre'])."/5</p>";
-                            echo "<a href='livre.php?id=".$row['idLivre']."' class='bouton boutonL'>Voir plus</a>";
+                            echo "<img class='book' src='images/livres/".$rowL['couverture']."' alt='couverture du livre'>";
+                            echo "<h3>".$rowL['titre']."</h3>";
+                            echo "<p>par ".livreEstEcritPar($rowL['idLivre'])." - paru le ".dateFormat($rowL['dateParution'])."</p>";
+                            echo "<p>Avec une note global de : ".moyNotes($rowL['idLivre'])."/5</p>";
+                            echo "<a href='livre.php?idLivre=".$rowL['idLivre']."' class='bouton boutonL'>Voir plus</a>";
                             echo "</div>";
                         }
                     }
@@ -88,7 +84,7 @@
     echo "</div>";
 
 
-
+//nouvelles sorties
     echo "<h2>Les nouvelles sorties</h2>";
     echo "<div class='top'>";
     
@@ -107,7 +103,7 @@
                             echo "<h3>".$row['titre']."</h3>";
                             echo "<p>par ".livreEstEcritPar($row['idLivre'])." - paru le ".dateFormat($row['dateParution'])."</p>";
                             echo "<p>Avec une note global de : ".moyNotes($row['idLivre'])."/5</p>";
-                            echo "<a href='#' class='bouton boutonL'>Voir plus</a>";
+                            echo "<a href='livre.php?idLivre=".$row['idLivre']."' class='bouton boutonL'>Voir plus</a>";
                             echo "</div>";
                         }
                     }

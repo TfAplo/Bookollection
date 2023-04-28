@@ -32,8 +32,8 @@ CREATE TABLE `ajoutcollection` (
   `idLivre` int(11) NOT NULL,
   `note` int(11) DEFAULT NULL,
   `avis` varchar(200) DEFAULT NULL,
-  `lu` binary(1) NOT NULL,
-  `possede` binary(1) NOT NULL
+  `lu` tinyint(1) NOT NULL,
+  `possede` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -626,7 +626,7 @@ CREATE TABLE `utilisateur` (
   `nomUtilisateur` varchar(20) NOT NULL,
   `MotDePasse` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `newsletter` binary(1) NOT NULL,
+  `newsletter` tinyint(1) NOT NULL,
   `dateNaissance` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

@@ -1,3 +1,19 @@
+<?php 
+require_once 'account.inc.php';
+
+$username= '';
+$password= '';
+$post = false;
+
+    if (isset($_POST['username']) && !empty($_POST['username'])
+        && isset($_POST['password']) && !empty($_POST['password'])) {
+                            
+        $username= $_POST['username'];
+        $password= $_POST['password'];
+        $post = true;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -18,7 +34,7 @@
             <div class="basg">
                 <div class="card">
                     <h1 class="bienvenue">Bienvenue</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero natus deserunt minima voluptates beatae, possimus laboriosam? Corrupti, amet? Sed perferendis id consequuntur cupiditate ratione recusandae, voluptas quia fugiat repellat commodi!</p>
+                    <p class="para">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero natus deserunt minima voluptates beatae, possimus laboriosam? Corrupti, amet? Sed perferendis id consequuntur cupiditate ratione recusandae, voluptas quia fugiat repellat commodi!</p>
                 </div>
             </div>
         </div>
@@ -29,25 +45,28 @@
             <a class="clair" href="javascript:void(0)"><img src="images/wb_sunny.png" alt="" width="20px"></a>
             <a class="sombre" href="javascript:void(0)"><img src="images/brightness_2.png" alt="" width="20px"></a>
         </div>
-        <form action="collection.html" method="post">
+        <form action="connexion.php" method="post">
             <h1 id="titrelog">Se connecter</h1>
-            <label class="hidden">Email
-            <input type="email" id="email" name="email" placeholder="Entrez votre email">
-            </label>
+
             <label>Nom d'utilisateur
-            <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur">
+            <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" value="<?php echo $username ?>" maxlength="20">
             </label>
+
             <label>Mot de passe
-            <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe">
+            <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" value="<?php echo $password ?>" minlength="3" maxlength="255">
             </label>   
             
             <div id="basform">
                 <input id="bouton-connecter" type="submit" value="Se connecter">
-                <a id="changeLog" href="javascript:void(0)">S'inscrire</a>
+                <a id="changeLog" href="creation.php">S'inscrire</a>
             </div>
+            <p>
+                <?php 
+                    if ($post) {checkAccount($username, $password);}
+                ?>
+            </p>
         </form>
     </div>
     <script src="JSscripts/theme.js"></script>
-    <script src="JSscripts/logChange.js"></script>
 </body>
 </html>

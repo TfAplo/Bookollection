@@ -98,21 +98,56 @@ nav img {
 }
 
 #genre, #registre {
-    margin-left: 20px;
+    margin-left: 10px;
     font-size: 1.5em;
 }
 
 .label_genre, .label_registre {
-    margin-left: 20%;
     font-size: 0.8em;
 }
 
+#div_input_genre1 {
+    margin-left: 4%;
+    float: left;
+    display: inline-block;
+}
+
+#div_input_genre2 {
+    margin-left: 4%;
+    display: inline-block;
+}
+
+#div_input_registre1 {
+    margin-left: 4%;
+    float: left;
+    display: inline-block;
+}
+
+#div_input_registre2 {
+    margin-left: 4%;
+    display: inline-block;
+}
+
 #checkbox_lu {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 #lu, #possession {
-    margin-left: 20px;   
+    margin-left: 10px;   
+}
+
+#submit_form {
+    height: auto;
+    padding: 5px;
+    background-color: var(--primary);
+    color: rgb(229, 226, 226);
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 5px;
+    border: 2px solid var(--primary);
+    margin-top: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 #droite {
@@ -156,13 +191,12 @@ nav img {
     justify-content: space-around;
     align-items: center;
     width: 40%;
-    height: fit-content;
+    height: 180px;
     margin: 20px;
     padding: 10px;
     border-radius: 5px;
     background-color: var(--third);
     transition: border 0.2s;
-
 }
 
 .livres:hover{
@@ -175,7 +209,24 @@ nav img {
 }
 
 .livres h3{
+    margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.livres h4 {
     margin-bottom: 10px;
+}
+
+.livres #description {
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 a{

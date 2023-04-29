@@ -1,3 +1,31 @@
+<?php
+require_once 'account.inc.php';
+
+function rechercherLivres($barreRech, $genre, $registre){
+    $link = connexion();
+    $result = mysqli_query($link, "SELECT DISTINCT l.titre, l.couverture, l.description FROM livre l
+                                    INNER JOIN ecritpar ec ON l.idlivre = ec.idlivre
+                                    INNER JOIN auteur a ON ec.idauteur = a.idauteur
+                                    INNER JOIN livreestregistre li ON l.idlivre = li.idlivre
+                                    INNER JOIN registre r ON li.idregistre = r.idregistre
+                                    INNER JOIN genreestregistre gr ON r.idregistre = gr.idregistre
+                                    INNER JOIN genre g ON gr.idgenre = g.idgenre
+                                    WHERE (l.titre LIKE '$barreRech%' OR a.nomAuteur LIKE '$barreRech%' OR a.prenomAuteur LIKE '$barreRech%')
+                                        AND r.nomRegistre LIKE '$registre%' AND g.nomGenre LIKE '$genre%'");
+}
+
+
+
+
+
+
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,16 +74,16 @@
         </div>
     </header>
     <form action="">
-        <input type="text" id="recherche" placeholder="Recherchez un livre...">
+        <input type="text" id="recherche" placeholder="Recherchez un livre..."> <input type="submit" value="">
         <select name="genre" id="genre">
-            <option value="Genre" selected>Genre</option>
+            <option value="" selected>Genre</option>
             <option value="roman">Roman</option>
             <option value="bd">Bande Dessinée</option>
             <option value="poésie">Poésie</option>
             <option value="autobiographie">Autobiographie</option>
         </select>
         <select name="registre" id="registre">
-            <option value="Registre" selected>Registre</option>
+            <option value="" selected>Registre</option>
             <option value="fantastique">Fantastique</option>
             <option value="policier">Policier</option>
             <option value="comique">Comique</option>
@@ -65,69 +93,13 @@
     </form>
 
     <div class="contenu">
-        <a class="livres" href="livre.html">
-            <img src="images/book-cover-picture.png" width="60px" alt="couverture du livre">
-            <div>
-                <h3>Titre du livre</h3>
-                <p> ipsum dolor sit amet consectetur adipisicing elit. Distinctio, nulla, neque autem ipsam error ullam eveniet asperiores quos repellat assumenda pariatur ipsa!</p>
-            </div>
-        </a>
-        <a class="livres" href="livre.html">
-            <img src="images/book-cover-picture.png" width="60px" alt="couverture du livre">
-            <div>
-                <h3>Titre du livre</h3>
-                <p> ipsum dolor sit amet consectetur adipisicing elit. Distinctio, nulla, neque autem ipsam error ullam eveniet asperiores quos repellat assumenda pariatur ipsa!</p>
-            </div>
-        </a>
-        <a class="livres" href="livre.html">
-            <img src="images/book-cover-picture.png" width="60px" alt="couverture du livre">
-            <div>
-                <h3>Titre du livre</h3>
-                <p> ipsum dolor sit amet consectetur adipisicing elit. Distinctio, nulla, neque autem ipsam error ullam eveniet asperiores quos repellat assumenda pariatur ipsa!</p>
-            </div>
-        </a>
-        <a class="livres" href="livre.html">
-            <img src="images/book-cover-picture.png" width="60px" alt="couverture du livre">
-            <div>
-                <h3>Titre du livre</h3>
-                <p> ipsum dolor sit amet consectetur adipisicing elit. Distinctio, nulla, neque autem ipsam error ullam eveniet asperiores quos repellat assumenda pariatur ipsa!</p>
-            </div>
-        </a>
-        <a class="livres" href="livre.html">
-            <img src="images/book-cover-picture.png" width="60px" alt="couverture du livre">
-            <div>
-                <h3>Titre du livre</h3>
-                <p> ipsum dolor sit amet consectetur adipisicing elit. Distinctio, nulla, neque autem ipsam error ullam eveniet asperiores quos repellat assumenda pariatur ipsa!</p>
-            </div>
-        </a>
-        <a class="livres" href="livre.html">
-            <img src="images/book-cover-picture.png" width="60px" alt="couverture du livre">
-            <div>
-                <h3>Titre du livre</h3>
-                <p> ipsum dolor sit amet consectetur adipisicing elit. Distinctio, nulla, neque autem ipsam error ullam eveniet asperiores quos repellat assumenda pariatur ipsa!</p>
-            </div>
-        </a>
-        <a class="livres" href="livre.html">
-            <img src="images/book-cover-picture.png" width="60px" alt="couverture du livre">
-            <div>
-                <h3>Titre du livre</h3>
-                <p> ipsum dolor sit amet consectetur adipisicing elit. Distinctio, nulla, neque autem ipsam error ullam eveniet asperiores quos repellat assumenda pariatur ipsa!</p>
-            </div>
-        </a>
-        <a class="livres" href="livre.html">
-            <img src="images/book-cover-picture.png" width="60px" alt="couverture du livre">
-            <div>
-                <h3>Titre du livre</h3>
-                <p> ipsum dolor sit amet consectetur adipisicing elit. Distinctio, nulla, neque autem ipsam error ullam eveniet asperiores quos repellat assumenda pariatur ipsa!</p>
-            </div>
-        </a>
-        <a class="livres" href="livre.html">
-            <img src="images/book-cover-picture.png" width="60px" alt="couverture du livre">
-            <div>
-                <h3>Titre du livre</h3>
-                <p> ipsum dolor sit amet consectetur adipisicing elit. Distinctio, nulla, neque autem ipsam error ullam eveniet asperiores quos repellat assumenda pariatur ipsa!</p>
-            </div>
-        </a>
+        <?php 
+        if (empty($_POST)) {
+            echo "Cherchez votre prochaine lecture...";
+        }else {
+            rechercherLivres();
+        }
+        ?>
         <a class="livres" href="livre.html">
             <img src="images/book-cover-picture.png" width="60px" alt="couverture du livre">
             <div>

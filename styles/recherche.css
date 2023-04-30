@@ -124,7 +124,6 @@ select{
     border-radius: 5px;
     background-color: var(--third);
     transition: border 0.2s;
-
 }
 
 .livres:hover{

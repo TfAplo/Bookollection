@@ -1,7 +1,7 @@
 <?php
 require_once 'account.inc.php';
 
-function rechercherLivres($barreRech, $genre, $registre){
+function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
     $link = connexion();
     $result = mysqli_query($link, "SELECT DISTINCT l.titre, l.couverture, l.description FROM livre l
                                     INNER JOIN ecritpar ec ON l.idlivre = ec.idlivre
@@ -12,14 +12,25 @@ function rechercherLivres($barreRech, $genre, $registre){
                                     INNER JOIN genre g ON gr.idgenre = g.idgenre
                                     WHERE (l.titre LIKE '$barreRech%' OR a.nomAuteur LIKE '$barreRech%' OR a.prenomAuteur LIKE '$barreRech%')
                                         AND r.nomRegistre LIKE '$registre%' AND g.nomGenre LIKE '$genre%'");
+    if (mysqli_num_rows($result) == 0) {
+        echo 'Aucun livre trouvé';
+    }else{
+        $result->data_seek(0);
+        while ( $row = $result->fetch_assoc() ) {
+        echo " <a class='livres' href='livre.php'>";
+           echo " <img src='images/livres/".$row['couverture']."' width='100px' alt='couverture du livre'>";
+           echo " <div>";
+           echo "     <h3>".$row['titre']."</h3>";
+           echo "     <p>". $row['description']."</p>";
+           echo " </div>";
+       echo " </a>";
+    }
+    }
+    mysqli_free_result($result);
+    if ($link) {
+        mysqli_close($link);
+    }
 }
-
-
-
-
-
-
-
 
 
 
@@ -73,8 +84,8 @@ function rechercherLivres($barreRech, $genre, $registre){
             </div>
         </div>
     </header>
-    <form action="">
-        <input type="text" id="recherche" placeholder="Recherchez un livre..."> <input type="submit" value="">
+    <form action="recherche.php" method="post">
+        <input type="text" id="recherche" name="recherche" placeholder="Recherchez un livre..."> <input type="submit" value="">
         <select name="genre" id="genre">
             <option value="" selected>Genre</option>
             <option value="roman">Roman</option>
@@ -95,18 +106,10 @@ function rechercherLivres($barreRech, $genre, $registre){
     <div class="contenu">
         <?php 
         if (empty($_POST)) {
-            echo "Cherchez votre prochaine lecture...";
-        }else {
             rechercherLivres();
         }
+        rechercherLivres($_POST['recherche'], $_POST['genre'], $_POST['registre']);
         ?>
-        <a class="livres" href="livre.html">
-            <img src="images/book-cover-picture.png" width="60px" alt="couverture du livre">
-            <div>
-                <h3>Titre du livre</h3>
-                <p> ipsum dolor sit amet consectetur adipisicing elit. Distinctio, nulla, neque autem ipsam error ullam eveniet asperiores quos repellat assumenda pariatur ipsa!</p>
-            </div>
-        </a>
     </div>
 
     <script src="JSscripts/theme.js"></script>

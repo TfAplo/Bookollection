@@ -3,7 +3,7 @@ require_once 'account.inc.php';
 
 function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
     $link = connexion();
-    $result = mysqli_query($link, "SELECT DISTINCT l.titre, l.couverture, l.description FROM livre l
+    $result = mysqli_query($link, "SELECT DISTINCT l.titre, l.couverture, l.description, a.nomAuteur FROM livre l
                                     INNER JOIN ecritpar ec ON l.idlivre = ec.idlivre
                                     INNER JOIN auteur a ON ec.idauteur = a.idauteur
                                     INNER JOIN livreestregistre li ON l.idlivre = li.idlivre
@@ -20,7 +20,7 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
         echo " <a class='livres' href='livre.php'>";
            echo " <img src='images/livres/".$row['couverture']."' width='100px' alt='couverture du livre'>";
            echo " <div>";
-           echo "     <h3>".$row['titre']."</h3>";
+           echo "     <div class='titreauteur'><h3>".$row['titre']."</h3><h5> De ".$row['nomAuteur']."</h5></div>";
            echo "     <p>". $row['description']."</p>";
            echo " </div>";
        echo " </a>";
@@ -36,7 +36,6 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
 
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

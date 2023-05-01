@@ -1,9 +1,15 @@
 <?php
 
+//script principal
+
+error_reporting(E_ALL);
+require_once ('connexionDB.php');
+//mysqli_report(MYSQLI_REPORT_OFF);
+session_start();
+
 // fonction
 
 function recupererLivre ($link) {
-    session_start();
     $idUtilisateur = $_SESSION['id'];
     $sql = "SELECT DISTINCT l.titre, a.nomAuteur, g.nomGenre, l.description, l.couverture FROM livre l
             INNER JOIN ajoutcollection ac ON l.idLivre = ac.idLivre
@@ -67,13 +73,7 @@ function afficherLivre ($result) {
         echo "</a>\n";
     }
     //echo "</mysql_free_result($result)";
-}   
-
-//script principal
-
-    error_reporting(E_ALL);
-    require_once ('connexionDB.php');
-    //mysqli_report(MYSQLI_REPORT_OFF);
+}
 
 ?>
 

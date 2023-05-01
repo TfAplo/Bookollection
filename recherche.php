@@ -10,7 +10,7 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
                                     INNER JOIN registre r ON li.idregistre = r.idregistre
                                     INNER JOIN genreestregistre gr ON r.idregistre = gr.idregistre
                                     INNER JOIN genre g ON gr.idgenre = g.idgenre
-                                    WHERE (l.titre LIKE '$barreRech%' OR a.nomAuteur LIKE '$barreRech%' OR a.prenomAuteur LIKE '$barreRech%')
+                                    WHERE (l.titre LIKE '%$barreRech%' OR a.nomAuteur LIKE '%$barreRech%' OR a.prenomAuteur LIKE '%$barreRech%')
                                         AND r.nomRegistre LIKE '$registre%' AND g.nomGenre LIKE '$genre%'");
     if (mysqli_num_rows($result) == 0) {
         echo 'Aucun livre trouvé';
@@ -84,7 +84,7 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
         </div>
     </header>
     <form action="recherche.php" method="post">
-        <input type="text" id="recherche" name="recherche" placeholder="Recherchez un livre..."> <input type="submit" value="">
+        <input type="text" id="recherche" name="recherche" placeholder="Recherchez un livre..."> <input type="submit" value="" style="display: none;">
         <select name="genre" id="genre">
             <option value="" selected>Genre</option>
             <option value="roman">Roman</option>

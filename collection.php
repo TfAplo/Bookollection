@@ -4,7 +4,7 @@
 
 error_reporting(E_ALL);
 require_once ('connexionDB.php');
-//mysqli_report(MYSQLI_REPORT_OFF);
+mysqli_report(MYSQLI_REPORT_OFF);
 session_start();
 
 // fonction
@@ -18,7 +18,7 @@ function recupererLivre ($link) {
             INNER JOIN genre g ON l.idGenre = g.idGenre
             INNER JOIN livreestregistre er ON l.idLivre = er.idLivre
             INNER JOIN registre r ON er.idRegistre = r.idRegistre
-            WHERE ac.idUtilisateur = $idUtilisateur"; // REMPLACER CHIFFRE PAR $idUtilisateur // PROBLEME CAR SI 2 AUTEUR ALORS 2 FOIS LA MEME LIGNE
+            WHERE ac.idUtilisateur = $idUtilisateur"; // PROBLEME CAR SI 2 AUTEUR ALORS 2 FOIS LA MEME LIGNE
     if (!empty($_POST)) {
         if (isset($_POST["titre"])) {
             $titre = $_POST["titre"];
@@ -64,7 +64,7 @@ function afficherLivre ($result) {
     $result->data_seek(0);
     while ( $row = $result->fetch_assoc() ) {
         echo "<a class='livres' href='livre.html'>\n";
-        echo "<img src='images/book-cover-picture.png' width='60px' alt='couverture du livre'>\n";
+        echo "<img src='images/livres/".$row['couverture']."' width='60px' alt='couverture du livre'>\n";
         echo "<div>\n";
         echo "<h3>".$row['titre']."</h3>\n";
         echo "<h4>De ".$row['nomAuteur']."</h4>";
@@ -72,7 +72,7 @@ function afficherLivre ($result) {
         echo "</div>\n";
         echo "</a>\n";
     }
-    //echo "</mysql_free_result($result)";
+    mysqli_free_result($result);
 }
 
 ?>
@@ -94,8 +94,8 @@ function afficherLivre ($result) {
         <nav>
             <img alt="Logo de MyBookollection" src="images/ico-removebg-preview.png"> 
             <input class="nav_button" type="button" onclick="window.location.href = 'collection.php';" value="Ma collection">
-            <input class="nav_button" type="button" onclick="window.location.href = 'actualites.html';" value="Actualités">
-            <input class="nav_button" type="button" onclick="window.location.href = 'recherche.html';" value="Recherche">
+            <input class="nav_button" type="button" onclick="window.location.href = 'actualites.php';" value="Actualités">
+            <input class="nav_button" type="button" onclick="window.location.href = 'recherche.php';" value="Recherche">
         </nav>
         <h1>Bookollection</h1>
 

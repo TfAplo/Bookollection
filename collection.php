@@ -3,8 +3,8 @@
 // fonction
 
 function recupererLivre ($link) {
-    //session_start();
-    //$id = $_SESSION["id"];
+    session_start();
+    $idUtilisateur = $_SESSION['id'];
     $sql = "SELECT DISTINCT l.titre, a.nomAuteur, g.nomGenre, l.description, l.couverture FROM livre l
             INNER JOIN ajoutcollection ac ON l.idLivre = ac.idLivre
             INNER JOIN ecritpar ep ON l.idLivre = ep.idLivre
@@ -12,7 +12,7 @@ function recupererLivre ($link) {
             INNER JOIN genre g ON l.idGenre = g.idGenre
             INNER JOIN livreestregistre er ON l.idLivre = er.idLivre
             INNER JOIN registre r ON er.idRegistre = r.idRegistre
-            WHERE ac.idUtilisateur = 2"; // REMPLACER CHIFFRE PAR $idUtilisateur // PROBLEME CAR SI 2 AUTEUR ALORS 2 FOIS LA MEME LIGNE
+            WHERE ac.idUtilisateur = $idUtilisateur"; // REMPLACER CHIFFRE PAR $idUtilisateur // PROBLEME CAR SI 2 AUTEUR ALORS 2 FOIS LA MEME LIGNE
     if (!empty($_POST)) {
         if (isset($_POST["titre"])) {
             $titre = $_POST["titre"];
@@ -72,7 +72,7 @@ function afficherLivre ($result) {
 //script principal
 
     error_reporting(E_ALL);
-    require_once ('account.inc.php');
+    require_once ('connexionDB.php');
     //mysqli_report(MYSQLI_REPORT_OFF);
 
 ?>

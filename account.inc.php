@@ -1,4 +1,5 @@
 <?php
+
 function createAccount($email, $username, $password){
     $link = connexion();
     if (checkDB($link, $username, 'nomUtilisateur')) {

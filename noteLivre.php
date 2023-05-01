@@ -5,7 +5,7 @@ function noteStyle($note){
     
     $result = "";
     if ($note == 0){
-        return " - ";
+        return " ";
     }
     for ($i=0;$i<$note;$i++){
         $result = $result."☆";

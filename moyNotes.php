@@ -9,7 +9,7 @@ function moyNotes($idLivre){
         exit;
     }
     $tab_notes = array();
-    $req_notes = "SELECT note FROM ajoutcollection WHERE idLivre = $idLivre";
+    $req_notes = "SELECT note FROM ajoutcollection WHERE idLivre = $idLivre AND note IS NOT NULL";
     $result_notes = mysqli_query($link,$req_notes);
     $nb_notes = mysqli_num_rows($result_notes);
     if ($nb_notes == 0){
@@ -19,7 +19,7 @@ function moyNotes($idLivre){
             $tab_notes[] = $row_notes[0];
         }
         $moy = array_sum($tab_notes)/$nb_notes;
-        return $moy;
+        return round($moy,2);
     }
     mysqli_free_result($result_notes);
 

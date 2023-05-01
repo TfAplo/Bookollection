@@ -8,5 +8,4 @@ function formatComment($comment){
 }
 
 
-
 ?>

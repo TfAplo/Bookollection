@@ -208,7 +208,6 @@ if (isset($_POST['note'])){
 
 }
 
-
 // affichage des commentaires
 $req_comments = "SELECT avis,note,nomUtilisateur FROM ajoutcollection INNER JOIN utilisateur USING(idUtilisateur) WHERE idLivre = {$idLivre} AND avis IS NOT NULL";
 if ($result_comments = mysqli_query($link,$req_comments)){
@@ -282,7 +281,6 @@ if (isset($_POST['bookhave'])){
     $possede = 0;
 }
 
-
 $reqCollec = "SELECT * FROM ajoutcollection WHERE idUtilisateur = {$user} AND idLivre = {$idLivre}";
 $resCollec = mysqli_query($link,$reqCollec);
 $rowsCollec = mysqli_num_rows($resCollec);
@@ -295,11 +293,8 @@ else{
     $resAddCollec = mysqli_query($link,$addCollec);
 }
 
-
    
 ?>
-
-
         <script src="JSscripts/popup.js"></script>
         <script src="JSscripts/theme.js"></script>
     </body>

@@ -56,8 +56,7 @@ INSERT INTO `ajoutcollection` (`idUtilisateur`, `idLivre`, `note`, `avis`, `lu`,
 
 CREATE TABLE `ajoutevenement` (
   `idUtilisateur` int(11) NOT NULL,
-  `idEvenement` int(11) NOT NULL,
-  `ajout` tinyint(1) NOT NULL
+  `idEvenement` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

@@ -255,6 +255,15 @@ nav {
 
 }
 
+.dateComment{
+  font-size: 0.8em;
+  border: var(--third) 1px solid;
+  padding: 2px;
+  border-radius: 5px;
+  background-color: var(--third);
+  margin-left: 10px;
+}
+
 .noteStar{
   color:orange;
   font-size: 1.2em;

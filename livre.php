@@ -209,7 +209,7 @@ if (isset($_POST['note'])){
 }
 
 // affichage des commentaires
-$req_comments = "SELECT avis,note,nomUtilisateur FROM ajoutcollection INNER JOIN utilisateur USING(idUtilisateur) WHERE idLivre = {$idLivre} AND avis IS NOT NULL";
+$req_comments = "SELECT avis,note,nomUtilisateur,dateCommentaire FROM ajoutcollection INNER JOIN utilisateur USING(idUtilisateur) WHERE idLivre = {$idLivre} AND avis IS NOT NULL";
 if ($result_comments = mysqli_query($link,$req_comments)){
     
     echo 
@@ -227,20 +227,21 @@ if ($result_comments = mysqli_query($link,$req_comments)){
             </form>
             ";
             if (isset($_POST['comment'])){
+                $dateC = date("d/m/Y");
                 $reqComment = "SELECT note,nomUtilisateur FROM ajoutcollection INNER JOIN utilisateur USING(idUtilisateur) WHERE idLivre = {$idLivre} AND idUtilisateur = {$user}";
                 $resComment = mysqli_query($link,$reqComment);
                 $rowComment = mysqli_fetch_row($resComment);
                 echo  "
                 <div class='comment'>
-                <p>".$rowComment[1]." - <span class='noteStar'>".noteStyle($rowComment[0])."</span></p>
+                <p>".$rowComment[1]." - <span class='noteStar'>".noteStyle($rowComment[0])."</span> - <span class='dateComment'>".dateFormat($dateC)."</span></p>
                 <p class='avisUser'>".$_POST['comment']."</p>
                 </div>";
-            }else{
+            }
         while ($row_comments = mysqli_fetch_row($result_comments)){
-            
+            if (isset($_POST['comment']) == False || $row_comments[0] != $_POST['comment']){
             echo "
             <div class='comment'>
-                <p>".$row_comments[2]." - <span class='noteStar'>".noteStyle($row_comments[1])."</span></p>
+                <p>".$row_comments[2]." - <span class='noteStar'>".noteStyle($row_comments[1])."</span> - <span class='dateComment'>".dateFormat($row_comments[3])."</span></p>
                 <p class='avisUser'>".$row_comments[0]."</p>
                 
             </div>";
@@ -255,15 +256,16 @@ if ($result_comments = mysqli_query($link,$req_comments)){
 
     if (isset($_POST['comment'])){
         $comment = $_POST['comment'];
+        $dateC = date("Y-m-d");
         $reqComment = "SELECT * FROM ajoutcollection WHERE idLivre = {$idLivre} AND idUtilisateur = {$user}";
         $resComment = mysqli_query($link,$reqComment);
         $rowsComment = mysqli_num_rows($resComment);
         if ($rowsComment == 0){
-            $addComment = "INSERT INTO ajoutcollection (idLivre,idUtilisateur,avis) VALUES ($idLivre,$user,'".formatComment($comment)."')";
+            $addComment = "INSERT INTO ajoutcollection (idLivre,idUtilisateur,avis,dateCommentaire) VALUES ($idLivre,$user,'".formatComment($comment)."','$dateC')";
             $resComment= mysqli_query($link,$addComment);
         }
         else {
-            $updateComment = "UPDATE ajoutcollection SET avis = '".formatComment($comment)."' WHERE idLivre = {$idLivre} AND idUtilisateur = {$user}";
+            $updateComment = "UPDATE ajoutcollection SET avis = '".formatComment($comment)."',dateCommentaire='".$dateC."' WHERE idLivre = {$idLivre} AND idUtilisateur = {$user}";
             $resComment= mysqli_query($link,$updateComment);
         }
     }

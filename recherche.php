@@ -1,17 +1,15 @@
 <?php
 require_once 'account.inc.php';
+require_once 'livreEstEcritPar.php';
 
 function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
     $link = connexion();
-    $result = mysqli_query($link, "SELECT DISTINCT l.titre, l.couverture, l.description, a.nomAuteur FROM livre l
-                                    INNER JOIN ecritpar ec ON l.idlivre = ec.idlivre
-                                    INNER JOIN auteur a ON ec.idauteur = a.idauteur
+    $result = mysqli_query($link, "SELECT DISTINCT l.idLivre, l.titre, l.couverture, l.description FROM livre l
                                     INNER JOIN livreestregistre li ON l.idlivre = li.idlivre
                                     INNER JOIN registre r ON li.idregistre = r.idregistre
                                     INNER JOIN genreestregistre gr ON r.idregistre = gr.idregistre
                                     INNER JOIN genre g ON gr.idgenre = g.idgenre
-                                    WHERE (l.titre LIKE '%$barreRech%' OR a.nomAuteur LIKE '%$barreRech%' OR a.prenomAuteur LIKE '%$barreRech%')
-                                        AND r.nomRegistre LIKE '$registre%' AND g.nomGenre LIKE '$genre%'");
+                                    WHERE l.titre LIKE '%$barreRech%' AND r.nomRegistre LIKE '$registre%' AND g.nomGenre LIKE '$genre%'");
     if (mysqli_num_rows($result) == 0) {
         echo 'Aucun livre trouvé';
     }else{
@@ -20,7 +18,7 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
         echo " <a class='livres' href='livre.php'>";
            echo " <img src='images/livres/".$row['couverture']."' width='100px' alt='couverture du livre'>";
            echo " <div>";
-           echo "     <div class='titreauteur'><h3>".$row['titre']."</h3><h5> De ".$row['nomAuteur']."</h5></div>";
+           echo "     <div class='titreauteur'><h3>".$row['titre']."</h3><h5> De ".livreEstEcritPar($row['idLivre'])."</h5></div>";
            echo "     <p>". $row['description']."</p>";
            echo " </div>";
        echo " </a>";
@@ -90,15 +88,24 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
             <option value="roman">Roman</option>
             <option value="bd">Bande Dessinée</option>
             <option value="poésie">Poésie</option>
-            <option value="autobiographie">Autobiographie</option>
+            <option value="manga">Manga</option>
+            <option value="théâtre">Théâtre</option>
         </select>
         <select name="registre" id="registre">
             <option value="" selected>Registre</option>
-            <option value="fantastique">Fantastique</option>
-            <option value="policier">Policier</option>
-            <option value="comique">Comique</option>
-            <option value="pique">Epique</option>
+            <option value="Policier / Thriller">Policier / Thriller</option>
+            <option value="Action / Aventure">Action / Aventure</option>
+            <option value="Romance">Romance</option>
+            <option value="Fantasy">Fantastique</option>
+            <option value="Science-fiction">Science-fiction</option>
+            <option value="Lyrique">Lyrique</option>
+            <option value="Satirique">Satirique</option>
             <option value="tragique">Tragique</option>
+            <option value="Comique">Comique</option>
+            <option value="Shonen">Shonen</option>
+            <option value="Seinen">Seinen</option>
+            <option value="Shojo">Shojo</option>
+            <option value="Dystopique">Dystopique</option>
         </select>
     </form>
 

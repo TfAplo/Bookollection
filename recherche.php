@@ -15,7 +15,7 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
     }else{
         $result->data_seek(0);
         while ( $row = $result->fetch_assoc() ) {
-        echo " <a class='livres' href='livre.php'>";
+        echo " <a class='livres' href='livre.php?q=".$row['idLivre']."'>";
            echo " <img src='images/livres/".$row['couverture']."' width='100px' alt='couverture du livre'>";
            echo " <div>";
            echo "     <div class='titreauteur'><h3>".$row['titre']."</h3><h5> De ".livreEstEcritPar($row['idLivre'])."</h5></div>";
@@ -44,6 +44,7 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
     <link rel="stylesheet" href="styles/popup.css">
     <link rel="icon" href="images\ico-removebg-preview.png" type="image/png">
     <title>Recherche - Bookollection</title>
+    <script src="JSscripts/theme.js"></script>
 </head>
 <body>
     <header>
@@ -81,7 +82,7 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
             </div>
         </div>
     </header>
-    <form action="recherche.php" method="post">
+    <form action="recherche.php" method="post" autocomplete="off">
         <input type="text" id="recherche" name="recherche" placeholder="Recherchez un livre..."> <input type="submit" value="" style="display: none;">
         <select name="genre" id="genre">
             <option value="" selected>Genre</option>
@@ -118,7 +119,6 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
         ?>
     </div>
 
-    <script src="JSscripts/theme.js"></script>
     <script src="JSscripts/popup.js"></script>
 </body>
 </html>

@@ -15,7 +15,7 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
     }else{
         $result->data_seek(0);
         while ( $row = $result->fetch_assoc() ) {
-        echo " <a class='livres' href='livre.php?q=".$row['idLivre']."'>";
+        echo " <a class='livres' href='livre.php?idLivre=".$row['idLivre']."'>";
            echo " <img src='images/livres/".$row['couverture']."' width='100px' alt='couverture du livre'>";
            echo " <div>";
            echo "     <div class='titreauteur'><h3>".$row['titre']."</h3><h5> De ".livreEstEcritPar($row['idLivre'])."</h5></div>";

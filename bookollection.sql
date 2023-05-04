@@ -54,7 +54,7 @@ INSERT INTO `ajoutcollection` (`idUtilisateur`, `idLivre`, `note`, `avis`, `lu`,
 -- Structure de la table `ajoutevennement`
 --
 
-CREATE TABLE `ajoutevennement` (
+CREATE TABLE `ajoutevenement` (
   `idUtilisateur` int(11) NOT NULL,
   `idEvenement` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -652,7 +652,7 @@ ALTER TABLE `ajoutcollection`
 --
 -- Index pour la table `ajoutevennement`
 --
-ALTER TABLE `ajoutevennement`
+ALTER TABLE `ajoutevenement`
   ADD PRIMARY KEY (`idUtilisateur`,`idEvenement`),
   ADD KEY `idEvenement` (`idEvenement`);
 
@@ -757,9 +757,9 @@ ALTER TABLE `ajoutcollection`
 --
 -- Contraintes pour la table `ajoutevennement`
 --
-ALTER TABLE `ajoutevennement`
-  ADD CONSTRAINT `ajoutevennement_ibfk_1` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`idUtilisateur`),
-  ADD CONSTRAINT `ajoutevennement_ibfk_2` FOREIGN KEY (`idEvenement`) REFERENCES `evenement` (`idEvenement`);
+ALTER TABLE `ajoutevenement`
+  ADD CONSTRAINT `ajoutevenement_ibfk_1` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`idUtilisateur`),
+  ADD CONSTRAINT `ajoutevenement_ibfk_2` FOREIGN KEY (`idEvenement`) REFERENCES `evenement` (`idEvenement`);
 
 --
 -- Contraintes pour la table `ecritpar`

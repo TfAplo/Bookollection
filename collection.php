@@ -64,7 +64,7 @@ function recupererLivre ($link) {
 function afficherLivre ($result) {
     $result->data_seek(0);
     while ( $row = $result->fetch_assoc() ) {
-        echo "<a class='livres' href='livre.php?q=".$row['idLivre']."'>\n";
+        echo "<a class='livres' href='livre.php?idLivre=".$row['idLivre']."'>\n";
         echo "<img src='images/livres/".$row['couverture']."' width='60px' alt='couverture du livre'>\n";
         echo "<div>\n";
         echo "<h3>".$row['titre']."</h3>\n";

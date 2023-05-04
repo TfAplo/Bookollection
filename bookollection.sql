@@ -33,7 +33,8 @@ CREATE TABLE `ajoutcollection` (
   `note` int(11) DEFAULT NULL,
   `avis` varchar(200) DEFAULT NULL,
   `lu` tinyint(1) NOT NULL,
-  `possede` tinyint(1) NOT NULL
+  `possede` tinyint(1) NOT NULL,
+  `dateCommentaire` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

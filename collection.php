@@ -12,7 +12,7 @@ session_start();
 
 function recupererLivre ($link) {
     $idUtilisateur = $_SESSION['id'];
-    $sql = "SELECT DISTINCT l.titre, a.nomAuteur, g.nomGenre, l.description, l.couverture FROM livre l
+    $sql = "SELECT DISTINCT l.idLivre, l.titre, g.nomGenre, l.description, l.couverture FROM livre l
             INNER JOIN ajoutcollection ac ON l.idLivre = ac.idLivre
             INNER JOIN ecritpar ep ON l.idLivre = ep.idLivre
             INNER JOIN auteur a ON ep.idAuteur = a.idAuteur
@@ -64,11 +64,11 @@ function recupererLivre ($link) {
 function afficherLivre ($result) {
     $result->data_seek(0);
     while ( $row = $result->fetch_assoc() ) {
-        echo "<a class='livres' href='livre.html'>\n";
+        echo "<a class='livres' href='livre.php?q=".$row['idLivre']."'>\n";
         echo "<img src='images/livres/".$row['couverture']."' width='60px' alt='couverture du livre'>\n";
         echo "<div>\n";
         echo "<h3>".$row['titre']."</h3>\n";
-        echo "<h4>De ".$row['nomAuteur']."</h4>";
+        echo "<h4><div>De ".livreEstEcritPar($row['idLivre'])."</div></h4>";
         echo "<p id='description'>".$row['description']."</p>\n";
         echo "</div>\n";
         echo "</a>\n";

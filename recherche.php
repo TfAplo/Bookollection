@@ -5,11 +5,15 @@ require_once 'livreEstEcritPar.php';
 function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
     $link = connexion();
     $result = mysqli_query($link, "SELECT DISTINCT l.idLivre, l.titre, l.couverture, l.description FROM livre l
+                                    INNER JOIN ecritpar ec ON l.idlivre = ec.idlivre
+                                    INNER JOIN auteur a ON ec.idAuteur = A.idAuteur							
                                     INNER JOIN livreestregistre li ON l.idlivre = li.idlivre
                                     INNER JOIN registre r ON li.idregistre = r.idregistre
                                     INNER JOIN genreestregistre gr ON r.idregistre = gr.idregistre
                                     INNER JOIN genre g ON gr.idgenre = g.idgenre
-                                    WHERE l.titre LIKE '%$barreRech%' AND r.nomRegistre LIKE '$registre%' AND g.nomGenre LIKE '$genre%'");
+                                    WHERE (l.titre LIKE '%$barreRech%' OR a.nomAuteur LIKE '%$barreRech%' OR a.prenomAuteur LIKE '%$barreRech%')
+                                    AND r.nomRegistre LIKE '$registre%' AND g.nomGenre LIKE '$genre%'
+                                    GROUP by L.idLivre");
     if (mysqli_num_rows($result) == 0) {
         echo 'Aucun livre trouvé';
     }else{

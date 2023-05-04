@@ -395,7 +395,27 @@ footer{
     box-shadow: 0 0 #efa424;
     top: 6px;
 }
-
 .box_tri>h2{
     margin-bottom: 20px;
+}
+
+.addEvent{
+    position: relative;
+    top: 0px;
+    right: -11em;
+    border:0;
+    background-color: transparent;
+    color: white;
+    font-size: 1.2em;
+}
+
+.addEvent:hover{
+    color: #e11e45;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.addEvent:active{
+    color: #e11e45;
+    transition: 0.2s;
 }

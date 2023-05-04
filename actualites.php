@@ -49,10 +49,15 @@
     require("livreEstEcritPar.php");
     require("date.php");
     require("moyNotes.php");
-    $link = mysqli_connect('localhost','root','','bookollection',3306);
-    if (!$link) {
-        echo "Erreur: Impossible de se connecter à la base de données";
-        exit;
+    require("account.inc.php");
+
+    $link = connexion();
+    if (!isset($_SESSION['id'])){
+        session_start();
+    }
+    $user = $_SESSION['id'];
+    if (isset($_GET['idLivre'])){
+        $idLivre = $_GET['idLivre'];
     }
 
     //top 5 des livres
@@ -114,15 +119,22 @@
 
 // ajout newsletter
 
-    /*if(isset($_POST['newsletter'])){
-        
-        $req = "INSERT INTO utilisateur (newsletter) VALUES (1)";
-        if(mysqli_query($link, $req)){
-            echo "<script>alert('Vous êtes bien inscrit à la newsletter !')</script>";
+    if(isset($_POST['newsletter'])){
+        $reqNews = "SELECT newsletter FROM utilisateur WHERE idUtilisateur = $user AND newsletter = 1";
+        $resNews = mysqli_query($link, $reqNews);
+        $rowNews = mysqli_fetch_array($resNews);
+        if($rowNews['newsletter'] == 1){
+            echo "<script>alert('Vous êtes déjà inscrit à la newsletter !')</script>";
         }else{
-            echo "<script>alert('Erreur lors de l\'inscription à la newsletter !')</script>";
+            $addNews = "UPDATE utilisateur SET newsletter = 1 WHERE idUtilisateur = $user";
+            if(mysqli_query($link, $addNews)){
+                echo "<script>alert('Vous êtes bien inscrit à la newsletter !')</script>";
+            }else{
+                echo "<script>alert('Erreur lors de l\'inscription à la newsletter !')</script>";
+            }
         }
-    }*/
+
+    }
 
     if($link) mysqli_close($link);
 

@@ -25,7 +25,7 @@ function createAccount($email, $username, $password){
 }
 
 function connexion(){
-		$link = mysqli_connect('localhost', 'root', '', 'Bookollection');
+		$link = mysqli_connect('localhost', 'root', '', 'bookollection');
 	
 		if (!$link) {
 			die("Erreur d'acces a la base");

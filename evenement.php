@@ -63,21 +63,17 @@
 </body>
 </html>
 
-
 <?php
 
 require('demo.inc.php');
 require('date.php');
-debutHtml('Evènement');
-
-
-
-$link = mysqli_connect('localhost','root','','bookollection',3306);
-
-if (!$link) {
-    echo "Erreur: Impossible de se connecter à la base de données";
-    exit;
+require('account.inc.php');
+$link = connexion();
+if (!isset($_SESSION['id'])){
+    session_start();
 }
+$user = $_SESSION['id'];
+
 
 echo "<br>";
 $tab_tri=array();
@@ -91,7 +87,19 @@ if (isset($_POST['tri'])){
             while ($row_triC=mysqli_fetch_array($result_triC)){
                 echo "<div class='box_event'>";
                 echo '<img class="img_event" src="'.$row_triC['photo'].'">';
+                
                 echo "<div class='text_event'>"; 
+                echo "<form action='evenement.php' method='post'>";
+                echo "<button type='submit' class='addEvent' name='addEvent[]' value='".$row_triC['idEvenement']."'";
+                $reqAdd = "SELECT * FROM ajoutevenement WHERE idUtilisateur={$user} AND idEvenement = {$row_triC['idEvenement']}";
+                $resAdd = mysqli_query($link,$reqAdd);
+                $rowsAdd = mysqli_num_rows($resAdd);
+                if ($rowsAdd == 1 || isset($_POST['addEvent'])){
+                    echo 'style ="color:#e11e45";';
+                }
+                echo '>';
+                echo "♡</button>";
+                echo "</form>";
                 echo "<h3>".$row_triC['nomEvenement']."</h3>";
                 echo "<br>";
                 echo "Date début : ".dateFormat($row_triC['dateDebut'])." - Date fin : ".dateFormat($row_triC['dateFin'])."</p>";
@@ -115,6 +123,17 @@ if (isset($_POST['tri'])){
                 echo "<div class='box_event'>";
                 echo '<img class="img_event" src="'.$row_triD['photo'].'">';
                 echo "<div class='text_event'>"; 
+                echo "<form action='evenement.php' method='post'>";
+                echo "<button type='submit' class='addEvent' name='addEvent[]' value='".$row_triD['idEvenement']."'";
+                $reqAdd = "SELECT * FROM ajoutevenement WHERE idUtilisateur={$user} AND idEvenement = {$row_triD['idEvenement']}";
+                $resAdd = mysqli_query($link,$reqAdd);
+                $rowsAdd = mysqli_num_rows($resAdd);
+                if ($rowsAdd == 1 || isset($_POST['addEvent'])){
+                    echo 'style ="color:#e11e45";';
+                }
+                echo '>';
+                echo "♡</button>";
+                echo "</form>";
                 echo "<h3>".$row_triD['nomEvenement']."</h3>";
                 echo "<br>";
                 echo "Date début : ".dateFormat($row_triD['dateDebut'])." - Date fin : ".dateFormat($row_triD['dateFin'])."</p>";
@@ -140,6 +159,17 @@ if (isset($_POST['tri'])){
             echo "<div class='box_event'>";
             echo '<img class="img_event" src="'.$row_triD['photo'].'">';
             echo "<div class='text_event'>"; 
+            echo "<form action='evenement.php' method='post'>";
+            echo "<button type='submit' class='addEvent' name='addEvent[]' value='".$row_triD['idEvenement']."'";
+            $reqAdd = "SELECT * FROM ajoutevenement WHERE idUtilisateur={$user} AND idEvenement = {$row_triD['idEvenement']}";
+            $resAdd = mysqli_query($link,$reqAdd);
+            $rowsAdd = mysqli_num_rows($resAdd);
+            if (($rowsAdd == 1 && (isset($_POST['addEvent'])==False || $_POST['addEvent'][0] != $row_triD['idEvenement'])) || (isset($_POST['addEvent']) && $_POST['addEvent'][0]== $row_triD['idEvenement'] && $rowsAdd==0)){
+                echo 'style ="color:#e11e45";';
+            }
+            echo '>';
+            echo "♡</button>";
+            echo "</form>";
             echo "<h3>".$row_triD['nomEvenement']."</h3>";
             echo "<br>";
             echo "Date début : ".dateFormat($row_triD['dateDebut'])." - Date fin : ".dateFormat($row_triD['dateFin'])."</p>";
@@ -149,7 +179,7 @@ if (isset($_POST['tri'])){
             echo "<a href='".$row_triD['lien']."' class='bouton' target='__BLANK'>Voir plus</a>";
             echo "</div>";
             echo "</div>";
-        }
+            }
         }
     }
     echo "</div>";
@@ -158,8 +188,25 @@ if (isset($_POST['tri'])){
 
 
 
+    if (isset($_POST['addEvent']) ){
+        $addEvent = $_POST['addEvent'];
+        $reqAdd = "SELECT * FROM ajoutevenement WHERE idUtilisateur={$user} AND idEvenement = {$addEvent[0]}";
+        $resAdd = mysqli_query($link,$reqAdd);
+        $rowsAdd = mysqli_num_rows($resAdd);
+        if ($rowsAdd == 0){
+            $reqAdd = "INSERT INTO ajoutevenement (idUtilisateur,idEvenement) VALUES ($user,$addEvent[0])";
+            $resAdd = mysqli_query($link,$reqAdd);
+        }else{
+            $reqAdd = "DELETE FROM ajoutevenement WHERE idUtilisateur={$user} AND idEvenement = {$addEvent[0]}";
+            $resAdd = mysqli_query($link,$reqAdd);
+        }
+    
+    }
+    
+
+
+
 if($link) mysqli_close($link);
-finHtml();
 
 ?>
 

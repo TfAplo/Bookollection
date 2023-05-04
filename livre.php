@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -54,21 +55,20 @@
     require('livreEstEcritPar.php');
     require('livreEstRegistre.php');
     require('noteLivre.php');
-    $link = mysqli_connect('localhost','root','','bookollection',3306);
-    if (!$link) {
-        echo "Erreur: Impossible de se connecter à la base de données";
-        exit;
+    require('formatComment.php');
+    require('account.inc.php');
+    
+    $link = connexion();
+    if (!isset($_SESSION['id'])){
+        session_start();
     }
+
+    $user = $_SESSION['id'];
+
     if (isset($_GET['idLivre'])){
         $idLivre = $_GET['idLivre'];
     }
     
-    if (isset($_SESSION['idUtilisateur'])){
-        $user = $_SESSION['idUtilisateur'];
-    }
-    else{
-        $user = 1;
-    }
 
     // affichage global du livre et des informations
     $req_livre = "SELECT titre,description,couverture,dateParution,nomRegistre,nomGenre FROM livre INNER JOIN livreestregistre USING(idLivre) INNER JOIN registre ON registre.idRegistre = livreestregistre.idregistre INNER JOIN genre USING(idGenre) WHERE idLivre = {$idLivre}";
@@ -87,28 +87,63 @@
         echo "<h2 id='Tachat'>Acheter ce livre :</h2>";
         $req_site = "SELECT urlSite,logo FROM sitecommercial INNER JOIN enventesur USING(idSite) INNER JOIN livre USING(idLivre) WHERE idLivre = {$idLivre}";
         if ($result_site = mysqli_query($link,$req_site)){
-            echo "<ul>";
             while ($row_site = mysqli_fetch_row($result_site)){
-                echo "<li><a id='buyLink' href='".$row_site[0]."' target='__BLANK'><img id='logoSite' src='".$row_site[1]."'></a></li>";
+                echo "<p><a id='buyLink' href='".$row_site[0]."' target='__BLANK'><img id='logoSite' src='".$row_site[1]."'></a></p>";
             }
-            echo "</ul>";
+
         }
         echo "</div>";
         echo "</div>";
+
+        // formulaire des notes
+
         echo "<div class='rating'>";
         echo "<form action='livre.php?idLivre=".$idLivre."' method='post'>";
-        echo "<button type='submit' name='note[]' value='5' class='testRating'"; if (isset($_POST['note'])){$note = $_POST['note'];   if($note[0]>=5){echo 'style ="color:orange";';}}
+        echo "<button type='submit' name='note[]' value='5' class='testRating'"; 
+        $reqNote5 = "SELECT * FROM ajoutcollection WHERE idUtilisateur={$user} AND idLivre = {$idLivre} AND note >= 5";
+        $resNote5 = mysqli_query($link,$reqNote5);
+        $rowsNote5 = mysqli_num_rows($resNote5);
+        if ($rowsNote5 == 1){
+            echo 'style ="color:orange";';
+        }else if (isset($_POST['note'])){$note = $_POST['note'];   if($note[0]>=5){echo 'style ="color:orange";';}}
         echo ">☆</button>";
-        echo "<button type='submit' name='note[]' value='4' class='testRating'"; if (isset($_POST['note'])){$note = $_POST['note'];   if($note[0]>=4){echo 'style ="color:orange";';}}
+        echo "<button type='submit' name='note[]' value='4' class='testRating'";
+        $reqNote4 = "SELECT * FROM ajoutcollection WHERE idUtilisateur={$user} AND idLivre = {$idLivre} AND note >= 4";
+        $resNote4 = mysqli_query($link,$reqNote4);
+        $rowsNote4 = mysqli_num_rows($resNote4);
+        if ($rowsNote4 == 1){
+            echo 'style ="color:orange";';
+        }else if (isset($_POST['note'])){$note = $_POST['note'];   if($note[0]>=4){echo 'style ="color:orange";';}}
         echo ">☆</button>";
-        echo "<button type='submit' name='note[]' value='3' class='testRating'"; if (isset($_POST['note'])){$note = $_POST['note'];   if($note[0]>=3){echo 'style ="color:orange";';}}
+        echo "<button type='submit' name='note[]' value='3' class='testRating'";
+        $reqNote3 = "SELECT * FROM ajoutcollection WHERE idUtilisateur={$user} AND idLivre = {$idLivre} AND note >= 3";
+        $resNote3 = mysqli_query($link,$reqNote3);
+        $rowsNote3 = mysqli_num_rows($resNote3);
+        if ($rowsNote3 == 1){
+            echo 'style ="color:orange";';
+        }else if (isset($_POST['note'])){$note = $_POST['note'];   if($note[0]>=3){echo 'style ="color:orange";';}}
         echo ">☆</button>";
-        echo "<button type='submit' name='note[]' value='2' class='testRating'"; if (isset($_POST['note'])){$note = $_POST['note'];   if($note[0]>=2){echo 'style ="color:orange";';}}
+        echo "<button type='submit' name='note[]' value='2' class='testRating'";
+        $reqNote2 = "SELECT * FROM ajoutcollection WHERE idUtilisateur={$user} AND idLivre = {$idLivre} AND note >= 2";
+        $resNote2 = mysqli_query($link,$reqNote2);
+        $rowsNote2 = mysqli_num_rows($resNote2);
+        if ($rowsNote2 == 1){
+            echo 'style ="color:orange";';
+        }else if (isset($_POST['note'])){$note = $_POST['note'];   if($note[0]>=2){echo 'style ="color:orange";';}}
         echo ">☆</button>";
-        echo "<button type='submit' name='note[]' value='1' class='testRating'"; if (isset($_POST['note'])){$note = $_POST['note'];   if($note[0]>=1){echo 'style ="color:orange";';}}
+        echo "<button type='submit' name='note[]' value='1' class='testRating'";
+        $reqNote1 = "SELECT * FROM ajoutcollection WHERE idUtilisateur={$user} AND idLivre = {$idLivre} AND note >= 1";
+        $resNote1 = mysqli_query($link,$reqNote1);
+        $rowsNote1 = mysqli_num_rows($resNote1);
+        if ($rowsNote1 == 1){
+            echo 'style ="color:orange";';
+        }
+        else if (isset($_POST['note'])){$note = $_POST['note'];   if($note[0]>=1){echo 'style ="color:orange";';}}
         echo ">☆</button>";
         echo "</form>";
         echo "</div>";
+
+        // affichage des informations
         echo "<div class='info'>";
         echo "<h2 id='Tinfo'>Informations :</h2>";
         echo "<p id='info'>Date de parution : ".dateFormat($row[3])."</p>";
@@ -125,15 +160,31 @@
     }
     //formulaire pour ajouter le livre à la collection (lu et possédé)
     echo '
-    <form method="post" action="livre.php?idLivre='.$idLivre.'">; 
+    <form method="post" action="livre.php?idLivre='.$idLivre.'">
     <div class="bookre">
     <label id="BookRead">
-        <input class="box" type="checkbox" name="bookread" ';if (isset($_POST['bookread'])) {echo 'checked="checked"';} echo ' onchange="submit();"">
+
+        <input class="box" type="checkbox" name="bookread" ';
+        $reqRead = "SELECT * FROM ajoutcollection WHERE idLivre = {$idLivre} AND idUtilisateur = {$user} AND lu = 1";
+        $resRead = mysqli_query($link,$reqRead);
+        $rowsRead = mysqli_num_rows($resRead);
+        if ($rowsRead == 1 || isset($_POST['bookread'])){
+            echo 'checked="checked"';
+        }
+        echo ' onchange="submit();"">
         Livre lu
-    </label>
-    <br>
+    </label>';
+
+  echo '  <br>
     <label id="BookHave">
-        <input class="box" type="checkbox" name = "bookhave" ';if (isset($_POST['bookhave'])) {echo 'checked="checked"';} echo 'onchange="submit();"">
+        <input class="box" type="checkbox" name = "bookhave" ';
+        $reqHave = "SELECT * FROM ajoutcollection WHERE idLivre = {$idLivre} AND idUtilisateur = {$user} AND possede = 1";
+        $resHave = mysqli_query($link,$reqHave);
+        $rowsHave = mysqli_num_rows($resHave);
+        if ($rowsHave == 1 || isset($_POST['bookhave'])){
+            echo 'checked="checked"';
+        }
+        echo 'onchange="submit();"">
         Livre possédé
     </label>
 </div>
@@ -157,11 +208,8 @@ if (isset($_POST['note'])){
 
 }
 
-    
-
-
 // affichage des commentaires
-$req_comments = "SELECT avis,note,nomUtilisateur FROM ajoutcollection INNER JOIN utilisateur USING(idUtilisateur) WHERE idLivre = {$idLivre} AND avis IS NOT NULL";
+$req_comments = "SELECT avis,note,nomUtilisateur,dateCommentaire FROM ajoutcollection INNER JOIN utilisateur USING(idUtilisateur) WHERE idLivre = {$idLivre} AND avis IS NOT NULL";
 if ($result_comments = mysqli_query($link,$req_comments)){
     
     echo 
@@ -169,19 +217,57 @@ if ($result_comments = mysqli_query($link,$req_comments)){
         <div class='box_comment'>
             <h2>Commentaires (".moyNotes($idLivre)."/5)</h2>
             ";
+            echo "
+            <h3>Ajouter un commentaire</h3>
+            <form method='post' action='livre.php?idLivre={$idLivre}'>
+                <textarea name='comment' placeholder='Votre commentaire...'></textarea>
+                <br>
+                <input type='submit' name='submit' value='Ajouter'>
+                
+            </form>
+            ";
+            if (isset($_POST['comment'])){
+                $dateC = date("d/m/Y");
+                $reqComment = "SELECT note,nomUtilisateur FROM ajoutcollection INNER JOIN utilisateur USING(idUtilisateur) WHERE idLivre = {$idLivre} AND idUtilisateur = {$user}";
+                $resComment = mysqli_query($link,$reqComment);
+                $rowComment = mysqli_fetch_row($resComment);
+                echo  "
+                <div class='comment'>
+                <p>".$rowComment[1]." - <span class='noteStar'>".noteStyle($rowComment[0])."</span> - <span class='dateComment'>".dateFormat($dateC)."</span></p>
+                <p class='avisUser'>".$_POST['comment']."</p>
+                </div>";
+            }
         while ($row_comments = mysqli_fetch_row($result_comments)){
-            
+            if (isset($_POST['comment']) == False || $row_comments[0] != $_POST['comment']){
             echo "
             <div class='comment'>
-                <p>".$row_comments[2]." - <span class='noteStar'>".noteStyle($row_comments[1])."</span></p>
+                <p>".$row_comments[2]." - <span class='noteStar'>".noteStyle($row_comments[1])."</span> - <span class='dateComment'>".dateFormat($row_comments[3])."</span></p>
                 <p class='avisUser'>".$row_comments[0]."</p>
                 
             </div>";
         }
+    }
         echo "</div>
         <div>
         </div>
         </div>";
+}
+// ajouter un commentaire
+
+    if (isset($_POST['comment'])){
+        $comment = $_POST['comment'];
+        $dateC = date("Y-m-d");
+        $reqComment = "SELECT * FROM ajoutcollection WHERE idLivre = {$idLivre} AND idUtilisateur = {$user}";
+        $resComment = mysqli_query($link,$reqComment);
+        $rowsComment = mysqli_num_rows($resComment);
+        if ($rowsComment == 0){
+            $addComment = "INSERT INTO ajoutcollection (idLivre,idUtilisateur,avis,dateCommentaire) VALUES ($idLivre,$user,'".formatComment($comment)."','$dateC')";
+            $resComment= mysqli_query($link,$addComment);
+        }
+        else {
+            $updateComment = "UPDATE ajoutcollection SET avis = '".formatComment($comment)."',dateCommentaire='".$dateC."' WHERE idLivre = {$idLivre} AND idUtilisateur = {$user}";
+            $resComment= mysqli_query($link,$updateComment);
+        }
     }
         
 // ajout collection lu et possédé
@@ -197,23 +283,20 @@ if (isset($_POST['bookhave'])){
     $possede = 0;
 }
 
-$reqCollec = "SELECT * FROM ajoutcollection WHERE idUtilisateur = '{$user}' AND idLivre = '{$idLivre}'";
+$reqCollec = "SELECT * FROM ajoutcollection WHERE idUtilisateur = {$user} AND idLivre = {$idLivre}";
 $resCollec = mysqli_query($link,$reqCollec);
 $rowsCollec = mysqli_num_rows($resCollec);
-if ($rowsCollec=0){
-    $addCollec = "INSERT INTO ajoutcollection (idUtilisateur,idLivre,lu,possede) VALUES ('{$user}','{$idLivre}','{$lu}','{$possede}')";
+if ($rowsCollec==0){
+    $addCollec = "INSERT INTO ajoutcollection (idUtilisateur,idLivre,lu,possede) VALUES ({$user},{$idLivre},{$lu},{$possede})";
     $resAddCollec = mysqli_query($link,$addCollec);
 }
 else{
-    $addCollec = "UPDATE ajoutcollection SET lu = '{$lu}', possede = '{$possede}' WHERE idUtilisateur = '{$user}' AND idLivre = '{$idLivre}'";
+    $addCollec = "UPDATE ajoutcollection SET lu = {$lu}, possede = {$possede} WHERE idUtilisateur = {$user} AND idLivre = {$idLivre}";
     $resAddCollec = mysqli_query($link,$addCollec);
 }
 
-
    
 ?>
-
-
         <script src="JSscripts/popup.js"></script>
         <script src="JSscripts/theme.js"></script>
     </body>

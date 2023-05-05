@@ -312,6 +312,13 @@ footer{
     margin-bottom: 20px;
 }
 
+.grid_tri{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 10vh;
+    margin-bottom: 20px;
+}
+
 
 .box_event{
     margin-left: auto;
@@ -343,7 +350,7 @@ footer{
 .text_event{
     text-align: center;
     margin-left: 50px;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 10px;
     color: white;
     padding-right: 10%;
@@ -351,11 +358,24 @@ footer{
 }
 
 .box_tri{
-  
+    margin-left: auto;
     text-align: center;
-    margin-top: 15vh;
+    margin-top: 8vh;
     margin-bottom: 10px;
 
+}
+
+.box_pref{
+    margin-left: 20px;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 8vh;
+    margin-bottom: 10px;
+}
+
+.box_pref input{
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 #tri{
@@ -418,4 +438,13 @@ footer{
 .addEvent:active{
     color: #e11e45;
     transition: 0.2s;
+}
+
+.box_filtre{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
 }

@@ -11,9 +11,9 @@
 <header>
 <nav>
             <img alt="Logo de MyBookollection" src="images/ico-removebg-preview.png"> 
-            <input class="nav_button" type="button" onclick="window.location.href = 'collection.html';" value="Ma collection">
-            <input class="nav_button focus" type="button" onclick="window.location.href = 'actualites.html';" value="Actualités">
-            <input class="nav_button" type="button" onclick="window.location.href = 'recherche.html';" value="Recherche">
+            <input class="nav_button" type="button" onclick="window.location.href = 'collection.php';" value="Ma collection">
+            <input class="nav_button focus" type="button" onclick="window.location.href = 'actualites.php';" value="Actualités">
+            <input class="nav_button" type="button" onclick="window.location.href = 'recherche.php';" value="Recherche">
         </nav>
         <h1>Bookollection</h1>
         <!-- Bouton popup -->
@@ -136,6 +136,20 @@
 
     }
 
+    echo "
+    <div class='box_fest'>
+    <div class='text_fest'>
+        <h4>Différents évenement pour les passionner de lecture !</h4>
+        <br>
+        <p>Partagez vos lectures du moment, avec les différents évenement autour des livres !
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        </p>
+        <a href='evenement.php' class='bouton bouton_fest'>Voir plus</a>
+    </div>
+    <img class='affiche_fest' src='images/affiche_fest_2.png' alt='actu'>
+</div>
+    ";
+
     if($link) mysqli_close($link);
 
     ?>
@@ -143,17 +157,7 @@
 
 
 
-    <div class="box_fest">
-        <div class="text_fest">
-            <h4>Différents évenement pour les passionner de lecture !</h4>
-            <br>
-            <p>Partagez vos lectures du moment, avec les différents évenement autour des livres !
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-            </p>
-            <a href="evenement.php" class="bouton bouton_fest">Voir plus</a>
-        </div>
-        <img class="affiche_fest" src="images/affiche_fest_2.png" alt="actu">
-    </div>
+
 
 
    

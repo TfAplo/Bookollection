@@ -44,19 +44,6 @@
             </div>
         </div>    
     </header>
-   <div class="box_tri">
-        <h2>Tri des Evènements </h2>
-        <div><form action="evenement.php" method="post">
-            <select name="tri" id="tri">
-                <optgroup label="Méthodes de Tri">
-                <option value="dateC" <?php if(isset($_POST['tri']) && $_POST['tri'] == "dateC") echo 'selected="selected"';?>> Date croissante</option>
-                <option value="dateD" <?php if(isset($_POST['tri']) && $_POST['tri'] == "dateD") echo 'selected="selected"';?>>Date décroissante</option>
-                </optgroup>
-            </select>
-            <input class="boutonTri" type="submit" value="Valider">
-        </form>
-    </div>
-
 
         <script src="JSscripts/popup.js"></script>
     <script src="JSscripts/theme.js"></script>
@@ -69,122 +56,103 @@ require('demo.inc.php');
 require('date.php');
 require('account.inc.php');
 $link = connexion();
-if (!isset($_SESSION['id'])){
+if (!isset($_SESSION['id']));
     session_start();
-}
+
 $user = $_SESSION['id'];
 
 
+if (isset($_POST['triEvent'])){
+    $_SESSION['triEvent'] = $_POST['triEvent'];
+}else if ($_SESSION['triEvent']==""){
+    $_SESSION['triEvent'] = "DESC";
+}
+
+if (isset($_POST['fav'])){
+    if ($_SESSION['fav']=="fav"){
+        $_SESSION['fav'] = "all";
+    }else if ($_SESSION['fav']=="all"){
+        $_SESSION['fav'] = "fav";
+    }
+}else if ($_SESSION['fav']==""){
+    $_SESSION['fav'] = "all";
+}
+
+
+echo '
+<div class="grid_tri">
+    <div class="box_tri">
+        <h2>Tri des Evènements </h2>
+        <form action="evenement.php" method="post">
+            <select name="triEvent" id="tri">
+                <optgroup label="Méthodes de Tri">
+                <option value="ASC"'; if($_SESSION['triEvent']=="ASC"){ echo 'selected="selected"';}  echo '> Date croissante</option>
+                <option value="DESC"'; if($_SESSION['triEvent']=="DESC"){ echo 'selected="selected"';} echo '>Date décroissante</option>
+                </optgroup>
+            </select>
+            <input class="boutonTri" type="submit" value="Valider">
+        </form>
+    </div>
+';
+
+echo '
+    <div class="box_pref">
+        <h2>Préférences</h2>
+        <form action="evenement.php" method="post">';
+            echo '<input type="radio" id="fav" name="fav" value="fav"'; if($_SESSION['fav']=="fav"){ echo 'checked="checked"';}
+            echo ' onchange="submit();">
+            <label for="fav">Favoris</label><br>
+            <input type="radio" id="fav" name="fav" value="all"'; if($_SESSION['fav']=="all"){ echo 'checked="checked"';}
+            echo ' onchange="submit();">
+            <label for="fav">Tous</label><br>
+        </form>
+    </div>
+</div>';
+
+
 echo "<br>";
-$tab_tri=array();
-if (isset($_POST['tri'])){
-    $tri = $_POST['tri'];
-    if ($tri == "dateC"){
+
+    function afficheEvent($link,$user){
         echo "<div class='grid_event'>";
-        $req_triC = "SELECT * FROM evenement ORDER BY dateDebut ASC";
+        if ($_SESSION['fav']=="fav"){
+            $req_triC = "SELECT * FROM evenement WHERE idEvenement IN (SELECT idEvenement FROM ajoutevenement WHERE idUtilisateur={$user}) ORDER BY dateDebut {$_SESSION['triEvent']}";
+        }else
+            $req_triC = "SELECT * FROM evenement ORDER BY dateDebut {$_SESSION['triEvent']}";
+
         if ($result_triC=mysqli_query($link,$req_triC)){
             if (mysqli_num_rows($result_triC) > 0){
-            while ($row_triC=mysqli_fetch_array($result_triC)){
-                echo "<div class='box_event'>";
-                echo '<img class="img_event" src="'.$row_triC['photo'].'">';
-                
-                echo "<div class='text_event'>"; 
-                echo "<form action='evenement.php' method='post'>";
-                echo "<button type='submit' class='addEvent' name='addEvent[]' value='".$row_triC['idEvenement']."'";
-                $reqAdd = "SELECT * FROM ajoutevenement WHERE idUtilisateur={$user} AND idEvenement = {$row_triC['idEvenement']}";
-                $resAdd = mysqli_query($link,$reqAdd);
-                $rowsAdd = mysqli_num_rows($resAdd);
-                if ($rowsAdd == 1 || isset($_POST['addEvent'])){
-                    echo 'style ="color:#e11e45";';
+                while ($row_triC=mysqli_fetch_array($result_triC)){
+                    echo "<div class='box_event'>";
+                    echo '<img class="img_event" src="'.$row_triC['photo'].'">';
+                    echo "<div class='text_event'>"; 
+                    echo "<form action='evenement.php' method='post'>";
+                    echo "<button type='submit' class='addEvent' name='addEvent[]' value='".$row_triC['idEvenement']."'";
+                    $reqAdd = "SELECT * FROM ajoutevenement WHERE idUtilisateur={$user} AND idEvenement = {$row_triC['idEvenement']}";
+                    $resAdd = mysqli_query($link,$reqAdd);
+                    $rowsAdd = mysqli_num_rows($resAdd);
+                    if ($rowsAdd == 1 && (isset($_POST['addEvent'])==False || $_POST['addEvent'][0] != $row_triC['idEvenement']) || (isset($_POST['addEvent']) && $_POST['addEvent'][0]== $row_triC['idEvenement'] && $rowsAdd==0)){
+                        echo 'style ="color:#e11e45";';
+                    }
+                    echo '>';
+                    echo "♡</button>";
+                    echo "</form>";
+                    echo "<h3>".$row_triC['nomEvenement']."</h3>";
+                    echo "<br>";
+                    echo "Date début : ".dateFormat($row_triC['dateDebut'])." - Date fin : ".dateFormat($row_triC['dateFin'])."</p>";
+                    echo "<br>";
+                    echo "<p>".$row_triC['description']."</p>";
+                    echo "<br>";
+                    echo "<a href='".$row_triC['lien']."' class='bouton' target='__BLANK'>Voir plus</a>";
+                    echo "</div>";
+                    echo "</div>";
                 }
-                echo '>';
-                echo "♡</button>";
-                echo "</form>";
-                echo "<h3>".$row_triC['nomEvenement']."</h3>";
-                echo "<br>";
-                echo "Date début : ".dateFormat($row_triC['dateDebut'])." - Date fin : ".dateFormat($row_triC['dateFin'])."</p>";
-                echo "<br>";
-                echo "<p>".$row_triC['description']."</p>";
-                echo "<br>";
-                echo "<a href='".$row_triC['lien']."' class='bouton' target='__BLANK'>Voir plus</a>";
-                echo "</div>";
-                echo "</div>";
-            }
             }
         }
       echo "</div>";      
-    }
-    else{
-        echo "<div class='grid_event'>";
-        $req_triD = "SELECT * FROM evenement ORDER BY dateDebut DESC";
-        if ($result_triD=mysqli_query($link,$req_triD)){
-            if (mysqli_num_rows($result_triD) > 0){
-            while ($row_triD=mysqli_fetch_array($result_triD)){
-                echo "<div class='box_event'>";
-                echo '<img class="img_event" src="'.$row_triD['photo'].'">';
-                echo "<div class='text_event'>"; 
-                echo "<form action='evenement.php' method='post'>";
-                echo "<button type='submit' class='addEvent' name='addEvent[]' value='".$row_triD['idEvenement']."'";
-                $reqAdd = "SELECT * FROM ajoutevenement WHERE idUtilisateur={$user} AND idEvenement = {$row_triD['idEvenement']}";
-                $resAdd = mysqli_query($link,$reqAdd);
-                $rowsAdd = mysqli_num_rows($resAdd);
-                if ($rowsAdd == 1 || isset($_POST['addEvent'])){
-                    echo 'style ="color:#e11e45";';
-                }
-                echo '>';
-                echo "♡</button>";
-                echo "</form>";
-                echo "<h3>".$row_triD['nomEvenement']."</h3>";
-                echo "<br>";
-                echo "Date début : ".dateFormat($row_triD['dateDebut'])." - Date fin : ".dateFormat($row_triD['dateFin'])."</p>";
-                echo "<br>";
-                echo "<p>".$row_triD['description']."</p>";
-                echo "<br>";
-                echo "<a href='".$row_triD['lien']."' class='bouton' target='__BLANK'>Voir plus</a>";
-                echo "</div>";
-                echo "</div>";
-            }
-            }
-        }
-        echo "</div>";
+    
 
     }
-}else{
-
-    echo "<div class='grid_event'>";
-    $req_triD = "SELECT * FROM evenement ORDER BY dateDebut DESC";
-    if ($result_triD=mysqli_query($link,$req_triD)){
-        if (mysqli_num_rows($result_triD) > 0){
-        while ($row_triD=mysqli_fetch_array($result_triD)){
-            echo "<div class='box_event'>";
-            echo '<img class="img_event" src="'.$row_triD['photo'].'">';
-            echo "<div class='text_event'>"; 
-            echo "<form action='evenement.php' method='post'>";
-            echo "<button type='submit' class='addEvent' name='addEvent[]' value='".$row_triD['idEvenement']."'";
-            $reqAdd = "SELECT * FROM ajoutevenement WHERE idUtilisateur={$user} AND idEvenement = {$row_triD['idEvenement']}";
-            $resAdd = mysqli_query($link,$reqAdd);
-            $rowsAdd = mysqli_num_rows($resAdd);
-            if (($rowsAdd == 1 && (isset($_POST['addEvent'])==False || $_POST['addEvent'][0] != $row_triD['idEvenement'])) || (isset($_POST['addEvent']) && $_POST['addEvent'][0]== $row_triD['idEvenement'] && $rowsAdd==0)){
-                echo 'style ="color:#e11e45";';
-            }
-            echo '>';
-            echo "♡</button>";
-            echo "</form>";
-            echo "<h3>".$row_triD['nomEvenement']."</h3>";
-            echo "<br>";
-            echo "Date début : ".dateFormat($row_triD['dateDebut'])." - Date fin : ".dateFormat($row_triD['dateFin'])."</p>";
-            echo "<br>";
-            echo "<p>".$row_triD['description']."</p>";
-            echo "<br>";
-            echo "<a href='".$row_triD['lien']."' class='bouton' target='__BLANK'>Voir plus</a>";
-            echo "</div>";
-            echo "</div>";
-            }
-        }
-    }
-    echo "</div>";
-
-}
+    afficheEvent($link,$user);
 
 
 
@@ -201,6 +169,17 @@ if (isset($_POST['tri'])){
             $resAdd = mysqli_query($link,$reqAdd);
         }
     
+    }
+// filtre par favoris
+
+    if (isset($_POST['fav'])){
+        $fav = $_POST['fav'];
+        $reqFav = "SELECT idEvenement FROM ajoutevenement WHERE idUtilisateur={$user}";
+        $resFav = mysqli_query($link,$reqFav);
+        $rowsFav = mysqli_num_rows($resFav);
+        
+
+       
     }
     
 

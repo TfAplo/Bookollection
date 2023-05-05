@@ -271,13 +271,21 @@ if ($result_comments = mysqli_query($link,$req_comments)){
     }
         
 // ajout collection lu et possédé
+$reqCollec = "SELECT * FROM ajoutcollection WHERE idUtilisateur = {$user} AND idLivre = {$idLivre}";
+$resCollec = mysqli_query($link,$reqCollec);
+$rowsCollec = mysqli_num_rows($resCollec);
+if ($rowsCollec == 1){
+    $FetchRowCollec = mysqli_fetch_row($resCollec);
+}else{
+    $FetchRowCollec = array();
+}
 
-if (isset($_POST['bookread'])){
+if (isset($_POST['bookread']) || ($rowsCollec == 1 && $FetchRowCollec[4] == 1 )){
     $lu = 1;
 }else{
     $lu = 0;
 }
-if (isset($_POST['bookhave'])){
+if (isset($_POST['bookhave']) || ($rowsCollec == 1 && $FetchRowCollec[5] == 1 )){
     $possede = 1;
 }else{
     $possede = 0;

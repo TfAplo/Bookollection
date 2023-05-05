@@ -338,6 +338,23 @@ footer{
     animation: gradient 25s ease infinite;  
 }
 
+#fav{
+    font-size: 1.2em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+.box_pref:hover input ~ #fav{
+    background-color: #ccc;
+}
+
+.box_pref input:checked ~ #fav{
+    background-color: #2196F3;
+}
+
 .img_event{
     width: 20em;
     height:25em;

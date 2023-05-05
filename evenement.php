@@ -102,9 +102,9 @@ echo '
             echo '<input type="radio" id="fav" name="fav" value="fav"'; if($_SESSION['fav']=="fav"){ echo 'checked="checked"';}
             echo ' onchange="submit();">
             <label for="fav">Favoris</label><br>
-            <input type="radio" id="fav" name="fav" value="all"'; if($_SESSION['fav']=="all"){ echo 'checked="checked"';}
+            <input type="radio" id="all" name="fav" value="all"'; if($_SESSION['fav']=="all"){ echo 'checked="checked"';}
             echo ' onchange="submit();">
-            <label for="fav">Tous</label><br>
+            <label for="all">Tous</label><br>
         </form>
     </div>
 </div>';
@@ -148,9 +148,14 @@ echo "<br>";
                 }
             }
         }
+        if ($_SESSION['fav']=="fav"){
+            if (mysqli_num_rows($result_triC) == 0){
+                echo "<p style='text-align:center;'>Vous n'avez pas d'évènement favoris</p>";
+            }
+            
       echo "</div>";      
     
-
+        }
     }
     afficheEvent($link,$user);
 
@@ -170,19 +175,6 @@ echo "<br>";
         }
     
     }
-// filtre par favoris
-
-    if (isset($_POST['fav'])){
-        $fav = $_POST['fav'];
-        $reqFav = "SELECT idEvenement FROM ajoutevenement WHERE idUtilisateur={$user}";
-        $resFav = mysqli_query($link,$reqFav);
-        $rowsFav = mysqli_num_rows($resFav);
-        
-
-       
-    }
-    
-
 
 
 if($link) mysqli_close($link);

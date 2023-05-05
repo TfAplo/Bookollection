@@ -115,6 +115,7 @@ function afficherLivre ($result) {
                 <p>Mot de passe: *****************</p>
                 <p>Email: roget_bernard@gmail.com</p>
                 <p>Date de naissance: 19/06/1987</p>
+                <button id="deconnecter" onclick="location.replace('connexion.php')">Se déconnecter</button>
            </div>
 
            <!-- categorie de bouton -->

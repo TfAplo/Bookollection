@@ -42,12 +42,19 @@ CREATE TABLE `ajoutcollection` (
 --
 
 INSERT INTO `ajoutcollection` (`idUtilisateur`, `idLivre`, `note`, `avis`, `lu`, `possede`) VALUES
-(1, 1, 4, 'ggg', 0x01, 0x01),
-(1, 30, 2, 'g', 0x01, 0x01),
-(1, 57, 3, 'v', 0x01, 0x01),
-(2, 1, 5, 'b', 0x01, 0x01),
-(2, 53, 4, '1', 0x01, 0x01),
-(2, 54, 5, '23', 0x01, 0x01);
+(1, 1, 4, 'Super j\'ai adoré', 0x01, 0x01),
+(1, 30, 2, 'Pas trop aimé, la fin \'est pas celle que le lecteur aurait aimé', 0x01, 0x01),
+(1, 57, 3, 'C\'est pas mal, quelques moments décevant tout de même', 0x01, 0x01),
+(2, 1, 5, 'Meilleur livre que j\'ai lu cette année !', 0x01, 0x01),
+(2, 53, 1, 'Je pense qu\'on ne peut pas faire pire honnêtement', 0x01, 0x01),
+(2, 54, 5, 'Incroyable franchement !', 0x01, 0x01),
+(3, 1, 4, 'Attratif tout le long, j\'ai adoré les personnages', 0x01, 0x01),
+(3, 25, 4, 'Très joli livre', 0x01, 0x01),
+(3, 38, NULL, NULL, 0x00, 0x00),
+(3, 45, NULL, NULL, 0x00, 0x01),
+(3, 46, 1, 'Nul nul et nul ! Une perte de temps', 0x01, 0x00),
+(3, 47, 2, 'Je ne conseille pas', 0x01, 0x00),
+(3, 16, 5, 'Encore une très belle découverte !', 0x01, 0x01);
 
 -- --------------------------------------------------------
 
@@ -636,8 +643,9 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`idUtilisateur`, `nomUtilisateur`, `MotDePasse`, `email`, `newsletter`, `dateNaissance`) VALUES
-(1, 'TESTNote', 'test', 'test@gmail.com', 0x00, '2023-04-04'),
-(2, 'zfepjge', 'erpjgepepjgep', 'zf@egeg.com', 0x01, '2023-04-02');
+(1, 'Bastien', '$2y$10$F3Cq4k2vwfGtklGSr5mBBe3Ig2YFVIcF8xkFOyyzS57PeqZFGQgwS', 'bastien@gmail.com', 0, '2004-04-02'), -- MDP : bastien
+(2, 'Raphaël', '$2y$10$zEzV.MiZBJMQUtLFLOFT6.wSc.9tOx1XuK4y4mb6zqGr9gC1BBaUu', 'raphael@gmail.com', 0, '2004-09-23'), -- MDP : raphael
+(3, 'Florian', '$2y$10$AzpHPvk9CZ75yFEDxGIwPuCGIn2oCDAkraaMoyi0G4JfXqSExnaGW', 'florian@gmail.com', 0, '2004-12-07'); -- MDP : florian
 
 --
 -- Index pour les tables déchargées

@@ -31,7 +31,7 @@
                 <p>Mot de passe: *****************</p>
                 <p>Email: sebastien.bernard@gmail.com</p>
                 <p>Date de naissance: 19/06/1975</p>
-                <button id="deconnecter" onclick="location.replace('connexion.html')">Se déconnecter</button>
+                <button id="deconnecter" onclick="location.replace('connexion.php')">Se déconnecter</button>
            </div>
 
             <!-- categorie de bouton -->

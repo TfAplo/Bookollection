@@ -48,6 +48,13 @@ INSERT INTO `ajoutcollection` (`idUtilisateur`, `idLivre`, `note`, `avis`, `lu`,
 (2, 1, 5, 'b', 0x01, 0x01),
 (2, 53, 4, '1', 0x01, 0x01),
 (2, 54, 5, '23', 0x01, 0x01);
+(3, 1, 5, 'b', 0x01, 0x01),
+(3, 25, 4, '1', 0x01, 0x01),
+(3, 38, NULL, NULL, 0x00, 0x00);
+(3, 45, NULL, NULL, 0x00, 0x01),
+(3, 46, 4, '1', 0x01, 0x00),
+(3, 47, 5, '23', 0x01, 0x00);
+(3, 16, 5, '23', 0x01, 0x01);
 
 -- --------------------------------------------------------
 
@@ -482,7 +489,7 @@ INSERT INTO `livre` (`idLivre`, `titre`, `description`, `couverture`, `dateParut
 --
 -- Structure de la table `livreestregistre`
 --
-
+'
 CREATE TABLE `livreestregistre` (
   `idlivre` int(11) NOT NULL,
   `idregistre` int(11) NOT NULL
@@ -635,9 +642,6 @@ CREATE TABLE `utilisateur` (
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`idUtilisateur`, `nomUtilisateur`, `MotDePasse`, `email`, `newsletter`, `dateNaissance`) VALUES
-(1, 'TESTNote', 'test', 'test@gmail.com', 0x00, '2023-04-04'),
-(2, 'zfepjge', 'erpjgepepjgep', 'zf@egeg.com', 0x01, '2023-04-02');
 
 --
 -- Index pour les tables déchargées

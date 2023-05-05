@@ -47,13 +47,13 @@ INSERT INTO `ajoutcollection` (`idUtilisateur`, `idLivre`, `note`, `avis`, `lu`,
 (1, 57, 3, 'C\'est pas mal, quelques moments décevant tout de même', 0x01, 0x01),
 (2, 1, 5, 'Meilleur livre que j\'ai lu cette année !', 0x01, 0x01),
 (2, 53, 1, 'Je pense qu\'on ne peut pas faire pire honnêtement', 0x01, 0x01),
-(2, 54, 5, 'Incroyable franchement !', 0x01, 0x01);
+(2, 54, 5, 'Incroyable franchement !', 0x01, 0x01),
 (3, 1, 4, 'Attratif tout le long, j\'ai adoré les personnages', 0x01, 0x01),
 (3, 25, 4, 'Très joli livre', 0x01, 0x01),
-(3, 38, NULL, NULL, 0x00, 0x00);
+(3, 38, NULL, NULL, 0x00, 0x00),
 (3, 45, NULL, NULL, 0x00, 0x01),
 (3, 46, 1, 'Nul nul et nul ! Une perte de temps', 0x01, 0x00),
-(3, 47, 2, 'Je ne conseille pas', 0x01, 0x00);
+(3, 47, 2, 'Je ne conseille pas', 0x01, 0x00),
 (3, 16, 5, 'Encore une très belle découverte !', 0x01, 0x01);
 
 -- --------------------------------------------------------
@@ -489,7 +489,7 @@ INSERT INTO `livre` (`idLivre`, `titre`, `description`, `couverture`, `dateParut
 --
 -- Structure de la table `livreestregistre`
 --
-'
+
 CREATE TABLE `livreestregistre` (
   `idlivre` int(11) NOT NULL,
   `idregistre` int(11) NOT NULL
@@ -643,9 +643,9 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`idUtilisateur`, `nomUtilisateur`, `MotDePasse`, `email`, `newsletter`, `dateNaissance`) VALUES
-(1, 'Bastien', '$2y$10$F3Cq4k2vwfGtklGSr5mBBe3Ig2YFVIcF8xkFOyyzS57PeqZFGQgwS', 'images/siteco/cultura.png'), -- MDP : bastien
-(2, 'Raphaël', '$2y$10$zEzV.MiZBJMQUtLFLOFT6.wSc.9tOx1XuK4y4mb6zqGr9gC1BBaUu', 'images/siteco/fnac.png'), -- MDP : raphael
-(3, 'Florian', '$2y$10$AzpHPvk9CZ75yFEDxGIwPuCGIn2oCDAkraaMoyi0G4JfXqSExnaGW', 'images/siteco/amazon.png'); -- MDP : florian
+(1, 'Bastien', '$2y$10$F3Cq4k2vwfGtklGSr5mBBe3Ig2YFVIcF8xkFOyyzS57PeqZFGQgwS', 'bastien@gmail.com', 0, '2004-04-02'), -- MDP : bastien
+(2, 'Raphaël', '$2y$10$zEzV.MiZBJMQUtLFLOFT6.wSc.9tOx1XuK4y4mb6zqGr9gC1BBaUu', 'raphael@gmail.com', 0, '2004-09-23'), -- MDP : raphael
+(3, 'Florian', '$2y$10$AzpHPvk9CZ75yFEDxGIwPuCGIn2oCDAkraaMoyi0G4JfXqSExnaGW', 'florian@gmail.com', 0, '2004-12-07'); -- MDP : florian
 
 --
 -- Index pour les tables déchargées

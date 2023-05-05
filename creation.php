@@ -58,7 +58,7 @@ $post = false;
             </label>
 
             <label>Nom d'utilisateur
-            <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" value="<?php echo $username ?>" maxlength="20">
+            <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" value="<?php echo $username ?>" maxlength="20" autocomplete="off">
             </label>
             
             <label>Mot de passe

@@ -45,7 +45,7 @@ $post = false;
             <a class="clair" href="javascript:void(0)"><img src="images/wb_sunny.png" alt="" width="20px"></a>
             <a class="sombre" href="javascript:void(0)"><img src="images/brightness_2.png" alt="" width="20px"></a>
         </div>
-        <form action="connexion.php" method="post">
+        <form action="connexion.php" method="post" autocomplete="off">
             <h1 id="titrelog">Se connecter</h1>
 
             <label>Nom d'utilisateur

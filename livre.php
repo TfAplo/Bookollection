@@ -16,9 +16,9 @@
         <header>
             <nav>
                 <img alt="Logo de MyBookollection" src="images/ico-removebg-preview.png"> 
-                <input class="nav_button" type="button" onclick="window.location.href = 'collection.html';" value="Ma collection">
+                <input class="nav_button" type="button" onclick="window.location.href = 'collection.php';" value="Ma collection">
             <input class="nav_button" type="button" onclick="window.location.href = 'actualites.php';" value="Actualités">
-            <input class="nav_button" type="button" onclick="window.location.href = 'recherche.html';" value="Recherche">
+            <input class="nav_button" type="button" onclick="window.location.href = 'recherche.php';" value="Recherche">
             </nav>
             <h1>Bookollection</h1>
                     <!-- Bouton popup -->

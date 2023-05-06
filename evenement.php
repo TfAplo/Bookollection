@@ -63,7 +63,7 @@ function afficheEvent($link,$user){
                 echo "</div>";
                 echo "</div>";
             }
-        }mysqli_free_result($result_tri);
+        }
     }
     if ($_SESSION['fav']=="fav"){
         if (mysqli_num_rows($result_tri) == 0){

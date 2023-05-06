@@ -114,8 +114,6 @@ nav {
 }
 
 
-
-
 #Tachat{
     margin-bottom: 20px;
 }
@@ -140,7 +138,7 @@ nav {
     margin-top: -20px;
 }
 
-.testRating{
+.ratingStar{
     color:#aaa;
     background-color: var(--secondary);
     text-decoration: none;
@@ -149,10 +147,10 @@ nav {
     border:0px;
 }
 
-.testRating:hover,
-.testRating:focus,
-.testRating:hover ~ .testRating,
-.testRating:focus ~ .testRating {
+.ratingStar:hover,
+.ratingStar:focus,
+.ratingStar:hover ~ .ratingStar,
+.ratingStar:focus ~ .ratingStar {
     color: orange;
     cursor: pointer;
 }
@@ -165,19 +163,7 @@ nav {
     margin-right: 20px;
 }
 
-  .rating a {
-    color: #aaa;
-    text-decoration: none;
-    font-size: 3.8em;
-    transition: color .4s;
-  }
-  .rating a:hover,
-  .rating a:focus,
-  .rating a:hover ~ a,
-  .rating a:focus ~ a {
-    color: orange;
-    cursor: pointer;
-  }
+
 
 .box_comment h3{
     margin-left: 10px;

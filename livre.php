@@ -209,7 +209,7 @@ if (isset($_POST['note'])){
 }
 
 // affichage des commentaires
-$req_comments = "SELECT avis,note,nomUtilisateur,dateCommentaire FROM ajoutcollection INNER JOIN utilisateur USING(idUtilisateur) WHERE idLivre = {$idLivre} AND avis IS NOT NULL";
+$req_comments = "SELECT avis,note,nomUtilisateur,dateCommentaire FROM ajoutcollection INNER JOIN utilisateur USING(idUtilisateur) WHERE idLivre = {$idLivre} AND avis IS NOT NULL ORDER BY dateCommentaire DESC";
 if ($result_comments = mysqli_query($link,$req_comments)){
     
     echo 
@@ -234,7 +234,7 @@ if ($result_comments = mysqli_query($link,$req_comments)){
         $rowComment = mysqli_fetch_row($resComment);
         echo  "
         <div class='comment'>
-            <p>".$rowComment[1]." - <span class='noteStar'>".noteStyle($rowComment[0])."</span> - <span class='dateComment'>".dateFormat($dateC)."</span></p>
+            <p>".$rowComment[1]." - <span class='noteStar'>".noteStyle($rowComment[0])."</span> - <span class='dateComment'>".$dateC."</span></p>
             <p class='avisUser'>".$_POST['comment']."</p>
         </div>";
     }

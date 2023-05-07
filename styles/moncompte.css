@@ -1,0 +1,32 @@
+.menu {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.categorie {
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1.2rem;
+}
+
+.contenu {
+  padding: 1rem;
+  display: none;
+}
+
+.actif .contenu {
+  display: block;
+}
+

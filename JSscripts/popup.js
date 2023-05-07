@@ -41,9 +41,7 @@ const categoryButtons = document.querySelectorAll('button[data-category]');
                                             <h2>Assistance</h2>';
 
                     } else if (category === 'a_propos') {
-                        popup.innerHTML = '<span class="close" id="closeButton">&times;</span>\
-                                            <h2>A propos</h2>\
-                                            <a href="www.google.com">Google</a>';
+                        popup.innerHTML = '<span class="close" id="closeButton">&times;</span><h2>A propos</h2><a href="www.google.com">Google</a>';
                     }
 
                     const popupCloseButton = popup.querySelector('#closeButton');

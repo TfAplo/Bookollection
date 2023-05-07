@@ -395,10 +395,8 @@ input[type="radio"]:checked + label span {
 .box_pref{
     margin-left: 20px;
     margin-right: auto;
-   /* text-align: center;*/
     margin-top: 8vh;
     margin-bottom: 10px;
-    /*position: relative;*/
 }
 
 

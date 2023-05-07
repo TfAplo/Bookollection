@@ -75,21 +75,29 @@ nav {
 }
 
 .grid{
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
+    display: flex;
+    flex-wrap:nowrap;
+    justify-content: space-between;
+    /*grid;
+    grid-template-columns: 33% 33% 33%;*/
+    
 }
 
 #imageLivre{
     width: 20em;
     margin-left: 10px;
+    max-width: 100%;
+    display: block;
    
 }
 
 .desc{
-    margin-left: -50px;
+   /* margin-left: -50px;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 10px;*/
     font-size: 1.3em;
+    width: 40%;
+    
 }
 
 #Tdescription{
@@ -101,6 +109,7 @@ nav {
 }
 
 .achat{
+  width: 20%;
     margin-left: 30px;
     margin-top: 10px;
 }
@@ -118,9 +127,34 @@ nav {
     margin-bottom: 20px;
 }
 
+.add{
+  text-align: center;
+}
+
+.addButton{
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  bottom:3em;
+  color: var(--fontcolor);
+  background-color: var(--third);
+  border:none;
+  padding:5px;
+  font-size: 1.2em;
+  border-radius: 7px;
+  width: 5.4em;
+  height: 2em;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;    margin-bottom: 10px;
+}
+
+.addButton:hover {
+  cursor: pointer;
+  border: rgba(9, 30, 66, 0.25) 1px solid;
+}
+
 .bookre{
     text-align: center;
-    margin-top: -70px;
+    margin-top: 10px;
     font-size: 1.5em;
 }
 
@@ -254,3 +288,149 @@ nav {
   color:orange;
   font-size: 1.2em;
 }
+
+
+
+/*####################### responsive #############################*/
+
+@media screen and (max-width: 1024px) {
+    .grid{
+        display: grid;
+       /* grid-template-columns: 50% 50%;*/
+        grid-template-rows: 33% 33% 33%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .desc{
+        width: 100%;
+        margin : auto;
+        text-align: left;
+    }
+
+    #imageLivre{
+        width: 60%;
+          margin-left: 20px;
+        margin-left: 0px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .achat{
+      text-align: right;
+        width: 50%;
+        margin-left: 0px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .rating{
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 0.6em;
+    }
+    /*responsive bouton ajouter collection et lu et possedé*/
+
+    .add{
+      display: grid;
+       grid-template-rows: 50% 50%;
+       margin-left: 10px;
+       margin-right: 10px;
+    }
+
+    .add h2{
+        font-size: 1.2em;
+    }
+
+
+    .addButton{
+        margin-left: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+    }
+
+    .bookre{
+        font-size: 0.9em;
+    }
+
+    #BookRead{
+      margin-left: -44px;
+    }
+
+    #BookHave{
+      margin-top: 10px;
+    }
+
+    /*responsive information*/
+    .info{
+        margin-left: 0px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .info h2{
+        font-size: 1.2em;
+    }
+
+    .info p{
+        font-size: 0.9em;
+    }
+
+    .grid_comment{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 50% 50%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .box_comment{
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .box_comment textarea{
+        width: 90%;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .box_comment input{
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .avisUser{
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .comment{
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .dateComment{
+        margin-left: 3px;
+        margin-right: 0px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .noteStar{
+        margin : 1px;
+    }
+
+  }

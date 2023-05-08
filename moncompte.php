@@ -1,3 +1,25 @@
+<?php
+
+error_reporting(E_ALL);
+require_once ('connexionDB.php');
+mysqli_report(MYSQLI_REPORT_OFF);
+session_start();
+
+function afficherInfoCompte ($link) {
+    $idutilisateur = $_SESSION['id']; 
+    $sql = "SELECT nomUtilisateur, email, dateNaissance FROM utilisateur WHERE idUtilisateur = $idutilisateur"; 
+    $result = mysqli_query($link, $sql);
+    $result->data_seek(0);
+    $row = $result->fetch_assoc(); 
+    echo "<p>Nom d'utilisateur : ".$row['nomUtilisateur']."</p>\n";
+    echo "<p>Mot de passe: *********</p>\n"; 
+    echo "<p>E-mail: ".$row['email']."</p>\n"; 
+    echo "<p>Date de naissance : ".$row['dateNaissance']."</p>\n"; 
+    mysqli_free_result($result);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,7 +41,13 @@
             <div class="categorie">
                 <h2 class="toggle">📚 Profil 📚</h2>
                 <div class="contenu">
-                
+                    <?php
+                        $link = connexion();
+                        afficherInfoCompte($link);
+                        if ($link) {
+                            mysqli_close($link);
+                        }
+                    ?>
                 </div>
             </div>
 

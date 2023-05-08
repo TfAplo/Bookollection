@@ -10,7 +10,7 @@ categories.forEach(categorie => {
         c.classList.remove('actif');
         c.querySelector('.contenu').style.maxHeight = null;
       }
-    }); // sheeeeesh
+    });
 
     categorie.classList.toggle('actif');
 

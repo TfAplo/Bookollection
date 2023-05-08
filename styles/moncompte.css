@@ -1,8 +1,6 @@
 :root{
   --primary: rgb(0, 122, 204);
-  background-image: url(../images/dream_TradingCard\ \(2\).jpg);
   opacity: 0.7;
-  z-index: 0;
 }
 
 *{
@@ -13,14 +11,11 @@ body{
   font-family: Poppins, sans-serif;
   height: 100vh;
   color: var(--fontcolor);
-  z-index: 1;
 }
 
 #bco{
   z-index: 1;
   background-color: var(--primary);
-  opacity: 2;
-  background-size: cover;
 }
 
 .menu {

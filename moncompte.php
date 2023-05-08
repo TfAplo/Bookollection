@@ -36,7 +36,14 @@ function afficherInfoCompte ($link) {
             <div class="categorie">
                 <h2 class="toggle">📚 Profil 📚</h2>
                 <div class="contenu">
-                <p> Evan Beaufreton</p>
+                    <?php
+                        $link = connexion();
+                        afficherInfoCompte($link);
+                        if ($link) {
+                            myqsli_close($link);
+                        }
+
+                    ?>
                 </div>
             </div>
 

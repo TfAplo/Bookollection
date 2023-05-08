@@ -19,7 +19,7 @@ function recupererLivre ($link) {
             INNER JOIN genre g ON l.idGenre = g.idGenre
             INNER JOIN livreestregistre er ON l.idLivre = er.idLivre
             INNER JOIN registre r ON er.idRegistre = r.idRegistre
-            WHERE ac.idUtilisateur = $idUtilisateur";
+            WHERE ac.idUtilisateur = $idUtilisateur AND ac.ajout = 1";
     if (!empty($_POST)) {
         if (isset($_POST["titre"])) {
             $titre = $_POST["titre"];

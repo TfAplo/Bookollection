@@ -19,7 +19,7 @@ function recupererLivre ($link) {
             INNER JOIN genre g ON l.idGenre = g.idGenre
             INNER JOIN livreestregistre er ON l.idLivre = er.idLivre
             INNER JOIN registre r ON er.idRegistre = r.idRegistre
-            WHERE ac.idUtilisateur = $idUtilisateur";
+            WHERE ac.idUtilisateur = $idUtilisateur AND ac.ajout = 1";
     if (!empty($_POST)) {
         if (isset($_POST["titre"])) {
             $titre = $_POST["titre"];
@@ -100,33 +100,7 @@ function afficherLivre ($result) {
         </nav>
         <h1>Bookollection</h1>
 
-
-       <!-- Bouton popup -->
-       <button id="bouton_compte"><img alt="compte" src="images/account_circle_clair-removebg-preview.png" id="img_compte"></button>
-
-       <!-- popup -->
-       <div id="myModal" class="modal">
-
-           <!-- contenue popup -->
-           <div class="modal-content">
-                <span class="close">&times;</span>
-                <img alt="compte" id="img_popup" src="images/account_circle_clair-removebg-preview.png">
-                <p>Nom d'utilisateur: Roger bernard </p>
-                <p>Mot de passe: *****************</p>
-                <p>Email: roget_bernard@gmail.com</p>
-                <p>Date de naissance: 19/06/1987</p>
-                <button id="deconnecter" onclick="location.replace('connexion.php')">Se déconnecter</button>
-           </div>
-
-           <!-- categorie de bouton -->
-           <div class="categories">
-                <button class="category-button" data-category="profil">Profil</button>
-                <button class="category-button" data-category="securite">Sécurité</button>
-                <button class="category-button" data-category="soutenir">Soutenir</button>
-                <button class="category-button" data-category="assistance">Assistance</button>
-                <button class="category-button" data-category="a_propos">A Propos</button>
-           </div>
-       </div>
+       <a id="bouton_compte" href="moncompte.php"><img alt="compte" src="images/account_circle_clair-removebg-preview.png" id="img_compte"></a>
     </header>
 
     <div id="contenu">

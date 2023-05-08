@@ -34,6 +34,7 @@ CREATE TABLE `ajoutcollection` (
   `avis` varchar(200) DEFAULT NULL,
   `lu` tinyint(1) NOT NULL,
   `possede` tinyint(1) NOT NULL,
+  `ajout` tinyint(1) NOT NULL,
   `dateCommentaire` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -41,20 +42,20 @@ CREATE TABLE `ajoutcollection` (
 -- Déchargement des données de la table `ajoutcollection`
 --
 
-INSERT INTO `ajoutcollection` (`idUtilisateur`, `idLivre`, `note`, `avis`, `lu`, `possede`) VALUES
-(1, 1, 4, 'Super j\'ai adoré', 0x01, 0x01),
-(1, 30, 2, 'Pas trop aimé, la fin \'est pas celle que le lecteur aurait aimé', 0x01, 0x01),
-(1, 57, 3, 'C\'est pas mal, quelques moments décevant tout de même', 0x01, 0x01),
-(2, 1, 5, 'Meilleur livre que j\'ai lu cette année !', 0x01, 0x01),
-(2, 53, 1, 'Je pense qu\'on ne peut pas faire pire honnêtement', 0x01, 0x01),
-(2, 54, 5, 'Incroyable franchement !', 0x01, 0x01),
-(3, 1, 4, 'Attratif tout le long, j\'ai adoré les personnages', 0x01, 0x01),
-(3, 25, 4, 'Très joli livre', 0x01, 0x01),
-(3, 38, NULL, NULL, 0x00, 0x00),
-(3, 45, NULL, NULL, 0x00, 0x01),
-(3, 46, 1, 'Nul nul et nul ! Une perte de temps', 0x01, 0x00),
-(3, 47, 2, 'Je ne conseille pas', 0x01, 0x00),
-(3, 16, 5, 'Encore une très belle découverte !', 0x01, 0x01);
+INSERT INTO `ajoutcollection` (`idUtilisateur`, `idLivre`, `note`, `avis`, `lu`, `possede`, `ajout`) VALUES
+(1, 1, 4, 'Super j\'ai adoré', 0x01, 0x01, 0x01),
+(1, 30, 2, 'Pas trop aimé, la fin \'est pas celle que le lecteur aurait aimé', 0x01, 0x01, 0x01),
+(1, 57, 3, 'C\'est pas mal, quelques moments décevant tout de même', 0x01, 0x01, 0x01),
+(2, 1, 5, 'Meilleur livre que j\'ai lu cette année !', 0x01, 0x01, 0x01),
+(2, 53, 1, 'Je pense qu\'on ne peut pas faire pire honnêtement', 0x01, 0x01, 0x00),
+(2, 54, 5, 'Incroyable franchement !', 0x01, 0x01, 0x01),
+(3, 1, 4, 'Attratif tout le long, j\'ai adoré les personnages', 0x01, 0x01, 0x01),
+(3, 25, 4, 'Très joli livre', 0x01, 0x01, 0x01),
+(3, 38, NULL, NULL, 0x00, 0x00, 0x01),
+(3, 45, NULL, NULL, 0x00, 0x01, 0x01),
+(3, 46, 1, 'Nul nul et nul ! Une perte de temps', 0x01, 0x00, 0x01),
+(3, 47, 2, 'Je ne conseille pas', 0x01, 0x00, 0x01),
+(3, 16, 5, 'Encore une très belle découverte !', 0x01, 0x01, 0x00);
 
 -- --------------------------------------------------------
 

@@ -3,38 +3,55 @@ require_once 'account.inc.php';
 require_once 'livreEstEcritPar.php';
 
 function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
+    $motsRecherche = explode(" ",$barreRech);
+    $listeIdPoids = [];
     $link = connexion();
-    $result = mysqli_query($link, "SELECT DISTINCT l.idLivre, l.titre, l.couverture, l.description FROM livre l
+    foreach ($motsRecherche as $mot) {
+        $result = mysqli_query($link, "SELECT DISTINCT l.idLivre FROM livre l
                                     INNER JOIN ecritpar ec ON l.idlivre = ec.idlivre
                                     INNER JOIN auteur a ON ec.idAuteur = A.idAuteur							
                                     INNER JOIN livreestregistre li ON l.idlivre = li.idlivre
                                     INNER JOIN registre r ON li.idregistre = r.idregistre
                                     INNER JOIN genreestregistre gr ON r.idregistre = gr.idregistre
                                     INNER JOIN genre g ON gr.idgenre = g.idgenre
-                                    WHERE (l.titre LIKE '%$barreRech%' OR a.nomAuteur LIKE '%$barreRech%' OR a.prenomAuteur LIKE '%$barreRech%')
+                                    WHERE (l.titre LIKE '%$mot%' OR a.nomAuteur LIKE '%$mot%' OR a.prenomAuteur LIKE '%$mot%')
                                     AND r.nomRegistre LIKE '$registre%' AND g.nomGenre LIKE '$genre%'
                                     GROUP by L.idLivre");
-    if (mysqli_num_rows($result) == 0) {
+        $l = mysqli_fetch_all($result);
+        foreach ($l as $idLivre) {
+            if (array_key_exists($idLivre[0], $listeIdPoids) ) {
+                $listeIdPoids[$idLivre[0]] += 1;
+            }else{
+                $listeIdPoids[$idLivre[0]] = 1;
+            }
+        }
+        mysqli_free_result($result);
+    }
+    if (count($listeIdPoids) == 0) {
         echo 'Aucun livre trouvé';
     }else{
-        $result->data_seek(0);
-        while ( $row = $result->fetch_assoc() ) {
-        echo " <a class='livres' href='livre.php?idLivre=".$row['idLivre']."'>";
-           echo " <img src='images/livres/".$row['couverture']."' width='100px' alt='couverture du livre'>";
-           echo " <div>";
-           echo "     <div class='titreauteur'><h3>".$row['titre']."</h3><h5> De ".livreEstEcritPar($row['idLivre'])."</h5></div>";
-           echo "     <p>". $row['description']."</p>";
-           echo " </div>";
-       echo " </a>";
+        $poidsMax = max($listeIdPoids);
+        foreach ( $listeIdPoids as $id => $poids) {
+            if ($poids == $poidsMax) {
+                $result = mysqli_query($link, "SELECT DISTINCT l.idLivre, l.titre, l.couverture, l.description 
+                                                FROM livre l
+                                                WHERE l.idLivre = '$id'");
+                $row = mysqli_fetch_row($result);
+                echo " <a class='livres' href='livre.php?idLivre=".$row[0]."'>";
+                echo " <img src='images/livres/".$row[2]."' width='100px' alt='couverture du livre'>";
+                echo " <div>";
+                echo "     <div class='titreauteur'><h3>".$row[1]."</h3><h5> De ".livreEstEcritPar($row[0])."</h5></div>";
+                echo "     <p>". $row[3]."</p>";
+                echo " </div>";
+                echo " </a>";
+                mysqli_free_result($result);
+            }
     }
     }
-    mysqli_free_result($result);
     if ($link) {
         mysqli_close($link);
     }
 }
-
-
 
 
 ?>
@@ -59,32 +76,8 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
             <input class="nav_button focus" type="button" onclick="window.location.href = 'recherche.php';" value="Recherche">
         </nav>
         <h1>Bookollection</h1>
-        <!-- Bouton popup -->
-        <button id="bouton_compte"><img alt="compte" src="images/account_circle_clair-removebg-preview.png" id="img_compte"></button>
-
-        <!-- popup -->
-        <div id="myModal" class="modal">
-
-            <!-- contenue popup -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <img alt="compte" id="img_popup" src="images/account_circle_clair-removebg-preview.png">
-                <p>Nom d'utilisateur: Sebastien Bernard </p>
-                <p>Mot de passe: *****************</p>
-                <p>Email: sebastien.bernard@gmail.com</p>
-                <p>Date de naissance: 19/06/1975</p>
-                <button id="deconnecter" onclick="location.replace('connexion.php')">Se déconnecter</button>
-           </div>
-
-            <!-- categorie de bouton -->
-            <div class="categories">
-                <button class="category-button" data-category="profil">Profil</button>
-                <button class="category-button" data-category="securite">Sécurité</button>
-                <button class="category-button" data-category="soutenir">Soutenir</button>
-                <button class="category-button" data-category="assistance">Assistance</button>
-                <button class="category-button" data-category="a_propos">A Propos</button>
-            </div>
-        </div>
+        
+        <a id="bouton_compte" href="moncompte.php"><img alt="compte" src="images/account_circle_clair-removebg-preview.png" id="img_compte"></a>
     </header>
     <form action="recherche.php" method="post" autocomplete="off">
         <input type="text" id="recherche" name="recherche" placeholder="Recherchez un livre..."> <input type="submit" value="" style="display: none;">

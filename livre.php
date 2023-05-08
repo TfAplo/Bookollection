@@ -21,32 +21,8 @@
             <input class="nav_button" type="button" onclick="window.location.href = 'recherche.php';" value="Recherche">
             </nav>
             <h1>Bookollection</h1>
-                    <!-- Bouton popup -->
-        <button id="bouton_compte"><img alt="compte" src="images/account_circle_clair-removebg-preview.png" id="img_compte"></button>
-
-        <!-- popup -->
-        <div id="myModal" class="modal">
-
-            <!-- contenue popup -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <img alt="compte" id="img_popup" src="images/account_circle_clair-removebg-preview.png">
-                <p>Nom d'utilisateur: Sebastien Bernard </p>
-                <p>Mot de passe: *****************</p>
-                <p>Email: sebastien.bernard@gmail.com</p>
-                <p>Date de naissance: 19/06/1975</p>
-                <button id="deconnecter" onclick="location.replace('connexion.php')">Se déconnecter</button>
-           </div>
-
-            <!-- categorie de bouton -->
-            <div class="categories">
-                <button class="category-button" data-category="profil">Profil</button>
-                <button class="category-button" data-category="securite">Sécurité</button>
-                <button class="category-button" data-category="soutenir">Soutenir</button>
-                <button class="category-button" data-category="assistance">Assistance</button>
-                <button class="category-button" data-category="a_propos">A Propos</button>
-            </div>
-        </div>
+            
+            <a id="bouton_compte" href="moncompte.php"><img alt="compte" src="images/account_circle_clair-removebg-preview.png" id="img_compte"></a>
         </header>
 
 <?php
@@ -67,6 +43,8 @@
     if (isset($_GET['idLivre'])){
         $idLivre = $_GET['idLivre'];
     }
+
+  
     
 
     // affichage global du livre et des informations
@@ -92,6 +70,7 @@
             }
 
         }
+        
         echo "</div>";
         echo "</div>";
 
@@ -143,79 +122,116 @@
         echo "</form>";
         echo "</div>";
 
-        // affichage des informations
-        echo "<div class='info'>";
-        echo "<h2 id='Tinfo'>Informations :</h2>";
-        echo "<p id='info'>Date de parution : ".dateFormat($row[3])."</p>";
-        echo "<p id='info'>Genre : ".$row[5]."</p>";
-        echo "<p id='info'>Registre : ".livreEstRegistre($idLivre)."</p>";
-        echo "<p id='info'>Auteur(s) : ".livreEstEcritPar($idLivre)."";
-        echo "</div>";
-        
-        mysqli_free_result($result_livre);
+
+     // ajout/suppression collection add
+if (isset($_POST['add'])){
+    if ($_POST['add'] == "add"){
+        $Upcollec = 1;
+    } else {
+        $Upcollec = 0;
     }
-    else {
-        echo "Erreur: Impossible d'executer la requete $req_livre. " . mysqli_error($link);
-        exit;
+    $reqAdd = "SELECT * FROM ajoutcollection WHERE idUtilisateur = {$user} AND idLivre = {$idLivre}";
+    $resAdd = mysqli_query($link,$reqAdd);
+    $rowAdd = mysqli_num_rows($resAdd);
+    if ($rowAdd == 0){
+        $addAdd = "INSERT INTO  ajoutcollection (idUtilisateur,idLivre,ajout) VALUES ({$user},{$idLivre},{$Upcollec})";
+        $resAddAdd = mysqli_query($link,$addAdd);
     }
-    //formulaire pour ajouter le livre à la collection (lu et possédé)
-    echo '
-    <form method="post" action="livre.php?idLivre='.$idLivre.'">
-    <div class="bookre">
-    <label id="BookRead">
-
-        <input class="box" type="checkbox" name="bookread" ';
-        $reqRead = "SELECT * FROM ajoutcollection WHERE idLivre = {$idLivre} AND idUtilisateur = {$user} AND lu = 1";
-        $resRead = mysqli_query($link,$reqRead);
-        $rowsRead = mysqli_num_rows($resRead);
-        if ($rowsRead == 1 || isset($_POST['bookread'])){
-            echo 'checked="checked"';
-        }
-        echo ' onchange="submit();"">
-        Livre lu
-    </label>';
-
-  echo '  <br>
-    <label id="BookHave">
-        <input class="box" type="checkbox" name = "bookhave" ';
-        $reqHave = "SELECT * FROM ajoutcollection WHERE idLivre = {$idLivre} AND idUtilisateur = {$user} AND possede = 1";
-        $resHave = mysqli_query($link,$reqHave);
-        $rowsHave = mysqli_num_rows($resHave);
-        if ($rowsHave == 1 || isset($_POST['bookhave'])){
-            echo 'checked="checked"';
-        }
-        echo 'onchange="submit();"">
-        Livre possédé
-    </label>
-</div>
-</form>';
-
-    //ajout des notes en bd
-
-if (isset($_POST['note'])){
-    $note = $_POST['note'];
-    $reqNote = "SELECT * FROM ajoutcollection WHERE idLivre = {$idLivre} AND idUtilisateur = {$user}";
-    $resNote = mysqli_query($link,$reqNote);
-    $rowsNote = mysqli_num_rows($resNote);
-    if ($rowsNote == 0){
-        $addNote = "INSERT INTO ajoutcollection (idLivre,idUtilisateur,note) VALUES ($idLivre,$user,$note[0])";
-        $resNote= mysqli_query($link,$addNote);
-    }
-    else {
-        $updateNote = "UPDATE ajoutcollection SET note = $note[0] WHERE idLivre = {$idLivre} AND idUtilisateur = {$user}";
-        $resNote= mysqli_query($link,$updateNote);
+    else{
+        $addAdd = "UPDATE ajoutcollection SET ajout = {$Upcollec} WHERE idUtilisateur = {$user} AND idLivre = {$idLivre}";
+        $resAddAdd = mysqli_query($link,$addAdd);
     }
 
 }
 
+    //bouton pour ajouter le livre à la collection (ajout collection)
+    echo "
+    <div class='add'>
+        <h2 id='Tadd'>Ajouter à ma collection :</h2>
+        <form method='post' action='livre.php?idLivre=".$idLivre."'>";
+        $reqAdd = "SELECT ajout FROM ajoutcollection WHERE idUtilisateur = {$user} AND idLivre = {$idLivre}";
+        $resAdd = mysqli_query($link,$reqAdd);
+        $rowsAdd = mysqli_fetch_row($resAdd);
+        $numAdd = mysqli_num_rows($resAdd);
+        
+        if (($numAdd==1 && $rowsAdd[0] == 0 ) || (isset($_POST['add']) && $_POST['add'] == 'remove') || $numAdd ==0){
+            echo "<button type='submit' name='add' value='add' class='addButton'>Ajouter</button>";
+        }else{
+            echo "<button type='submit' name='add' value='remove' class='addButton'>Supprimer</button>";
+        }
+      echo  "</form>
+    ";
+
+ //formulaire pour ajouter le livre à la collection (lu et possédé)
+ echo '
+ <form method="post" action="livre.php?idLivre='.$idLivre.'">
+ <div class="bookre">
+ <label id="BookRead">
+
+     <input class="box" type="checkbox" name="bookread" ';
+     $reqRead = "SELECT * FROM ajoutcollection WHERE idLivre = {$idLivre} AND idUtilisateur = {$user} AND lu = 1";
+     $resRead = mysqli_query($link,$reqRead);
+     $rowsRead = mysqli_num_rows($resRead);
+     if ($rowsRead == 1 || isset($_POST['bookread'])){
+         echo 'checked="checked"';
+     }
+     echo ' onchange="submit();"">
+     Livre lu
+ </label>';
+
+echo '  <br>
+ <label id="BookHave">
+     <input class="box" type="checkbox" name = "bookhave" ';
+     $reqHave = "SELECT * FROM ajoutcollection WHERE idLivre = {$idLivre} AND idUtilisateur = {$user} AND possede = 1";
+     $resHave = mysqli_query($link,$reqHave);
+     $rowsHave = mysqli_num_rows($resHave);
+     if ($rowsHave == 1 || isset($_POST['bookhave'])){
+         echo 'checked="checked"';
+     }
+     echo 'onchange="submit();"">
+     Livre possédé
+ </label>
+</div>
+</form>
+</div>';
+
+    // affichage des informations
+    echo "<div class='info'>";
+    echo "<h2 id='Tinfo'>Informations :</h2>";
+    echo "<p id='info'>Date de parution : ".dateFormat($row[3])."</p>";
+    echo "<p id='info'>Genre : ".$row[5]."</p>";
+    echo "<p id='info'>Registre : ".livreEstRegistre($idLivre)."</p>";
+    echo "<p id='info'>Auteur(s) : ".livreEstEcritPar($idLivre)."";
+    echo "</div>";
+    
+    mysqli_free_result($result_livre);
+}
+else {
+    echo "Erreur: Impossible d'executer la requete $req_livre. " . mysqli_error($link);
+    exit;
+}
+
+
+
+
+
 // affichage des commentaires
+$req_note = "SELECT note FROM ajoutcollection WHERE idLivre = {$idLivre} AND note IS NOT NULL";
+$result_note = mysqli_query($link,$req_note);
+$rows_note = mysqli_num_rows($result_note);
+if (isset($_POST['note'])){
+    $_SESSION['note'] +=1;
+}else {
+    $_SESSION['note'] = $rows_note;
+}
+
 $req_comments = "SELECT avis,note,nomUtilisateur,dateCommentaire FROM ajoutcollection INNER JOIN utilisateur USING(idUtilisateur) WHERE idLivre = {$idLivre} AND avis IS NOT NULL ORDER BY dateCommentaire DESC";
 if ($result_comments = mysqli_query($link,$req_comments)){
     
     echo 
     "<div class='grid_comment'>
         <div class='box_comment'>
-            <h2>Commentaires (".moyNotes($idLivre)."/5)</h2>
+            <h2>Commentaires <span>(".$_SESSION['note']." évaluations : ".moyNotes($idLivre)."/5)</span></h2>
             ";
             echo "
             <h3>Ajouter un commentaire</h3>
@@ -254,6 +270,25 @@ if ($result_comments = mysqli_query($link,$req_comments)){
         </div>
     </div>";
 }
+
+    //ajout des notes en bd
+
+    if (isset($_POST['note'])){
+        $note = $_POST['note'];
+        $reqNote = "SELECT * FROM ajoutcollection WHERE idLivre = {$idLivre} AND idUtilisateur = {$user}";
+        $resNote = mysqli_query($link,$reqNote);
+        $rowsNote = mysqli_num_rows($resNote);
+        if ($rowsNote == 0){
+            $addNote = "INSERT INTO ajoutcollection (idLivre,idUtilisateur,note) VALUES ($idLivre,$user,$note[0])";
+            $resNote= mysqli_query($link,$addNote);
+        }
+        else {
+            $updateNote = "UPDATE ajoutcollection SET note = $note[0] WHERE idLivre = {$idLivre} AND idUtilisateur = {$user}";
+            $resNote= mysqli_query($link,$updateNote);
+        }
+    
+    }
+
 // ajouter un commentaire
 
 if (isset($_POST['comment'])){
@@ -304,6 +339,8 @@ else{
     $addCollec = "UPDATE ajoutcollection SET lu = {$lu}, possede = {$possede} WHERE idUtilisateur = {$user} AND idLivre = {$idLivre}";
     $resAddCollec = mysqli_query($link,$addCollec);
 }
+
+
 
    
 ?>

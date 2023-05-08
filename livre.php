@@ -154,7 +154,7 @@ if (isset($_POST['add'])){
         $rowsAdd = mysqli_fetch_row($resAdd);
         $numAdd = mysqli_num_rows($resAdd);
         
-        if (($numAdd==1 && $rowsAdd[0] == 0 ) || (isset($_POST['add']) && $_POST['add'] == 'remove')){
+        if (($numAdd==1 && $rowsAdd[0] == 0 ) || (isset($_POST['add']) && $_POST['add'] == 'remove') || $numAdd ==0){
             echo "<button type='submit' name='add' value='add' class='addButton'>Ajouter</button>";
         }else{
             echo "<button type='submit' name='add' value='remove' class='addButton'>Supprimer</button>";

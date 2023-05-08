@@ -55,6 +55,9 @@ body{
   max-height: 500px;
 }
 
+p, h2, h4{
+  margin: 20px 30px 20px 30px;
+}
 
 a{
   padding: 10px;

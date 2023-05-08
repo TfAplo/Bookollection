@@ -1,8 +1,13 @@
 <?php
 
+error_reporting(E_ALL);
+require_once ('connexionDB.php');
+mysqli_report(MYSQLI_REPORT_OFF);
+session_start();
+
 function afficherInfoCompte ($link) {
     $idutilisateur = $_SESSION['id']; 
-    $sql = "SELECT nomUtilisateur, email, dateNaissance FROM utilisateur WHERE idUtilisateur $idutilisateur"; 
+    $sql = "SELECT nomUtilisateur, email, dateNaissance FROM utilisateur WHERE idUtilisateur = $idutilisateur"; 
     $result = mysqli_query($link, $sql);
     $result->data_seek(0);
     $row = $result->fetch_assoc(); 
@@ -10,7 +15,7 @@ function afficherInfoCompte ($link) {
     echo "<p>Mot de passe: *********</p>\n"; 
     echo "<p>E-mail: ".$row['email']."</p>\n"; 
     echo "<p>Date de naissance : ".$row['dateNaissance']."</p>\n"; 
-    mysqli_free_result($result); I 
+    mysqli_free_result($result);
 }
 
 ?>
@@ -40,9 +45,8 @@ function afficherInfoCompte ($link) {
                         $link = connexion();
                         afficherInfoCompte($link);
                         if ($link) {
-                            myqsli_close($link);
+                            mysqli_close($link);
                         }
-
                     ?>
                 </div>
             </div>
@@ -51,7 +55,7 @@ function afficherInfoCompte ($link) {
                 <h2 class="toggle">📔 Sécurité 📔</h2>
                 
                 <div class="contenu">
-                <p>securité é é securité é é</p>
+                <p>La sécurité de notre site est une priorité absolue. Nous prenons des mesures pour protéger les informations personnelles de nos utilisateurs et pour éviter les accès non autorisés à notre site.Si vous avez des questions ou des préoccupations concernant la sécurité de notre site, n'hésitez pas à nous contacter.</p>
                 
                 </div>
             </div>
@@ -60,7 +64,7 @@ function afficherInfoCompte ($link) {
                 <h2 class="toggle">📒 Soutenir 📒</h2>
 
                 <div class="contenu">
-                <p>na wash miné na wash minéné okay na wash mi né né wash mi né né </p>
+                <p>Notre site web est gratuit et nous avons besoin de votre soutien pour continuer à fournir du contenu de qualité. Si vous appréciez notre travail, vous pouvez nous soutenir de différentes manières. Vous pouvez partager notre site avec vos amis et votre famille, nous suivre sur les réseaux sociaux, ou faire un don pour nous aider à couvrir les frais d'hébergement et de maintenance. Chaque geste compte et nous sommes reconnaissants de votre soutien.</p>
 
                 </div>
             </div>
@@ -69,11 +73,7 @@ function afficherInfoCompte ($link) {
                 <h2 class="toggle">📕 Assistance 📕</h2>
 
                 <div class="contenu">
-                    <h2>FAQ</h2>
-                    <h4>Esce que notre site est le meilleur ?</h4>
-                    <p>UI</p>
-                    <h4>Esce que evan est plus fort a valorant que bastien ?</h4>
-                    <p>UI</p>
+                    <p>Vous rencontrez des problèmes ? Envoyez nous un mail sur assistance@bookollection.fr ou contactez le service de maintenance téléphonique au 02.47.36.47.36</p>
                 </div>
             </div>
 

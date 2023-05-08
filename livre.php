@@ -67,6 +67,8 @@
     if (isset($_GET['idLivre'])){
         $idLivre = $_GET['idLivre'];
     }
+
+  
     
 
     // affichage global du livre et des informations
@@ -92,6 +94,7 @@
             }
 
         }
+        
         echo "</div>";
         echo "</div>";
 
@@ -151,7 +154,6 @@ if (isset($_POST['add'])){
     } else {
         $Upcollec = 0;
     }
-    //$Upcollec = $_POST['add'][0];
     $reqAdd = "SELECT * FROM ajoutcollection WHERE idUtilisateur = {$user} AND idLivre = {$idLivre}";
     $resAdd = mysqli_query($link,$reqAdd);
     $rowAdd = mysqli_num_rows($resAdd);
@@ -217,33 +219,43 @@ echo '  <br>
 </form>
 </div>';
 
-        // affichage des informations
-        echo "<div class='info'>";
-        echo "<h2 id='Tinfo'>Informations :</h2>";
-        echo "<p id='info'>Date de parution : ".dateFormat($row[3])."</p>";
-        echo "<p id='info'>Genre : ".$row[5]."</p>";
-        echo "<p id='info'>Registre : ".livreEstRegistre($idLivre)."</p>";
-        echo "<p id='info'>Auteur(s) : ".livreEstEcritPar($idLivre)."";
-        echo "</div>";
-        
-        mysqli_free_result($result_livre);
-    }
-    else {
-        echo "Erreur: Impossible d'executer la requete $req_livre. " . mysqli_error($link);
-        exit;
-    }
+    // affichage des informations
+    echo "<div class='info'>";
+    echo "<h2 id='Tinfo'>Informations :</h2>";
+    echo "<p id='info'>Date de parution : ".dateFormat($row[3])."</p>";
+    echo "<p id='info'>Genre : ".$row[5]."</p>";
+    echo "<p id='info'>Registre : ".livreEstRegistre($idLivre)."</p>";
+    echo "<p id='info'>Auteur(s) : ".livreEstEcritPar($idLivre)."";
+    echo "</div>";
+    
+    mysqli_free_result($result_livre);
+}
+else {
+    echo "Erreur: Impossible d'executer la requete $req_livre. " . mysqli_error($link);
+    exit;
+}
+
 
 
 
 
 // affichage des commentaires
+$req_note = "SELECT note FROM ajoutcollection WHERE idLivre = {$idLivre} AND note IS NOT NULL";
+$result_note = mysqli_query($link,$req_note);
+$rows_note = mysqli_num_rows($result_note);
+if (isset($_POST['note'])){
+    $_SESSION['note'] +=1;
+}else {
+    $_SESSION['note'] = $rows_note;
+}
+
 $req_comments = "SELECT avis,note,nomUtilisateur,dateCommentaire FROM ajoutcollection INNER JOIN utilisateur USING(idUtilisateur) WHERE idLivre = {$idLivre} AND avis IS NOT NULL ORDER BY dateCommentaire DESC";
 if ($result_comments = mysqli_query($link,$req_comments)){
     
     echo 
     "<div class='grid_comment'>
         <div class='box_comment'>
-            <h2>Commentaires (".moyNotes($idLivre)."/5)</h2>
+            <h2>Commentaires <span>(".$_SESSION['note']." évaluations : ".moyNotes($idLivre)."/5)</span></h2>
             ";
             echo "
             <h3>Ajouter un commentaire</h3>

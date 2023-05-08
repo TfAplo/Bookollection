@@ -471,3 +471,140 @@ input[type="radio"]:checked + label span {
     margin-bottom: 30px;
 
 }
+
+/*-------------------Responsive page actualites et Evenement-------------------*/
+
+@media screen and (max-width: 1024px) {
+    .top{
+
+        display:block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+        height: 60%;
+      
+    }
+    .liv{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        height: 90%;
+        margin-bottom: 10px;
+    }
+
+    .book{
+        width: 10em;
+        height: 11em;
+    }
+
+    /*-------------------Evenement-------------------*/
+
+    .box_event{
+        margin-left: auto;
+        margin-right: auto;
+        width: 99%;
+        height: 88%;
+        margin-top: 30px;
+        margin-bottom: 30px;    }
+
+
+
+}
+ 
+@media screen and (max-width: 768px) {
+    .top{
+        display:block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        height: 90%;
+        margin-bottom: 10px;
+    }
+
+    .liv{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        height: 90%;
+        margin-bottom: 10px;
+    }
+    .book{
+        width: 10em;
+        height: 11em;
+    }
+
+    .box_fest{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        height: 90%;
+        margin-bottom: 10px;
+    }
+
+    .text_fest{
+        padding-top: 10px;
+    }
+
+    .affiche_fest{
+        width: 15em;
+        height: 17em;
+    }
+
+    .topo_newsletter{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 110%;
+        height: 90%;
+        margin-bottom: 10px;
+        font-size: 0.7em;
+    }
+
+    .text-news{
+        padding-top: 15px;
+    }
+
+
+    /*-------------------Evenement-------------------*/
+    .box_event{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        height: 95%;
+        margin-bottom: 10px;
+    }
+
+    .box_event a{
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
+
+    .img_event{
+        width: 20em;
+        height: 25em;
+    }
+
+    .text_event{
+        font-size: 1.1em;
+    }
+
+    .addEvent{
+        position: relative;
+        top: -10px;
+        right: 0;
+        
+    }
+
+    .boutonTri{
+        margin-top: 10px;
+    }
+
+
+}
+    
+

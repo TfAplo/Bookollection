@@ -74,6 +74,12 @@ function afficherInfoCompte ($link) {
                 <h2 class="toggle">📕 Assistance 📕</h2>
 
                 <div class="contenu">
+                    <h2>FAQ</h2>
+                    <h4>Pourquoi Bookollection est le meilleur site de livre et le plus sécurisé ?</h4>
+                    <p>Bookollection est le meilleur site de livre car il offre une sécurité de pointe pour les transactions en ligne, une sélection de livres de qualité et un service clientèle exceptionnel. Nous sommes également engagés envers la communauté littéraire en travaillant avec des auteurs et des éditeurs pour promouvoir la littérature.</p>
+                    <h4>Pourquoi mes livres ne s'affiche pas ?</h4>
+                    <p>Il peut y avoir plusieurs raisons pour lesquelles vos livres ne s'affichent pas, un dysfonctionnement du site ou une erreur dans le processus de téléchargement. Il est recommandé de vérifier votre connexion internet, de contacter le support technique du site</p>
+                    <hr>
                     <p>Vous rencontrez des problèmes ? Envoyez nous un mail sur assistance@bookollection.fr ou contactez le service de maintenance téléphonique au 02.47.36.47.36</p>
                 </div>
             </div>

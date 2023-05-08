@@ -41,6 +41,7 @@ function afficherInfoCompte ($link) {
             <div class="categorie">
                 <h2 class="toggle">📚 Profil 📚</h2>
                 <div class="contenu">
+                    <img id="createur" src="images/account_circle_clair-removebg-preview.png">
                     <?php
                         $link = connexion();
                         afficherInfoCompte($link);

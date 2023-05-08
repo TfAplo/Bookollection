@@ -31,6 +31,7 @@ function afficherInfoCompte ($link) {
     <title>Mon Compte - Bookollection</title>
     </head>
 <body>
+    <a id="retourn" href="javascript:history.back()"><img src="images/account_circle_clair-removebg-preview.png"></a>
     <div class="theme">
         <a class="clair" href="javascript:void(0)"><img src="images/wb_sunny.png" alt="" width="20px"></a>
         <a class="sombre" href="javascript:void(0)"><img src="images/brightness_2.png" alt="" width="20px"></a>

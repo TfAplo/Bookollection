@@ -78,7 +78,7 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
         
         <a id="bouton_compte" href="moncompte.php"><img alt="compte" src="images/account_circle_clair-removebg-preview.png" id="img_compte"></a>
     </header>
-    <form action="recherche.php" method="post" autocomplete="off">
+    <form action="recherche.php" method="get" autocomplete="off">
         <input type="text" id="recherche" name="recherche" placeholder="Recherchez un livre..."> <input type="submit" value="" style="display: none;">
         <select name="genre" id="genre">
             <option value="" selected>Genre</option>
@@ -108,10 +108,10 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
 
     <div class="contenu">
         <?php 
-        if (empty($_POST)) {
+        if (empty($_GET)) {
             rechercherLivres();
         }
-        rechercherLivres($_POST['recherche'], $_POST['genre'], $_POST['registre']);
+        rechercherLivres($_GET['recherche'], $_GET['genre'], $_GET['registre']);
         ?>
     </div>
 </body>

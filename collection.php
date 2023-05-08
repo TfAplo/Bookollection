@@ -20,19 +20,19 @@ function recupererLivre ($link) {
             INNER JOIN livreestregistre er ON l.idLivre = er.idLivre
             INNER JOIN registre r ON er.idRegistre = r.idRegistre
             WHERE ac.idUtilisateur = $idUtilisateur AND ac.ajout = 1";
-    if (!empty($_POST)) {
-        if (isset($_POST["titre"])) {
-            $titre = $_POST["titre"];
+    if (!empty($_GET)) {
+        if (isset($_GET["titre"])) {
+            $titre = $_GET["titre"];
             $sql .= " AND l.titre LIKE '%$titre%'";
         }
-        if (isset($_POST["lu"])) {
+        if (isset($_GET["lu"])) {
             $sql .= " AND ac.lu = TRUE";
         }
-        if (isset($_POST["possession"])) {
+        if (isset($_GET["possession"])) {
             $sql .= " AND ac.possede = TRUE";
         }
-        if (isset($_POST["genre"])) {
-            $genre = $_POST["genre"];
+        if (isset($_GET["genre"])) {
+            $genre = $_GET["genre"];
             $sqlGenre = " AND (";
             foreach ($genre as $nomGenre) {
                 $sqlGenre .= "g.nomGenre = '$nomGenre' OR ";
@@ -41,8 +41,8 @@ function recupererLivre ($link) {
             $sqlGenre .= ")";
             $sql .= $sqlGenre;
         }
-        if (isset($_POST["registre"])) {
-            $registre = $_POST["registre"];
+        if (isset($_GET["registre"])) {
+            $registre = $_GET["registre"];
             $sqlRegistre = " AND (";
             foreach ($registre as $nomRegistre) {
                 $sqlRegistre .= "r.nomRegistre = '$nomRegistre' OR ";
@@ -105,7 +105,7 @@ function afficherLivre ($result) {
     <div id="contenu">
         
         <div id="gauche">
-            <form name="form" id="filtre" action="collection.php" method="post">
+            <form name="form" id="filtre" action="collection.php" method="GET">
                 <h2>Filtres</h2>
                 <label for="" id="genre">
                     Genre :<br>

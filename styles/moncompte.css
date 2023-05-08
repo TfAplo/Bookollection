@@ -10,11 +10,7 @@ body{
   font-family: Poppins, sans-serif;
   height: 100vh;
   color: var(--fontcolor);
-}
-
-#bco{
-  z-index: 1;
-  background-color: var(--primary);
+  background-color: var(--third);
 }
 
 .menu {

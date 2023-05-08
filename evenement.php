@@ -99,7 +99,6 @@ function ajouteEvent($link,$user){
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/actualites.css">
-    <link rel="stylesheet" href="styles/popup.css">
     <link rel="icon" href="images\ico-removebg-preview.png" type="image/png">
     <title>Evènement - Bookollection</title>
 </head>
@@ -146,7 +145,6 @@ function ajouteEvent($link,$user){
             if($link) mysqli_close($link);
         ?>
 
-    <script src="JSscripts/popup.js"></script>
     <script src="JSscripts/theme.js"></script>
 </body>
 </html>

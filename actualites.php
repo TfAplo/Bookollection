@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/actualites.css">
-    <link rel="stylesheet" href="styles/popup.css">
     <link rel="icon" href="images\ico-removebg-preview.png" type="image/png">
     <title>Actualités - Bookollection</title>
 </head>
@@ -144,6 +143,5 @@
     </footer>
 
     <script src="JSscripts/theme.js"></script>
-    <script src="JSscripts/popup.js"></script>
 </body>
 </html>

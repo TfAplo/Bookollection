@@ -6,7 +6,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/livrephp.css">
-        <link rel="stylesheet" href="styles/popup.css">
         <link rel="icon" href="images\ico-removebg-preview.png" type="image/png">
         <title>Page d'un livre - Bookollection</title>
     </head>
@@ -344,7 +343,6 @@ else{
 
    
 ?>
-        <script src="JSscripts/popup.js"></script>
         <script src="JSscripts/theme.js"></script>
     </body>
 </html>

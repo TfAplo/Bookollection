@@ -62,7 +62,6 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/recherche.css">
-    <link rel="stylesheet" href="styles/popup.css">
     <link rel="icon" href="images\ico-removebg-preview.png" type="image/png">
     <title>Recherche - Bookollection</title>
     <script src="JSscripts/theme.js"></script>
@@ -115,7 +114,5 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
         rechercherLivres($_POST['recherche'], $_POST['genre'], $_POST['registre']);
         ?>
     </div>
-
-    <script src="JSscripts/popup.js"></script>
 </body>
 </html>

@@ -37,8 +37,8 @@ $post = false;
                 <div class="card">
                     <h1 class="bienvenue">Bienvenue</h1>
                     <p class="para">Bookollection est un site qui propose une large sélection de livres dans différents genres.</p>
-                    <p class="para">Les utilisateurs de Bookollections peuvent créer un compte gratuit pour sauvegarder leurs livres préférés dans leur liste de souhaits, écrire des critiques et noter les livres qu'ils ont lus.</p>
-                    <p class="para">Bookollections a une communauté active de lecteurs et d'écrivains qui partagent leur passion pour les livres en ligne.</p>
+                    <p class="para">Les utilisateurs de Bookollection peuvent créer un compte gratuit pour sauvegarder leurs livres préférés dans leur liste de souhaits, écrire des critiques et noter les livres qu'ils ont lus.</p>
+                    <p class="para">Bookollection a une communauté active de lecteurs et d'écrivains qui partagent leur passion pour les livres en ligne.</p>
                 </div>
             </div>
         </div>

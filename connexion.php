@@ -1,5 +1,5 @@
 <?php 
-require_once 'account.inc.php';
+require_once 'PHPscripts/account.inc.php';
 
 $username= '';
 $password= '';

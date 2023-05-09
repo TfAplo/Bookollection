@@ -312,12 +312,12 @@ if ($rowsCollec == 1){
     $FetchRowCollec = array();
 }
 
-if (isset($_POST['bookread']) || ($rowsCollec == 1 && $FetchRowCollec[4] == 1 )){
+if (isset($_POST['bookread'])){
     $lu = 1;
 }else{
     $lu = 0;
 }
-if (isset($_POST['bookhave']) || ($rowsCollec == 1 && $FetchRowCollec[5] == 1 )){
+if (isset($_POST['bookhave'])){
     $possede = 1;
 }else{
     $possede = 0;

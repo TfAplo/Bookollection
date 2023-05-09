@@ -110,8 +110,9 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
         <?php 
         if (empty($_GET)) {
             rechercherLivres();
+        }else {
+            rechercherLivres($_GET['recherche'], $_GET['genre'], $_GET['registre']);
         }
-        rechercherLivres($_GET['recherche'], $_GET['genre'], $_GET['registre']);
         ?>
     </div>
 </body>

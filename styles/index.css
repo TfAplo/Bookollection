@@ -79,7 +79,7 @@ h1, h2{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 50%;
+  height: 30%;
   width: 100%;
 }
 
@@ -101,7 +101,6 @@ h1, h2{
 }
 
 .para{
-  margin-top: 20px;
   width: 80%;
   color: var(--fontcolor);
   border-radius: 5px;

@@ -78,8 +78,6 @@ nav {
     display: flex;
     flex-wrap:nowrap;
     justify-content: space-between;
-    /*grid;
-    grid-template-columns: 33% 33% 33%;*/
     
 }
 
@@ -92,9 +90,6 @@ nav {
 }
 
 .desc{
-   /* margin-left: -50px;
-    margin-top: 10px;
-    margin-bottom: 10px;*/
     font-size: 1.3em;
     width: 40%;
     

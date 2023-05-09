@@ -1,5 +1,5 @@
 <?php
-require_once 'PHPscripts/account.inc.php';
+require_once 'PHPscripts/connexionDB.php';
 require_once 'PHPscripts/livreEstEcritPar.php';
 
 function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
@@ -12,8 +12,7 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
                                     INNER JOIN auteur a ON ec.idAuteur = A.idAuteur							
                                     INNER JOIN livreestregistre li ON l.idlivre = li.idlivre
                                     INNER JOIN registre r ON li.idregistre = r.idregistre
-                                    INNER JOIN genreestregistre gr ON r.idregistre = gr.idregistre
-                                    INNER JOIN genre g ON gr.idgenre = g.idgenre
+                                    INNER JOIN genre g ON l.idgenre = g.idgenre
                                     WHERE (l.titre LIKE '%$mot%' OR a.nomAuteur LIKE '%$mot%' OR a.prenomAuteur LIKE '%$mot%')
                                     AND r.nomRegistre LIKE '$registre%' AND g.nomGenre LIKE '$genre%'
                                     GROUP by L.idLivre");
@@ -79,7 +78,7 @@ function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
         <a id="bouton_compte" href="moncompte.php"><img alt="compte" src="images/account_circle_clair-removebg-preview.png" id="img_compte"></a>
     </header>
     <form action="recherche.php" method="get" autocomplete="off">
-        <input type="text" id="recherche" name="recherche" placeholder="Recherchez un livre..."> <input type="submit" value="" style="display: none;">
+        <input type="text" id="recherche" name="recherche" placeholder="Recherchez un livre ou un auteur..."> <input type="submit" value="" style="display: none;">
         <select name="genre" id="genre">
             <option value="" selected>Genre</option>
             <option value="roman">Roman</option>

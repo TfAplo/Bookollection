@@ -25,13 +25,13 @@
         </header>
 
 <?php
-    require('date.php');
-    require('moyNotes.php');
-    require('livreEstEcritPar.php');
-    require('livreEstRegistre.php');
-    require('noteLivre.php');
-    require('formatComment.php');
-    require('account.inc.php');
+    require('PHPscripts/date.php');
+    require('PHPscripts/moyNotes.php');
+    require('PHPscripts/livreEstEcritPar.php');
+    require('PHPscripts/livreEstRegistre.php');
+    require('PHPscripts/noteLivre.php');
+    require('PHPscripts/formatComment.php');
+    require('PHPscripts/connexionDB.php');
     
     $link = connexion();
     if (!isset($_SESSION['id'])){
@@ -158,41 +158,37 @@ if (isset($_POST['add'])){
         }else{
             echo "<button type='submit' name='add' value='remove' class='addButton'>Supprimer</button>";
         }
-      echo  "</form>
-    ";
+  
+        echo '
+        <div class="bookre">
+            <label id="BookRead">
 
- //formulaire pour ajouter le livre à la collection (lu et possédé)
- echo '
- <form method="post" action="livre.php?idLivre='.$idLivre.'">
- <div class="bookre">
- <label id="BookRead">
+                <input class="box" type="checkbox" name="bookread" ';
+                $reqRead = "SELECT * FROM ajoutcollection WHERE idLivre = {$idLivre} AND idUtilisateur = {$user} AND lu = 1";
+                $resRead = mysqli_query($link,$reqRead);
+                $rowsRead = mysqli_num_rows($resRead);
+                if ($rowsRead == 1 || isset($_POST['bookread'])){
+                    echo 'checked="checked"';
+                }
+                echo ' onchange="submit();"">
+                Livre lu
+            </label>';
 
-     <input class="box" type="checkbox" name="bookread" ';
-     $reqRead = "SELECT * FROM ajoutcollection WHERE idLivre = {$idLivre} AND idUtilisateur = {$user} AND lu = 1";
-     $resRead = mysqli_query($link,$reqRead);
-     $rowsRead = mysqli_num_rows($resRead);
-     if ($rowsRead == 1 || isset($_POST['bookread'])){
-         echo 'checked="checked"';
-     }
-     echo ' onchange="submit();"">
-     Livre lu
- </label>';
-
-echo '  <br>
- <label id="BookHave">
-     <input class="box" type="checkbox" name = "bookhave" ';
-     $reqHave = "SELECT * FROM ajoutcollection WHERE idLivre = {$idLivre} AND idUtilisateur = {$user} AND possede = 1";
-     $resHave = mysqli_query($link,$reqHave);
-     $rowsHave = mysqli_num_rows($resHave);
-     if ($rowsHave == 1 || isset($_POST['bookhave'])){
-         echo 'checked="checked"';
-     }
-     echo 'onchange="submit();"">
-     Livre possédé
- </label>
-</div>
-</form>
-</div>';
+            echo '  <br>
+            <label id="BookHave">
+                <input class="box" type="checkbox" name = "bookhave" ';
+                $reqHave = "SELECT * FROM ajoutcollection WHERE idLivre = {$idLivre} AND idUtilisateur = {$user} AND possede = 1";
+                $resHave = mysqli_query($link,$reqHave);
+                $rowsHave = mysqli_num_rows($resHave);
+                if ($rowsHave == 1 || isset($_POST['bookhave'])){
+                    echo 'checked="checked"';
+                }
+                echo 'onchange="submit();"">
+                Livre possédé
+            </label>
+            </div>
+        </form>
+    </div>';
 
     // affichage des informations
     echo "<div class='info'>";
@@ -305,7 +301,7 @@ if (isset($_POST['comment'])){
         $resComment= mysqli_query($link,$updateComment);
     }
 }
-        
+
 // ajout collection lu et possédé
 $reqCollec = "SELECT * FROM ajoutcollection WHERE idUtilisateur = {$user} AND idLivre = {$idLivre}";
 $resCollec = mysqli_query($link,$reqCollec);
@@ -339,9 +335,6 @@ else{
     $resAddCollec = mysqli_query($link,$addCollec);
 }
 
-
-
-   
 ?>
         <script src="JSscripts/theme.js"></script>
     </body>

@@ -1,5 +1,7 @@
 <?php 
-require_once 'PHPscripts/account.inc.php';
+require_once 'PHPscripts/createSession.php';
+require_once 'PHPscripts/createAccount.php';
+require_once 'PHPscripts/connexionDB.php';
 
 $email= '';
 $username= '';
@@ -25,7 +27,7 @@ $post = false;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/connexion.css">
+    <link rel="stylesheet" href="styles/index.css">
     <link rel="icon" href="images\ico-removebg-preview.png" type="image/png">
     <title>Accueil - Bookollection</title>
 </head>
@@ -67,7 +69,7 @@ $post = false;
             
             <div id="basform">
                 <input id="bouton-connecter" type="submit" value="S'inscrire">
-                <a id="changeLog" href="connexion.php">Se connecter</a>
+                <a id="changeLog" href="index.php">Se connecter</a>
             </div>
             <p>
                 <?php 

@@ -21,10 +21,10 @@
 
     
     <?php
-    require("livreEstEcritPar.php");
-    require("date.php");
-    require("moyNotes.php");
-    require("account.inc.php");
+    require("PHPscripts/livreEstEcritPar.php");
+    require("PHPscripts/date.php");
+    require("PHPscripts/moyNotes.php");
+    require("PHPscripts/connexionDB.php");
 
     $link = connexion();
     if (!isset($_SESSION['id'])){

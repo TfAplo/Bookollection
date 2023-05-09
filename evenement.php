@@ -1,9 +1,9 @@
 
 <?php
 
-require('demo.inc.php');
-require('date.php');
-require('account.inc.php');
+require('PHPscripts/demo.inc.php');
+require('PHPscripts/date.php');
+require("PHPscripts/connexionDB.php");
 $link = connexion();
 
 if (!isset($_SESSION['id']));

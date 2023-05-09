@@ -1,5 +1,7 @@
 <?php 
-require_once 'PHPscripts/account.inc.php';
+require_once 'PHPscripts/checkAccount.php';
+require_once 'PHPscripts/createSession.php';
+require_once 'PHPscripts/connexionDB.php';
 
 $username= '';
 $password= '';
@@ -20,7 +22,7 @@ $post = false;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/connexion.css">
+    <link rel="stylesheet" href="styles/index.css">
     <link rel="icon" href="images\ico-removebg-preview.png" type="image/png">
     <title>Accueil - Bookollection</title>
 </head>
@@ -45,7 +47,7 @@ $post = false;
             <a class="clair" href="javascript:void(0)"><img src="images/wb_sunny.png" alt="" width="20px"></a>
             <a class="sombre" href="javascript:void(0)"><img src="images/brightness_2.png" alt="" width="20px"></a>
         </div>
-        <form action="connexion.php" method="post" autocomplete="off">
+        <form action="index.php" method="post" autocomplete="off">
             <h1 id="titrelog">Se connecter</h1>
 
             <label>Nom d'utilisateur

@@ -306,11 +306,7 @@ if (isset($_POST['comment'])){
 $reqCollec = "SELECT * FROM ajoutcollection WHERE idUtilisateur = {$user} AND idLivre = {$idLivre}";
 $resCollec = mysqli_query($link,$reqCollec);
 $rowsCollec = mysqli_num_rows($resCollec);
-if ($rowsCollec == 1){
-    $FetchRowCollec = mysqli_fetch_row($resCollec);
-}else{
-    $FetchRowCollec = array();
-}
+
 
 if (isset($_POST['bookread'])){
     $lu = 1;

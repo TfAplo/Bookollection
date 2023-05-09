@@ -2,8 +2,8 @@
 let a = document.querySelectorAll("a");
 
 //si l'utilisateur n'est jamais venu: cookie mis en sombre
-if (document.cookie == ""){
-    document.cookie = "themeCookie=Dark"
+if (document.cookie = ""){
+    document.cookie = "themeCookie=Dark";
 }
 
 //raccourci pour ajouter des variables au style du document
@@ -46,9 +46,9 @@ function themeCookieChange(element) {
     //change le cookie de theme et lui ajoute une durée de 30 jours pour s'en souvenir
     let expires = (new Date(Date.now()+ 86400*30)).toUTCString();
     if (document.cookie.includes("themeCookie=Bright") && element.classList.contains("sombre")) {
-        document.cookie = "themeCookie=Dark; expires=" + expires + ";path=/;"
+        document.cookie = "themeCookie=Dark; expires=" + expires + ";path=/Bookollection;"
     } else {
-        document.cookie = "themeCookie=Bright; expires=" + expires + ";path=/;"
+        document.cookie = "themeCookie=Bright; expires=" + expires + ";path=/Bookollection;"
     }
 }
 

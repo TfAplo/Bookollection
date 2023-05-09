@@ -31,7 +31,7 @@ function afficherInfoCompte ($link) {
     <title>Mon Compte - Bookollection</title>
     </head>
 <body>
-    <a id="retourn" href="javascript:history.back()"><img src="images/account_circle_clair-removebg-preview.png"></a>
+    <a id="retour" href="javascript:history.back()"><img id="img_retour" src="images/fleche_retour_claire.png" alt="fleche claire"></a>
     <div class="theme">
         <a class="clair" href="javascript:void(0)"><img src="images/wb_sunny.png" alt="" width="20px"></a>
         <a class="sombre" href="javascript:void(0)"><img src="images/brightness_2.png" alt="" width="20px"></a>
@@ -41,7 +41,7 @@ function afficherInfoCompte ($link) {
         <div class="categorie">
             <h2 class="toggle">📚 Profil 📚</h2>
             <div class="contenu">
-                <img id="createur" src="images/account_circle_clair-removebg-preview.png">
+                <img id="img_compte" src="images/account_circle_clair-removebg-preview.png">
                 <?php
                     $link = connexion();
                     afficherInfoCompte($link);
@@ -49,6 +49,7 @@ function afficherInfoCompte ($link) {
                         mysqli_close($link);
                     }
                 ?>
+                <button id="bouton_deconnecter" onclick="window.location.href='connexion.php'">Se deconnecter</button>
             </div>
         </div>
 
@@ -95,23 +96,23 @@ function afficherInfoCompte ($link) {
 
                 <p id="contenuAPropos">Créateurs du site</p>
                 <figure>
-                    <img id="createur" src="images/account_circle_clair-removebg-preview.png" alt="photo créateurs">
+                    <img id="img_compte" src="images/account_circle_clair-removebg-preview.png" alt="photo créateurs">
                     <figcaption>Florian biardeau</figcaption>
                 </figure>
                 <figure>
-                    <img id="createur" src="images/account_circle_clair-removebg-preview.png" alt="photo créateurs">
+                    <img id="img_compte" src="images/account_circle_clair-removebg-preview.png" alt="photo créateurs">
                     <figcaption>Inconnue</figcaption>
                 </figure>
                 <figure>
-                    <img id="createur" src="images/account_circle_clair-removebg-preview.png" alt="photo créateurs">
+                    <img id="img_compte" src="images/account_circle_clair-removebg-preview.png" alt="photo créateurs">
                     <figcaption>Raphaël malidin</figcaption>
                 </figure>
                 <figure>
-                    <img id="createur" src="images/account_circle_clair-removebg-preview.png" alt="photo créateurs">
+                    <img id="img_compte" src="images/account_circle_clair-removebg-preview.png" alt="photo créateurs">
                     <figcaption>Bastien delamare</figcaption>
                 </figure>
                 <figure>
-                    <img id="createur" src="images/account_circle_clair-removebg-preview.png" alt="photo créateurs">
+                    <img id="img_compte" src="images/account_circle_clair-removebg-preview.png" alt="photo créateurs">
                     <figcaption>Evan Beaufeton</figcaption>
                 </figure>
             </div>

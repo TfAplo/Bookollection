@@ -87,7 +87,23 @@ figcaption {
   padding-bottom: 10px;
 }
 
-#createur{
+#bouton_deconnecter{
+  border-radius: 5px;
+  margin: 10px;
+}
+
+#img_retour{
+  scale: 10%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  margin: 10px;
+}
+
+#img_compte{
   size: 20%;
   margin-right: 60px;
   margin-left: 60px;

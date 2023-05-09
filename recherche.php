@@ -1,6 +1,6 @@
 <?php
-require_once 'account.inc.php';
-require_once 'livreEstEcritPar.php';
+require_once 'PHPscripts/account.inc.php';
+require_once 'PHPscripts/livreEstEcritPar.php';
 
 function rechercherLivres($barreRech = "", $genre = "", $registre = ""){
     $motsRecherche = explode(" ",$barreRech);

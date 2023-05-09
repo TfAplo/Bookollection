@@ -1,5 +1,5 @@
 <?php
-
+   hj
 error_reporting(E_ALL);
 require_once ('connexionDB.php');
 mysqli_report(MYSQLI_REPORT_OFF);
